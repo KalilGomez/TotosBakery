@@ -219,6 +219,9 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
+              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
+              },
               "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj": {
                 "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj"
               }
