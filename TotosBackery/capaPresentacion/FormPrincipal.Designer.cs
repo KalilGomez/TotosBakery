@@ -35,5 +35,10 @@
         }
 
         #endregion
+        private System.Windows.Forms.Button btnClientes;
+        private System.Windows.Forms.Button BtnProductos;
+        private System.Windows.Forms.Button BtnPedidos;
+        private System.Windows.Forms.Button BtnCerrarSesion;
+        private System.Windows.Forms.Button btnUsuarios;
     }
 }
