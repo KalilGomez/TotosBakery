@@ -1,0 +1,16 @@
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\bin\Debug\net8.0\capaDatos.deps.json
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\bin\Debug\net8.0\capaDatos.dll
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\bin\Debug\net8.0\capaDatos.pdb
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\bin\Debug\net8.0\capaEntidades.dll
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\bin\Debug\net8.0\capaEntidades.pdb
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\capaDatos.csproj.AssemblyReference.cache
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\capaDatos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\capaDatos.AssemblyInfoInputs.cache
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\capaDatos.AssemblyInfo.cs
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\capaDatos.csproj.CoreCompileInputs.cache
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\capaDatos.sourcelink.json
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\capaDatos.csproj.Up2Date
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\capaDatos.dll
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\refint\capaDatos.dll
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\capaDatos.pdb
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaDatos\obj\Debug\net8.0\ref\capaDatos.dll

@@ -1,0 +1,8 @@
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.csproj.AssemblyReference.cache
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.FormPrincipal.resources
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.csproj.GenerateResource.cache
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.AssemblyInfoInputs.cache
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.AssemblyInfo.cs
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.csproj.CoreCompileInputs.cache
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.sourcelink.json
