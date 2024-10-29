@@ -14,7 +14,6 @@
       },
       "capaPresentacion/1.0.0": {
         "type": "project",
-        "framework": "Unsupported,Version=v0.0",
         "compile": {
           "bin/placeholder/capaPresentacion.dll": {}
         },
@@ -103,19 +102,13 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1201",
-      "level": "Error",
-      "message": "El proyecto capaPresentacion no es compatible con net8.0 (.NETCoreApp,Version=v8.0). El proyecto capaPresentacion admite: net8.0-windows7.0 (.NETCoreApp,Version=v8.0)",
-      "libraryId": "capaPresentacion",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }
