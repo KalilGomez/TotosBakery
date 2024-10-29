@@ -1,3 +1,4 @@
+using capaEntidades;
 namespace capaPresentacion
 {
     public partial class FormPrincipal : Form
@@ -46,4 +47,4 @@ namespace capaPresentacion
         }
     }
 }
-}
+

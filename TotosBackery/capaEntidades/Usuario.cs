@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace capaEntidades
 {
-    internal class Usuario
+    public class Usuario
     {
         private int id;
         private static int idCont = 0;
