@@ -1,11 +1,46 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "capaEntidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/capaEntidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/capaEntidades.dll": {}
+        }
+      },
+      "capaPresentacion/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "compile": {
+          "bin/placeholder/capaPresentacion.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/capaPresentacion.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "capaEntidades/1.0.0": {
+      "type": "project",
+      "path": "../capaEntidades/capaEntidades.csproj",
+      "msbuildProject": "../capaEntidades/capaEntidades.csproj"
+    },
+    "capaPresentacion/1.0.0": {
+      "type": "project",
+      "path": "../capaPresentacion/capaPresentacion.csproj",
+      "msbuildProject": "../capaPresentacion/capaPresentacion.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "capaEntidades >= 1.0.0",
+      "capaPresentacion >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Kalil\\.nuget\\packages\\": {}
@@ -33,7 +68,14 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+              "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
+            },
+            "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj": {
+              "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -69,5 +111,16 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1201",
+      "level": "Error",
+      "message": "El proyecto capaPresentacion no es compatible con net8.0 (.NETCoreApp,Version=v8.0). El proyecto capaPresentacion admite: net8.0-windows7.0 (.NETCoreApp,Version=v8.0)",
+      "libraryId": "capaPresentacion",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
