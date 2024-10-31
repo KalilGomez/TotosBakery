@@ -9,7 +9,6 @@ namespace capaEntidades
     public class Usuario
     {
         private int id;
-        private static int idCont = 0;
         private string nombre;
         private string apellido;
         private string user;
@@ -25,7 +24,6 @@ namespace capaEntidades
 
         public Usuario(string nombre, string apellido, string user, string contraseña, bool admin)
         {
-            this.id = ++idCont;
             this.nombre = nombre;
             this.apellido = apellido;
             this.user = user;
