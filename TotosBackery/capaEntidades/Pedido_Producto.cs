@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace capaEntidades
 {
-    class Pedido_Producto
+    public class Pedido_Producto
     {
+        private Pedido oPedido;
+        private Producto oProducto;
+
+        public Pedido OPedido { get => oPedido; set => oPedido = value; }
+        public Producto OProducto { get => oProducto; set => oProducto = value; }
     }
 }
