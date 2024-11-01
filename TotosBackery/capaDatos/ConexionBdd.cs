@@ -6,7 +6,7 @@ namespace capaDatos
     {
         public void Conectar()
         {
-            string connectionString = "Server=tuServidor;Database=tuBaseDeDatos;User ID=tuUsuario;Password=tuContraseña;";
+            string connectionString = "server=localhost;database=totosBackery;uid=root;pwd=";
             using (MySqlConnection conexion = new MySqlConnection(connectionString))
             {
                 try
