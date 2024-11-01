@@ -6,16 +6,18 @@ namespace capaDatos
     {
         public static void Conectar()
         {
+            bool estaConectado;
             string connectionString = "server=localhost;database=totosBackery;uid=root;pwd=";
             using (MySqlConnection conexion = new MySqlConnection(connectionString))
             {
                 try
                 {
                     conexion.Open();
-                    Console.WriteLine("Conexión exitosa a la base de datos");
+                    estaConectado = true;
                 }
                 catch (MySqlException ex)
                 {
+                    estaConectado= false;
                     Console.WriteLine("Error al conectar a la base de datos: " + ex.Message);
                 }
                 finally
