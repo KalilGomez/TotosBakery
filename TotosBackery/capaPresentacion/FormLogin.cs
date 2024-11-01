@@ -9,12 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using capaEntidades;
+using capaDatos;
 
 namespace capaPresentacion
 {
     public partial class FormLogin : Form
     {
-        Usuario usuarioAdmin = new Usuario("Administrador", "Administrador", "Administrador","Administrador", true);
+        Usuario usuarioAdmin = new Usuario("Administrador", "Administrador", "Administrador", "Administrador", true);
         public FormLogin()
         {
             InitializeComponent();
@@ -70,6 +71,11 @@ namespace capaPresentacion
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ConexionBdd.Conectar();
         }
     }
 }

@@ -4,7 +4,7 @@ namespace capaDatos
 {
     public class ConexionBdd
     {
-        public void Conectar()
+        public static void Conectar()
         {
             string connectionString = "server=localhost;database=totosBackery;uid=root;pwd=";
             using (MySqlConnection conexion = new MySqlConnection(connectionString))
