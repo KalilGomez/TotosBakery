@@ -4,10 +4,10 @@ namespace capaDatos
 {
     public class ConexionBdd
     {
-        public static void Conectar()
+        public static bool Conectar()
         {
-            bool estaConectado;
             string connectionString = "server=localhost;database=totosBackery;uid=root;pwd=";
+            bool estaConectado;
             using (MySqlConnection conexion = new MySqlConnection(connectionString))
             {
                 try
@@ -29,6 +29,7 @@ namespace capaDatos
                     }
                 }
             }
+            return estaConectado;
         }
 
     }

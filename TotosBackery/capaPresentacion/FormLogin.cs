@@ -16,6 +16,7 @@ namespace capaPresentacion
     public partial class FormLogin : Form
     {
         Usuario usuarioAdmin = new Usuario("Administrador", "Administrador", "Administrador", "Administrador", true);
+        bool estaConectado;
         public FormLogin()
         {
             InitializeComponent();
@@ -75,7 +76,11 @@ namespace capaPresentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ConexionBdd.Conectar();
+            bool estaConectado = ConexionBdd.Conectar();
+            if (estaConectado)
+                MessageBox.Show("conexion ok");
+            else
+                MessageBox.Show("Error de conexion");
         }
     }
 }
