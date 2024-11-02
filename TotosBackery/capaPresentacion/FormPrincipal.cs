@@ -14,7 +14,7 @@ namespace capaPresentacion
     public partial class FormPrincipal : Form
     {
         private Usuario usuario;
-        public FormPrincipal(Usuario usuario)
+        public FormPrincipal()
         {
             InitializeComponent();
             this.usuario = usuario;

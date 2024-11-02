@@ -21,9 +21,6 @@ namespace capaPresentacion
 
         private void FormUsuario_Load(object sender, EventArgs e)
         {
-            usuario.Add(new Usuario("kalil", "Gomez", "gomezk", "1234", true));
-            usuario.Add(new Usuario("micaela", "roldan", "roldanm", "4321", true));
-            usuario.Add(new Usuario("lalo", "roldan", "roldane", "toto", false));
             dgvUsuario.DataSource = usuario;
             dgvUsuario.Enabled = false;
             dgvUsuario.ClearSelection();

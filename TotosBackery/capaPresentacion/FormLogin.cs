@@ -15,7 +15,6 @@ namespace capaPresentacion
 {
     public partial class FormLogin : Form
     {
-        Usuario usuarioAdmin = new Usuario("Administrador", "Administrador", "Administrador", "Administrador", true);
         bool estaConectado;
         public FormLogin()
         {
@@ -28,6 +27,7 @@ namespace capaPresentacion
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
+
             try
             {
                 if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtContraseña.Text))
@@ -36,10 +36,10 @@ namespace capaPresentacion
                     return;
                 }
 
-                if (txtUsuario.Text == "Administrador" && txtContraseña.Text == "Administrador")
+                if (txtUsuario.Text ==  && txtContraseña.Text == )
                 {
                     this.Hide();
-                    FormPrincipal formPrincipal = new FormPrincipal(usuarioAdmin);
+                    FormPrincipal formPrincipal = new FormPrincipal();
                     formPrincipal.HabilitarBotonUsuarios();
                     formPrincipal.Show();
                 }
@@ -72,15 +72,6 @@ namespace capaPresentacion
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            bool estaConectado = ConexionBdd.Conectar();
-            if (estaConectado)
-                MessageBox.Show("conexion ok");
-            else
-                MessageBox.Show("Error de conexion");
         }
     }
 }

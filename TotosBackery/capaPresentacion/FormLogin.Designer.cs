@@ -113,16 +113,6 @@
             btnRstPwd.UseVisualStyleBackColor = true;
             btnRstPwd.Click += btnRstPwd_Click;
             // 
-            // button1
-            // 
-            button1.Location = new Point(608, 352);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 7;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // FormLogin
             // 
             AcceptButton = btnIniciarSesion;
