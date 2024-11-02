@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using capaEntidades;
-using capaDatos;
+using capaNegocio;
 
 namespace capaPresentacion
 {
@@ -27,31 +27,43 @@ namespace capaPresentacion
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampos())
+            {
+                return;
+            }
 
             try
             {
-                if (string.IsNullOrWhiteSpace(txtUsuario.Text) || string.IsNullOrWhiteSpace(txtContraseña.Text))
-                {
-                    MessageBox.Show("Por favor, ingrese el usuario y la contraseña.", "Error de ingreso", MessageBoxButtons.OK);
-                    return;
-                }
+                Usuario usuarioEncontrado = LogicaNegocio.ValidarUsuario(txtUsuario.Text, txtContraseña.Text);
 
-                if (txtUsuario.Text ==  && txtContraseña.Text == )
+                if (usuarioEncontrado != null)
                 {
                     this.Hide();
                     FormPrincipal formPrincipal = new FormPrincipal();
-                    formPrincipal.HabilitarBotonUsuarios();
+
+                    if (usuarioEncontrado.Admin)
+                    {
+                        formPrincipal.HabilitarBotonUsuarios();
+                    }
+
                     formPrincipal.Show();
                 }
                 else
                 {
-                    MessageBox.Show("Usuario y/o contraseña inválido, intente nuevamente", "Error al iniciar sesión", MessageBoxButtons.OK);
+                    MessageBox.Show("Usuario y/o contraseña inválido, intente nuevamente",
+                                   "Error al iniciar sesión",
+                                   MessageBoxButtons.OK,
+                                   MessageBoxIcon.Error);
+                    txtContraseña.Clear();
+                    txtContraseña.Focus();
                 }
             }
             catch (Exception ex)
             {
-                // Maneja cualquier excepción inesperada
-                MessageBox.Show($"Se produjo un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al intentar iniciar sesión: {ex.Message}",
+                               "Error",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
             }
         }
 
@@ -72,6 +84,30 @@ namespace capaPresentacion
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            {
+                MessageBox.Show("Debe ingresar un usuario",
+                               "Campo requerido",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Warning);
+                txtUsuario.Focus();
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtContraseña.Text))
+            {
+                MessageBox.Show("Debe ingresar una contraseña",
+                               "Campo requerido",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Warning);
+                txtContraseña.Focus();
+                return false;
+            }
+
+            return true;
         }
     }
 }
