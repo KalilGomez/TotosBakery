@@ -22,11 +22,10 @@ namespace capaEntidades
         public string Contraseña { get => contraseña; set => contraseña = value; }
         public bool Admin { get => admin; set => admin = value; }
 
-        public Usuario(string user, string contraseña, bool admin)
+        public Usuario(string user, string contraseña)
         {
             this.user = user;
             this.contraseña = contraseña;
-            this.admin = admin;
         }
     }
 }

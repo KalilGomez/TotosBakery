@@ -23,17 +23,7 @@ namespace capaDatos
         public static List<Usuario> ObtenerUsuarios()
         {
             List<Usuario> usuarios = new List<Usuario>();
-            string queryUsuarios = @"SELECT 
-                                Usuario.Usuario AS NombreUsuario, 
-                                Usuario.Contraseña, 
-                                CASE 
-                                    WHEN Permiso.ID_permiso IS NULL THEN 2
-                                    ELSE Permiso.ID_permiso 
-                                END AS Permiso
-                            FROM 
-                                Usuario 
-                            LEFT JOIN 
-                                Permiso ON Usuario.ID_usuario = Permiso.ID_usuario;";
+            string queryUsuarios = @"select usuario, contraseña, esadmin from usuario";
 
             using (MySqlConnection conexion = GetConnection())
             {
@@ -47,11 +37,9 @@ namespace capaDatos
                             {
                                 while (reader.Read())
                                 {
-                                    int permisoValue = Convert.ToInt32(reader["ID_Permiso"]);
                                     Usuario usuario = new Usuario(
                                         reader["Usuario"].ToString(),
-                                        reader["Contraseña"].ToString(),
-                                        permisoValue == 1
+                                        reader["Contraseña"].ToString()
                                     );
                                     usuarios.Add(usuario);
                                 }
