@@ -10,10 +10,7 @@ namespace capaNegocio
             try
             {
                 List<Usuario> usuarios = ConexionBdd.ObtenerUsuarios();
-                return usuarios.FirstOrDefault(u =>
-                    u.User == username &&
-                    u.Contraseña == password
-                );
+                return usuarios.FirstOrDefault (u => u.User == username && u.Contraseña == password);
             }
             catch (Exception ex)
             {

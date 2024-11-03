@@ -13,19 +13,20 @@ namespace capaEntidades
         private string apellido;
         private string user;
         private string contraseña;
-        private bool admin;
+        private int admin;
 
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
         public string User { get => user; set => user = value; }
         public string Contraseña { get => contraseña; set => contraseña = value; }
-        public bool Admin { get => admin; set => admin = value; }
+        public int Admin { get => admin; set => admin = value; }
 
-        public Usuario(string user, string contraseña)
+        public Usuario(string user, string contraseña, int admin)
         {
             this.user = user;
             this.contraseña = contraseña;
+            this.admin = admin;
         }
     }
 }

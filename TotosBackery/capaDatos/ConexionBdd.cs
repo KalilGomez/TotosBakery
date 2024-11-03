@@ -39,7 +39,8 @@ namespace capaDatos
                                 {
                                     Usuario usuario = new Usuario(
                                         reader["Usuario"].ToString(),
-                                        reader["Contraseña"].ToString()
+                                        reader["Contraseña"].ToString(),
+                                        Convert.ToInt32(reader["EsAdmin"])
                                     );
                                     usuarios.Add(usuario);
                                 }

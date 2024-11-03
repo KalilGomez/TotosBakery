@@ -17,12 +17,10 @@ namespace capaPresentacion
         public FormPrincipal()
         {
             InitializeComponent();
-            this.usuario = usuario;
             btnUsuarios.Enabled = false;
         }
         public void HabilitarBotonUsuarios()
         {
-            if(usuario.Admin)
             btnUsuarios.Enabled = true;
         }
 
