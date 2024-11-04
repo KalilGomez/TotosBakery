@@ -14,7 +14,6 @@ namespace capaPresentacion
 {
     public partial class FormClientes : Form
     {
-        List<Cliente> clientes = new List<Cliente>();
         public FormClientes()
         {
             InitializeComponent();

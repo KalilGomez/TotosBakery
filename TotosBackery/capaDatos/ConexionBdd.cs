@@ -59,5 +59,46 @@ namespace capaDatos
             }
             return usuarios;
         }
+        public static List<Cliente> ObtenerClientes()
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            string queryClientes = @"select * from cliente";
+            using (MySqlConnection conexion = GetConnection())
+            {
+                if (conexion != null)
+                {
+                    try
+                    {
+                        using (MySqlCommand command = new MySqlCommand(queryClientes, conexion))
+                        {
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    Cliente cliente = new Cliente(
+                                        Convert.ToInt32(reader["id_cliente"]),
+                                        reader["nombre"].ToString(),
+                                        reader["apellido"].ToString(),
+                                        reader["telefono"].ToString(),
+                                        reader["mail"].ToString(),
+                                        reader["direccion"].ToString()
+                                    );
+                                    clientes.Add(cliente);
+                                }
+                            }
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+                        Console.WriteLine("Error al obtener clientes: " + ex.Message);
+                    }
+                    finally
+                    {
+                        conexion.Close();
+                    }
+                }
+            }
+            return clientes;
+        }
     }
 }
