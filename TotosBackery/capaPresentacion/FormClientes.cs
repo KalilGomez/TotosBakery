@@ -83,12 +83,12 @@ namespace capaPresentacion
                     {
                         Cliente clienteActualizado = new Cliente
                         {
-                            Id = Convert.ToInt32(DGVClientes.CurrentRow.Cells["Id_cliente"].Value),
+                            Id = Convert.ToInt32(DGVClientes.CurrentRow.Cells["Id"].Value),
                             Nombre = DGVClientes.CurrentRow.Cells["Nombre"].Value.ToString(),
                             Apellido = DGVClientes.CurrentRow.Cells["Apellido"].Value.ToString(),
                             Direccion = DGVClientes.CurrentRow.Cells["Direccion"].Value.ToString(),
                             Telefono = DGVClientes.CurrentRow.Cells["Telefono"].Value.ToString(),
-                            Mail = DGVClientes.CurrentRow.Cells["Email"].Value.ToString()
+                            Mail = DGVClientes.CurrentRow.Cells["Mail"].Value.ToString()
                         };
 
                         using (var conexion = new ConexionBdd())
