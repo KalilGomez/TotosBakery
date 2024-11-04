@@ -27,18 +27,19 @@ namespace capaPresentacion
             // Validar que los campos no estén vacíos
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
                 string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                string.IsNullOrWhiteSpace(txtDireccion.Text) ||
                 string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                string.IsNullOrWhiteSpace(txtMail.Text))
+                string.IsNullOrWhiteSpace(txtMail.Text) ||
+                string.IsNullOrWhiteSpace(txtDireccion.Text))
+
             {
                 MessageBox.Show("Por favor, complete todos los campos.");
                 return;
             }
             Nombre = txtNombre.Text;
             Apellido = txtApellido.Text;
-            Direccion = txtDireccion.Text;
             Telefono = txtTelefono.Text;
             Mail = txtMail.Text;
+            Direccion = txtDireccion.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -106,16 +106,16 @@ namespace capaDatos
         }
         public static bool InsertarCliente(Cliente cliente)
         {
-            string queryIClientes = "INSERT INTO cliente (nombre, apellido, direccion, telefono, mail) VALUES (@nombre, @apellido, @direccion, @telefono, @mail)";
+            string queryIClientes = "INSERT INTO cliente (nombre, apellido, telefono, mail, direccion) VALUES (@nombre, @apellido, @telefono, @mail, @direccion)";
             using (MySqlConnection conexion = GetConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(queryIClientes, conexion))
                 {
                     cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
                     cmd.Parameters.AddWithValue("@apellido", cliente.Apellido);
-                    cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);
                     cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
                     cmd.Parameters.AddWithValue("@mail", cliente.Mail);
+                    cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);             
                     int rowsAffected = cmd.ExecuteNonQuery();
                     return rowsAffected > 0; // Retorna true si se insertó correctamente
                 }
@@ -127,23 +127,18 @@ namespace capaDatos
             {
                 using (MySqlConnection conexion = GetConnection())
                 {
-                    string query = @"UPDATE clientes 
-                           SET nombre = @nombre, 
-                               telefono = @telefono, 
-                               direccion = @direccion, 
-                               mail = @mail 
-                           WHERE id = @id";
+                    string query = @"UPDATE cliente 
+                           SET nombre = @nombre, apellido = @apellido, telefono = @telefono, mail = @mail, direccion = @direccion WHERE id_cliente = @id_cliente";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conexion))
                     {
-                        cmd.Parameters.AddWithValue("@id", cliente.Id);
+                        cmd.Parameters.AddWithValue("@id_cliente", cliente.Id);
                         cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                        cmd.Parameters.AddWithValue("@apellido", cliente.Apellido);
                         cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
-                        cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);
                         cmd.Parameters.AddWithValue("@mail", cliente.Mail);
+                        cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);
                         // Agrega los demás parámetros según tu estructura
-
-                        conexion.Open();
                         int filasAfectadas = cmd.ExecuteNonQuery();
                         return filasAfectadas > 0;
                     }

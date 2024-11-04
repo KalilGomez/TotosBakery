@@ -49,8 +49,7 @@ namespace capaPresentacion
                 if (formAgregar.ShowDialog() == DialogResult.OK)
                 {
                     Cliente nuevoCliente = new Cliente(id: 0, nombre: formAgregar.Nombre,
-                        apellido: formAgregar.Apellido, direccion: formAgregar.Direccion,
-                        telefono: formAgregar.Telefono, mail: formAgregar.Mail);
+                        apellido: formAgregar.Apellido, telefono: formAgregar.Telefono, mail: formAgregar.Mail, direccion: formAgregar.Direccion);
 
                     bool insertado = ConexionBdd.InsertarCliente(nuevoCliente); // Llamada estática
 
@@ -86,9 +85,9 @@ namespace capaPresentacion
                             Id = Convert.ToInt32(DGVClientes.CurrentRow.Cells["Id"].Value),
                             Nombre = DGVClientes.CurrentRow.Cells["Nombre"].Value.ToString(),
                             Apellido = DGVClientes.CurrentRow.Cells["Apellido"].Value.ToString(),
-                            Direccion = DGVClientes.CurrentRow.Cells["Direccion"].Value.ToString(),
                             Telefono = DGVClientes.CurrentRow.Cells["Telefono"].Value.ToString(),
-                            Mail = DGVClientes.CurrentRow.Cells["Mail"].Value.ToString()
+                            Mail = DGVClientes.CurrentRow.Cells["Mail"].Value.ToString(),
+                            Direccion = DGVClientes.CurrentRow.Cells["Direccion"].Value.ToString()
                         };
 
                         using (var conexion = new ConexionBdd())

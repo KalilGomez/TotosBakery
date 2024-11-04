@@ -16,14 +16,14 @@
         public string Telefono { get => telefono; set => telefono = value; }
         public string Mail { get => mail; set => mail = value; }
 
-        public Cliente(int id, string nombre, string apellido, string direccion, string telefono, string mail)
+        public Cliente(int id, string nombre, string apellido, string telefono, string mail, string direccion)
         {
             this.id = id;
             this.nombre = nombre;
             this.apellido = apellido;
-            this.direccion = direccion;
             this.telefono = telefono;
             this.mail = mail;
+            this.direccion = direccion;
         }
         public Cliente() { }
     }
