@@ -2,8 +2,13 @@
 using MySql.Data.MySqlClient;
 namespace capaDatos
 {
-    public class ConexionBdd
+    public class ConexionBdd:IDisposable
     {
+        public void Dispose()
+        {
+            // Libera recursos, cierra conexiones, etc.
+            // Por ejemplo, si tienes un objeto de conexión, podrías cerrarlo aquí
+        }
         private static string connectionString = "server=localhost;database=totosBackery;uid=root;pwd=";
         private static MySqlConnection GetConnection()
         {
@@ -58,7 +63,7 @@ namespace capaDatos
             }
             return usuarios;
         }
-        public static List<Cliente> ObtenerClientes()
+        public List<Cliente> ObtenerClientes()
         {
             List<Cliente> clientes = new List<Cliente>();
             string queryClientes = @"select * from cliente";

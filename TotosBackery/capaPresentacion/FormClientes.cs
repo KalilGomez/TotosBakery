@@ -1,12 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using capaDatos;
 using capaEntidades;
@@ -20,114 +13,26 @@ namespace capaPresentacion
             InitializeComponent();
         }
 
+        private void FormClientes_Load(object sender, EventArgs e)
+        {
+            CargarClientes(); // Cargar los clientes al iniciar el formulario
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void FormClientes_Load(object sender, EventArgs e)
-        {
-            List<Cliente> clientes = ConexionBdd.ObtenerClientes();
-            DGVClientes.DataSource = clientes;
-            DGVClientes.Enabled = false;
-            DGVClientes.ClearSelection();
-        }
-
-        private void BtnAgregar_Click(object sender, EventArgs e)
-        {
-            // Abrir el formulario hijo
-            using (FormAgregarCliente formAgregar = new FormAgregarCliente())
-            {
-                if (formAgregar.ShowDialog() == DialogResult.OK)
-                {
-                    Cliente nuevoCliente = new Cliente(id: 0,nombre: formAgregar.Nombre,apellido: formAgregar.Apellido,direccion: formAgregar.Direccion,telefono: formAgregar.Telefono,mail: formAgregar.Mail);
-                    bool insertado = ConexionBdd.InsertarCliente(nuevoCliente);
-
-                    if (insertado)
-                    {
-                        MessageBox.Show("Cliente agregado correctamente.");
-
-                        // Volver a cargar los datos en el DataGridView para mostrar el nuevo cliente
-                        List<Cliente> clientes = ConexionBdd.ObtenerClientes();
-                        DGVClientes.DataSource = null;
-                        DGVClientes.DataSource = clientes;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Error al agregar el cliente.");
-                    }
-                }
-            }
-        }
-
-        private void BtnEditar_Click(object sender, EventArgs e)
-        {
-            // Si el DataGridView está deshabilitado, lo habilitamos para editar
-            if (!DGVClientes.Enabled)
-            {
-                DGVClientes.Enabled = true;
-                BtnEditar.Text = "Guardar cambios";
-            }
-            // Si está habilitado, guardamos los cambios
-            else
-            {
-                try
-                {
-                    // Obtenemos la fila seleccionada
-                    if (DGVClientes.CurrentRow != null)
-                    {
-                        // Creamos un objeto Cliente con los datos actualizados
-                        Cliente clienteActualizado = new Cliente
-                        {
-                            Id = Convert.ToInt32(DGVClientes.CurrentRow.Cells["Id"].Value),
-                            Nombre = DGVClientes.CurrentRow.Cells["Nombre"].Value.ToString(),
-                            Apellido = DGVClientes.CurrentRow.Cells["Apellido"].Value.ToString(),
-                            Direccion = DGVClientes.CurrentRow.Cells["Direccion"].Value.ToString(),
-                            Telefono = DGVClientes.CurrentRow.Cells["Telefono"].Value.ToString(),
-                            Mail = DGVClientes.CurrentRow.Cells["Email"].Value.ToString()
-                            // Agrega los demás campos según tu estructura
-                        };
-
-                        // Actualizamos en la base de datos
-                        using (var conexion = new ConexionBdd())
-                        {
-                            if (conexion.ActualizarCliente(clienteActualizado))
-                            {
-                                MessageBox.Show("Cliente actualizado correctamente", "Éxito",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("No se pudo actualizar el cliente", "Error",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                    }
-
-                    // Restauramos el estado original
-                    DGVClientes.Enabled = false;
-                    BtnEditar.Text = "Editar cliente";
-                    DGVClientes.ClearSelection();
-
-                    // Refrescamos el DataGridView
-                    CargarClientes(); // Método que deberás implementar para recargar los datos
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al actualizar: {ex.Message}", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
         private void CargarClientes()
         {
             try
             {
                 using (var conexion = new ConexionBdd())
                 {
-                    // Asumiendo que tienes un método para obtener todos los clientes
-                    var clientes = conexion.ObtenerClientes();
+                    var clientes = conexion.ObtenerClientes(); // Cargar clientes desde la base de datos
                     DGVClientes.DataSource = clientes;
+                    DGVClientes.Enabled = false;
+                    DGVClientes.ClearSelection();
                 }
             }
             catch (Exception ex)
@@ -137,43 +42,122 @@ namespace capaPresentacion
             }
         }
 
-        private void BtnEliminar_Click(object sender, EventArgs e)
+        private void BtnAgregar_Click(object sender, EventArgs e)
         {
-            DGVClientes.Enabled = !DGVClientes.Enabled;
-
-            if (DGVClientes.Enabled)
+            using (FormAgregarCliente formAgregar = new FormAgregarCliente())
             {
-                BtnEliminar.Text = "Aceptar";
-                DGVClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                DGVClientes.MultiSelect = false;  // Solo permite seleccionar una fila a la vez
-                DGVClientes.ClearSelection();
+                if (formAgregar.ShowDialog() == DialogResult.OK)
+                {
+                    Cliente nuevoCliente = new Cliente(id: 0, nombre: formAgregar.Nombre,
+                        apellido: formAgregar.Apellido, direccion: formAgregar.Direccion,
+                        telefono: formAgregar.Telefono, mail: formAgregar.Mail);
 
-                // Otras acciones cuando se habilita la edición
+                    bool insertado = ConexionBdd.InsertarCliente(nuevoCliente); // Llamada estática
+
+                    if (insertado)
+                    {
+                        MessageBox.Show("Cliente agregado correctamente.");
+                        CargarClientes(); // Refrescar el DataGridView con la nueva lista de clientes
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar el cliente.");
+                    }
+                }
+            }
+        }
+
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            if (!DGVClientes.Enabled)
+            {
+                DGVClientes.Enabled = true;
+                BtnEditar.Text = "Guardar cambios";
             }
             else
             {
-                BtnEliminar.Text = "Eliminar cliente";
-                // Verifica si hay una fila seleccionada
-                //if (DGVClientes.SelectedRows.Count > 0)
-                //{
-                //    // Obtén el índice de la fila seleccionada
-                //    int rowIndex = DGVClientes.SelectedRows[0].Index;
+                try
+                {
+                    if (DGVClientes.CurrentRow != null)
+                    {
+                        Cliente clienteActualizado = new Cliente
+                        {
+                            Id = Convert.ToInt32(DGVClientes.CurrentRow.Cells["Id_cliente"].Value),
+                            Nombre = DGVClientes.CurrentRow.Cells["Nombre"].Value.ToString(),
+                            Apellido = DGVClientes.CurrentRow.Cells["Apellido"].Value.ToString(),
+                            Direccion = DGVClientes.CurrentRow.Cells["Direccion"].Value.ToString(),
+                            Telefono = DGVClientes.CurrentRow.Cells["Telefono"].Value.ToString(),
+                            Mail = DGVClientes.CurrentRow.Cells["Email"].Value.ToString()
+                        };
 
-                //    // Elimina el objeto correspondiente de la fuente de datos
-                //    Cliente clienteAEliminar = clientes[rowIndex];  // Obtén el objeto de la lista
-                //    clientes.Remove(clienteAEliminar);              // Elimínalo de la lista
+                        using (var conexion = new ConexionBdd())
+                        {
+                            if (conexion.ActualizarCliente(clienteActualizado))
+                            {
+                                MessageBox.Show("Cliente actualizado correctamente", "Éxito",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                CargarClientes(); // Refrescar el DataGridView
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo actualizar el cliente", "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
 
-                //    // Vuelve a asignar la lista actualizada como fuente de datos del DataGridView
-                //    DGVClientes.DataSource = null;
-                //    DGVClientes.DataSource = clientes;
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Por favor, selecciona una fila para eliminar.");
-                //}
-                //DGVClientes.ClearSelection();
-                // Otras acciones cuando se finaliza la edición
+                    DGVClientes.Enabled = false;
+                    BtnEditar.Text = "Editar cliente";
+                    DGVClientes.ClearSelection();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al actualizar: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
+        }
+
+        private void BtnEliminar_Click(object sender, EventArgs e)
+        {
+        //    if (DGVClientes.Enabled == false)
+        //    {
+        //        DGVClientes.Enabled = true;
+        //        BtnEliminar.Text = "Aceptar";
+        //        DGVClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        //        DGVClientes.MultiSelect = false;
+        //        DGVClientes.ClearSelection();
+        //    }
+        //    else
+        //    {
+        //        if (DGVClientes.SelectedRows.Count > 0)
+        //        {
+        //            int idCliente = Convert.ToInt32(DGVClientes.SelectedRows[0].Cells["Id_cliente"].Value);
+
+        //            using (var conexion = new ConexionBdd())
+        //            {
+        //                if (conexion.EliminarCliente(idCliente))
+        //                {
+        //                    MessageBox.Show("Cliente eliminado correctamente.");
+        //                    CargarClientes(); // Refrescar el DataGridView
+        //                }
+        //                else
+        //                {
+        //                    MessageBox.Show("Error al eliminar el cliente.");
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Por favor, selecciona un cliente para eliminar.");
+        //        }
+
+        //        DGVClientes.Enabled = false;
+        //        BtnEliminar.Text = "Eliminar cliente";
+        //        DGVClientes.ClearSelection();
+        //    }
         }
     }
 }
+

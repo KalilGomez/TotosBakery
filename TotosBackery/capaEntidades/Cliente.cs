@@ -25,5 +25,6 @@
             this.telefono = telefono;
             this.mail = mail;
         }
+        public Cliente() { }
     }
 }
