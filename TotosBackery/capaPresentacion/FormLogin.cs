@@ -19,12 +19,42 @@ namespace capaPresentacion
         public FormLogin()
         {
             InitializeComponent();
+            EstablecerEstilo();
             //Bitmap imagen = new Bitmap(Application.StartupPath + @"\imagenes\login.jpg");
             //this.BackgroundImage = imagen;
             //this.BackgroundImageLayout = ImageLayout.Stretch;
             this.FormClosed += FormLogin_FormClosed;
         }
+        private void EstablecerEstilo()
+        {
+            // Establecer fondo del formulario
+            this.BackColor = Color.FromArgb(240, 240, 240); // Gris claro
 
+            // Establecer estilo para botones
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.BackColor = Color.FromArgb(0, 123, 255); // Azul
+                    button.ForeColor = Color.White; // Texto blanco
+                    button.FlatStyle = FlatStyle.Flat; // Estilo plano
+                    button.Font = new Font("Arial", 10); // Fuente
+                }
+                // Establecer estilo para TextBoxes
+                else if (control is TextBox textBox)
+                {
+                    textBox.BackColor = Color.White; // Fondo blanco
+                    textBox.ForeColor = Color.FromArgb(51, 51, 51); // Texto gris oscuro
+                    textBox.Font = new Font("Arial", 10); // Fuente
+                }
+                // Establecer estilo para labels
+                else if (control is Label label)
+                {
+                    label.ForeColor = Color.FromArgb(51, 51, 51); // Texto gris oscuro
+                    label.Font = new Font("Arial", 10); // Fuente
+                }
+            }
+        }
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos())
