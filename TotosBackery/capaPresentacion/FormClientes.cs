@@ -8,6 +8,7 @@ using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using capaDatos;
 using capaEntidades;
 
 namespace capaPresentacion
@@ -26,9 +27,7 @@ namespace capaPresentacion
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
-            clientes.Add(new Cliente(1, "kalil", "Gomez", "Alsina 326", "1234", "a@a.com"));
-            clientes.Add(new Cliente(2, "Cosme", "Fulanito", "Crespo 223", "2345", "b@b.com"));
-            clientes.Add(new Cliente(3, "Elena", "No", "Belgrano 56", "0098", "c@c.com"));
+            List<Cliente> clientes = ConexionBdd.ObtenerClientes();
             DGVClientes.DataSource = clientes;
             DGVClientes.Enabled = false;
             DGVClientes.ClearSelection();
@@ -41,15 +40,15 @@ namespace capaPresentacion
             {
                 if (formAgregar.ShowDialog() == DialogResult.OK)
                 {
-                    // Crear un nuevo cliente con los datos del formulario hijo
-                    int nuevoId = clientes.Count + 1;
-                    Cliente nuevoCliente = new Cliente(nuevoId, formAgregar.Nombre, formAgregar.Apellido, formAgregar.Direccion, formAgregar.Telefono, formAgregar.Mail);
-                    // Agregar el nuevo cliente a la lista
-                    clientes.Add(nuevoCliente);
+                    //// Crear un nuevo cliente con los datos del formulario hijo
+                    //int nuevoId = clientes.Count + 1;
+                    //Cliente nuevoCliente = new Cliente(nuevoId, formAgregar.Nombre, formAgregar.Apellido, formAgregar.Direccion, formAgregar.Telefono, formAgregar.Mail);
+                    //// Agregar el nuevo cliente a la lista
+                    //clientes.Add(nuevoCliente);
 
-                    // Actualizar el DataGridView
-                    DGVClientes.DataSource = null;
-                    DGVClientes.DataSource = clientes;
+                    //// Actualizar el DataGridView
+                    //DGVClientes.DataSource = null;
+                    //DGVClientes.DataSource = clientes;
                 }
             }
         }
@@ -88,24 +87,24 @@ namespace capaPresentacion
             {
                 BtnEliminar.Text = "Eliminar cliente";
                 // Verifica si hay una fila seleccionada
-                if (DGVClientes.SelectedRows.Count > 0)
-                {
-                    // Obtén el índice de la fila seleccionada
-                    int rowIndex = DGVClientes.SelectedRows[0].Index;
+                //if (DGVClientes.SelectedRows.Count > 0)
+                //{
+                //    // Obtén el índice de la fila seleccionada
+                //    int rowIndex = DGVClientes.SelectedRows[0].Index;
 
-                    // Elimina el objeto correspondiente de la fuente de datos
-                    Cliente clienteAEliminar = clientes[rowIndex];  // Obtén el objeto de la lista
-                    clientes.Remove(clienteAEliminar);              // Elimínalo de la lista
+                //    // Elimina el objeto correspondiente de la fuente de datos
+                //    Cliente clienteAEliminar = clientes[rowIndex];  // Obtén el objeto de la lista
+                //    clientes.Remove(clienteAEliminar);              // Elimínalo de la lista
 
-                    // Vuelve a asignar la lista actualizada como fuente de datos del DataGridView
-                    DGVClientes.DataSource = null;
-                    DGVClientes.DataSource = clientes;
-                }
-                else
-                {
-                    MessageBox.Show("Por favor, selecciona una fila para eliminar.");
-                }
-                DGVClientes.ClearSelection();
+                //    // Vuelve a asignar la lista actualizada como fuente de datos del DataGridView
+                //    DGVClientes.DataSource = null;
+                //    DGVClientes.DataSource = clientes;
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Por favor, selecciona una fila para eliminar.");
+                //}
+                //DGVClientes.ClearSelection();
                 // Otras acciones cuando se finaliza la edición
             }
         }
