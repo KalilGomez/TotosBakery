@@ -116,5 +116,39 @@ namespace capaDatos
                 }
             }
         }
+        public bool ActualizarCliente(Cliente cliente)
+        {
+            try
+            {
+                using (MySqlConnection conexion = GetConnection())
+                {
+                    string query = @"UPDATE clientes 
+                           SET nombre = @nombre, 
+                               telefono = @telefono, 
+                               direccion = @direccion, 
+                               mail = @mail 
+                           WHERE id = @id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@id", cliente.Id);
+                        cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                        cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
+                        cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);
+                        cmd.Parameters.AddWithValue("@mail", cliente.Mail);
+                        // Agrega los demás parámetros según tu estructura
+
+                        conexion.Open();
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Puedes manejar el error como prefieras
+                throw new Exception($"Error al actualizar cliente: {ex.Message}");
+            }
+        }
     }
 }

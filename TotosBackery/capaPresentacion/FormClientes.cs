@@ -62,18 +62,78 @@ namespace capaPresentacion
 
         private void BtnEditar_Click(object sender, EventArgs e)
         {
-            DGVClientes.Enabled = !DGVClientes.Enabled;
-
-            if (DGVClientes.Enabled)
+            // Si el DataGridView está deshabilitado, lo habilitamos para editar
+            if (!DGVClientes.Enabled)
             {
-                BtnEditar.Text = "Aceptar";
-                // Otras acciones cuando se habilita la edición
+                DGVClientes.Enabled = true;
+                BtnEditar.Text = "Guardar cambios";
             }
+            // Si está habilitado, guardamos los cambios
             else
             {
-                BtnEditar.Text = "Editar cliente";
-                DGVClientes.ClearSelection();
-                // Otras acciones cuando se finaliza la edición
+                try
+                {
+                    // Obtenemos la fila seleccionada
+                    if (DGVClientes.CurrentRow != null)
+                    {
+                        // Creamos un objeto Cliente con los datos actualizados
+                        Cliente clienteActualizado = new Cliente
+                        {
+                            Id = Convert.ToInt32(DGVClientes.CurrentRow.Cells["Id"].Value),
+                            Nombre = DGVClientes.CurrentRow.Cells["Nombre"].Value.ToString(),
+                            Apellido = DGVClientes.CurrentRow.Cells["Apellido"].Value.ToString(),
+                            Direccion = DGVClientes.CurrentRow.Cells["Direccion"].Value.ToString(),
+                            Telefono = DGVClientes.CurrentRow.Cells["Telefono"].Value.ToString(),
+                            Mail = DGVClientes.CurrentRow.Cells["Email"].Value.ToString()
+                            // Agrega los demás campos según tu estructura
+                        };
+
+                        // Actualizamos en la base de datos
+                        using (var conexion = new ConexionBdd())
+                        {
+                            if (conexion.ActualizarCliente(clienteActualizado))
+                            {
+                                MessageBox.Show("Cliente actualizado correctamente", "Éxito",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo actualizar el cliente", "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+
+                    // Restauramos el estado original
+                    DGVClientes.Enabled = false;
+                    BtnEditar.Text = "Editar cliente";
+                    DGVClientes.ClearSelection();
+
+                    // Refrescamos el DataGridView
+                    CargarClientes(); // Método que deberás implementar para recargar los datos
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al actualizar: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void CargarClientes()
+        {
+            try
+            {
+                using (var conexion = new ConexionBdd())
+                {
+                    // Asumiendo que tienes un método para obtener todos los clientes
+                    var clientes = conexion.ObtenerClientes();
+                    DGVClientes.DataSource = clientes;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar clientes: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
