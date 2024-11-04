@@ -1,6 +1,5 @@
 ﻿using capaEntidades;
 using MySql.Data.MySqlClient;
-using System;
 namespace capaDatos
 {
     public class ConexionBdd
@@ -99,6 +98,23 @@ namespace capaDatos
                 }
             }
             return clientes;
+        }
+        public static bool InsertarCliente(Cliente cliente)
+        {
+            string queryIClientes = "INSERT INTO cliente (nombre, apellido, direccion, telefono, mail) VALUES (@nombre, @apellido, @direccion, @telefono, @mail)";
+            using (MySqlConnection conexion = GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(queryIClientes, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", cliente.Nombre);
+                    cmd.Parameters.AddWithValue("@apellido", cliente.Apellido);
+                    cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);
+                    cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
+                    cmd.Parameters.AddWithValue("@mail", cliente.Mail);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0; // Retorna true si se insertó correctamente
+                }
+            }
         }
     }
 }

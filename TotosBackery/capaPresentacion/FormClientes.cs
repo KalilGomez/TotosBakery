@@ -40,15 +40,22 @@ namespace capaPresentacion
             {
                 if (formAgregar.ShowDialog() == DialogResult.OK)
                 {
-                    //// Crear un nuevo cliente con los datos del formulario hijo
-                    //int nuevoId = clientes.Count + 1;
-                    //Cliente nuevoCliente = new Cliente(nuevoId, formAgregar.Nombre, formAgregar.Apellido, formAgregar.Direccion, formAgregar.Telefono, formAgregar.Mail);
-                    //// Agregar el nuevo cliente a la lista
-                    //clientes.Add(nuevoCliente);
+                    Cliente nuevoCliente = new Cliente(id: 0,nombre: formAgregar.Nombre,apellido: formAgregar.Apellido,direccion: formAgregar.Direccion,telefono: formAgregar.Telefono,mail: formAgregar.Mail);
+                    bool insertado = ConexionBdd.InsertarCliente(nuevoCliente);
 
-                    //// Actualizar el DataGridView
-                    //DGVClientes.DataSource = null;
-                    //DGVClientes.DataSource = clientes;
+                    if (insertado)
+                    {
+                        MessageBox.Show("Cliente agregado correctamente.");
+
+                        // Volver a cargar los datos en el DataGridView para mostrar el nuevo cliente
+                        List<Cliente> clientes = ConexionBdd.ObtenerClientes();
+                        DGVClientes.DataSource = null;
+                        DGVClientes.DataSource = clientes;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar el cliente.");
+                    }
                 }
             }
         }
