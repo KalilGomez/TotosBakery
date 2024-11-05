@@ -150,5 +150,27 @@ namespace capaDatos
                 throw new Exception($"Error al actualizar cliente: {ex.Message}");
             }
         }
+        public bool EliminarCliente(int idCliente)
+        {
+            try
+            {
+                using (MySqlConnection conexion = GetConnection())
+                {
+                    string query = "DELETE FROM cliente WHERE id_cliente = @id_cliente";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@id_cliente", idCliente);
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0; // Retorna true si se eliminó al menos una fila
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Puedes manejar el error como prefieras
+                throw new Exception($"Error al eliminar cliente: {ex.Message}");
+            }
+        }
     }
 }

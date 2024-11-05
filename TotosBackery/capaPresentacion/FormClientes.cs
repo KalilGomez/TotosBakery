@@ -120,43 +120,54 @@ namespace capaPresentacion
 
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
-        //    if (DGVClientes.Enabled == false)
-        //    {
-        //        DGVClientes.Enabled = true;
-        //        BtnEliminar.Text = "Aceptar";
-        //        DGVClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-        //        DGVClientes.MultiSelect = false;
-        //        DGVClientes.ClearSelection();
-        //    }
-        //    else
-        //    {
-        //        if (DGVClientes.SelectedRows.Count > 0)
-        //        {
-        //            int idCliente = Convert.ToInt32(DGVClientes.SelectedRows[0].Cells["Id_cliente"].Value);
+            // Cambiar el estado del DataGridView para permitir la selección
+            if (DGVClientes.Enabled == false)
+            {
+                DGVClientes.Enabled = true;
+                BtnEliminar.Text = "Aceptar";
+                DGVClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                DGVClientes.MultiSelect = false;
+                DGVClientes.ClearSelection();
+            }
+            else
+            {
+                // Verificar si hay una fila seleccionada
+                if (DGVClientes.SelectedRows.Count > 0)
+                {
+                    // Obtener el ID del cliente seleccionado
+                    int idCliente = Convert.ToInt32(DGVClientes.SelectedRows[0].Cells["Id"].Value);
 
-        //            using (var conexion = new ConexionBdd())
-        //            {
-        //                if (conexion.EliminarCliente(idCliente))
-        //                {
-        //                    MessageBox.Show("Cliente eliminado correctamente.");
-        //                    CargarClientes(); // Refrescar el DataGridView
-        //                }
-        //                else
-        //                {
-        //                    MessageBox.Show("Error al eliminar el cliente.");
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Por favor, selecciona un cliente para eliminar.");
-        //        }
+                    // Confirmación antes de eliminar
+                    DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este cliente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        // Conexión a la base de datos y eliminación del cliente
+                        using (var conexion = new ConexionBdd())
+                        {
+                            if (conexion.EliminarCliente(idCliente))
+                            {
+                                MessageBox.Show("Cliente eliminado correctamente.");
+                                CargarClientes(); // Refrescar el DataGridView después de la eliminación
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al eliminar el cliente.");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecciona un cliente para eliminar.");
+                }
 
-        //        DGVClientes.Enabled = false;
-        //        BtnEliminar.Text = "Eliminar cliente";
-        //        DGVClientes.ClearSelection();
-        //    }
+                // Restablecer el estado del botón y del DataGridView
+                DGVClientes.Enabled = false;
+                BtnEliminar.Text = "Eliminar cliente";
+                DGVClientes.ClearSelection();
+            }
         }
+
     }
 }
 
