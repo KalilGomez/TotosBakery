@@ -35,7 +35,6 @@
             txtContraseña = new TextBox();
             btnIniciarSesion = new Button();
             btnRstPwd = new Button();
-            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -120,7 +119,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.GhostWhite;
             ClientSize = new Size(933, 519);
-            Controls.Add(button1);
             Controls.Add(btnRstPwd);
             Controls.Add(btnIniciarSesion);
             Controls.Add(txtContraseña);
@@ -147,7 +145,6 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.Button btnIniciarSesion;
         private System.Windows.Forms.Button btnRstPwd;
-        private Button button1;
     }
 }
 

@@ -15,7 +15,6 @@ namespace capaPresentacion
 {
     public partial class FormLogin : Form
     {
-        bool estaConectado;
         public FormLogin()
         {
             InitializeComponent();
@@ -27,34 +26,48 @@ namespace capaPresentacion
         }
         private void EstablecerEstilo()
         {
-            // Establecer fondo del formulario
-            this.BackColor = Color.FromArgb(240, 240, 240); // Gris claro
+            // Establecer fondo del formulario a un color oscuro
+            this.BackColor = Color.FromArgb(34, 36, 49); // Color oscuro
 
             // Establecer estilo para botones
             foreach (Control control in this.Controls)
             {
                 if (control is Button button)
                 {
-                    button.BackColor = Color.FromArgb(0, 123, 255); // Azul
+                    button.BackColor = Color.FromArgb(0, 122, 204); // Azul oscuro
                     button.ForeColor = Color.White; // Texto blanco
                     button.FlatStyle = FlatStyle.Flat; // Estilo plano
-                    button.Font = new Font("Arial", 10); // Fuente
+                    button.Font = new Font("Segoe UI", 10); // Fuente moderna
+                    button.FlatAppearance.BorderSize = 0; // Sin borde
                 }
                 // Establecer estilo para TextBoxes
                 else if (control is TextBox textBox)
                 {
-                    textBox.BackColor = Color.White; // Fondo blanco
-                    textBox.ForeColor = Color.FromArgb(51, 51, 51); // Texto gris oscuro
-                    textBox.Font = new Font("Arial", 10); // Fuente
+                    textBox.BackColor = Color.FromArgb(34, 36, 49); // Fondo oscuro
+                    textBox.ForeColor = Color.White; // Texto blanco
+                    textBox.BorderStyle = BorderStyle.FixedSingle; // Borde simple
+                    textBox.Font = new Font("Segoe UI", 10); // Fuente moderna
                 }
                 // Establecer estilo para labels
                 else if (control is Label label)
                 {
-                    label.ForeColor = Color.FromArgb(51, 51, 51); // Texto gris oscuro
-                    label.Font = new Font("Arial", 10); // Fuente
+                    label.ForeColor = Color.White; // Texto blanco
+                    label.Font = new Font("Segoe UI", 10); // Fuente moderna
                 }
             }
+
+            // Establecer estilo para DataGridView si existe en el formulario
+            if (this.Controls.OfType<DataGridView>().FirstOrDefault() is DataGridView dataGridView)
+            {
+                dataGridView.BackgroundColor = Color.FromArgb(34, 36, 49);
+                dataGridView.DefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
+                dataGridView.DefaultCellStyle.ForeColor = Color.White;
+                dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
+                dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dataGridView.EnableHeadersVisualStyles = false; // Permite personalizar el encabezado
+            }
         }
+
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos())
