@@ -160,7 +160,6 @@ namespace capaPresentacion
                 {
                     MessageBox.Show("Por favor, selecciona un cliente para eliminar.");
                 }
-
                 // Restablecer el estado del botón y del DataGridView
                 DGVClientes.Enabled = false;
                 BtnEliminar.Text = "Eliminar cliente";
