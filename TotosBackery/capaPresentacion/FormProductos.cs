@@ -13,6 +13,7 @@ namespace capaPresentacion
 {
     public partial class FormProductos : Form
     {
+        List<Producto> productos = new List<Producto>();
         public FormProductos()
         {
             InitializeComponent();

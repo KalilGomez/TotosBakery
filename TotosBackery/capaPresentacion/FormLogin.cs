@@ -26,47 +26,80 @@ namespace capaPresentacion
         }
         private void EstablecerEstilo()
         {
-            // Establecer fondo del formulario a un color oscuro
-            this.BackColor = Color.FromArgb(34, 36, 49); // Color oscuro
+            // Establecer fondo del formulario a un color gris
+            this.BackColor = ColorTranslator.FromHtml("#808080");
 
-            // Establecer estilo para botones
+            // Panel azul a la izquierda
+            Panel panelIzquierdo = new Panel
+            {
+                BackColor = ColorTranslator.FromHtml("#0073E6"),
+                Dock = DockStyle.Left,
+                Width = 150 // Ajusta este valor según sea necesario
+            };
+            this.Controls.Add(panelIzquierdo);
+
+            // Estilo para los labels (Título, Usuario, Contraseña)
+            foreach (Control control in this.Controls)
+            {
+                if (control is Label label)
+                {
+                    label.ForeColor = Color.White;
+                    label.Font = new Font("Segoe UI Light", 10);
+                    if (label.Text.Equals("LOGIN", StringComparison.OrdinalIgnoreCase))
+                    {
+                        label.Font = new Font("Segoe UI Light", 20, FontStyle.Regular); // Título más grande
+                    }
+                }
+            }
+
+            // Estilo para los TextBoxes y líneas debajo
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox textBox)
+                {
+                    textBox.BorderStyle = BorderStyle.None;
+                    textBox.BackColor = ColorTranslator.FromHtml("#808080");
+                    textBox.ForeColor = Color.White;
+                    textBox.Font = new Font("Segoe UI", 10);
+
+                    // Línea debajo del TextBox
+                    Panel linea = new Panel
+                    {
+                        BackColor = Color.White,
+                        Height = 1,
+                        Width = textBox.Width,
+                        Location = new Point(textBox.Left, textBox.Bottom + 1) // Posición ajustada
+                    };
+                    this.Controls.Add(linea);
+                    linea.BringToFront();
+                }
+            }
+
+            // Estilo para el botón "Iniciar Sesión"
             foreach (Control control in this.Controls)
             {
                 if (control is Button button)
                 {
-                    button.BackColor = Color.FromArgb(0, 122, 204); // Azul oscuro
-                    button.ForeColor = Color.White; // Texto blanco
-                    button.FlatStyle = FlatStyle.Flat; // Estilo plano
-                    button.Font = new Font("Segoe UI", 10); // Fuente moderna
-                    button.FlatAppearance.BorderSize = 0; // Sin borde
-                }
-                // Establecer estilo para TextBoxes
-                else if (control is TextBox textBox)
-                {
-                    textBox.BackColor = Color.FromArgb(34, 36, 49); // Fondo oscuro
-                    textBox.ForeColor = Color.White; // Texto blanco
-                    textBox.BorderStyle = BorderStyle.FixedSingle; // Borde simple
-                    textBox.Font = new Font("Segoe UI", 10); // Fuente moderna
-                }
-                // Establecer estilo para labels
-                else if (control is Label label)
-                {
-                    label.ForeColor = Color.White; // Texto blanco
-                    label.Font = new Font("Segoe UI", 10); // Fuente moderna
+                    button.BackColor = ColorTranslator.FromHtml("#333333");
+                    button.ForeColor = Color.White;
+                    button.FlatStyle = FlatStyle.Flat;
+                    button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                    button.FlatAppearance.BorderSize = 0;
                 }
             }
 
-            // Establecer estilo para DataGridView si existe en el formulario
-            if (this.Controls.OfType<DataGridView>().FirstOrDefault() is DataGridView dataGridView)
+            // Estilo para el LinkLabel "Olvidé la contraseña"
+            foreach (Control control in this.Controls)
             {
-                dataGridView.BackgroundColor = Color.FromArgb(34, 36, 49);
-                dataGridView.DefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
-                dataGridView.DefaultCellStyle.ForeColor = Color.White;
-                dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(34, 36, 49);
-                dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                dataGridView.EnableHeadersVisualStyles = false; // Permite personalizar el encabezado
+                if (control is LinkLabel linkLabel)
+                {
+                    linkLabel.LinkColor = ColorTranslator.FromHtml("#808080");
+                    linkLabel.Font = new Font("Segoe UI", 8, FontStyle.Underline);
+                    linkLabel.LinkBehavior = LinkBehavior.HoverUnderline;
+                }
             }
         }
+
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
