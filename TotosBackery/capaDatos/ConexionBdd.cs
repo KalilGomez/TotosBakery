@@ -1,5 +1,6 @@
 ﻿using capaEntidades;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 namespace capaDatos
 {
     public class ConexionBdd:IDisposable
@@ -104,6 +105,47 @@ namespace capaDatos
             }
             return clientes;
         }
+        public List<Producto> ObtenerProductos()
+        {
+            List<Producto> productos = new List<Producto>();
+            string queryProductos = @"select * from producto";
+            using (MySqlConnection conexion = GetConnection())
+            {
+                if (conexion != null)
+                {
+                    try
+                    {
+                        using (MySqlCommand command = new MySqlCommand(queryProductos, conexion))
+                        {
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    Producto producto = new Producto(
+                                        Convert.ToInt32(reader["id_producto"]),
+                                        reader["nombre"].ToString(),
+                                        reader["descripcion"].ToString(),
+                                        Convert.ToDouble(reader["precio"]),
+                                        Convert.ToInt32(reader["cantidad"])
+                                        
+                                    );
+                                    productos.Add(producto);
+                                }
+                            }
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+                        Console.WriteLine("Error al obtener clientes: " + ex.Message);
+                    }
+                    finally
+                    {
+                        conexion.Close();
+                    }
+                }
+            }
+            return productos;
+        }
         public static bool InsertarCliente(Cliente cliente)
         {
             string queryIClientes = "INSERT INTO cliente (nombre, apellido, telefono, mail, direccion) VALUES (@nombre, @apellido, @telefono, @mail, @direccion)";
@@ -116,6 +158,22 @@ namespace capaDatos
                     cmd.Parameters.AddWithValue("@telefono", cliente.Telefono);
                     cmd.Parameters.AddWithValue("@mail", cliente.Mail);
                     cmd.Parameters.AddWithValue("@direccion", cliente.Direccion);             
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0; // Retorna true si se insertó correctamente
+                }
+            }
+        }
+        public static bool InsertarProducto(Producto producto)
+        {
+            string queryIClientes = "INSERT INTO producto (nombre, descripcion, cantidad, precio) VALUES (@nombre, @descripcion, @cantidad, @precio)";
+            using (MySqlConnection conexion = GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(queryIClientes, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
+                    cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                    cmd.Parameters.AddWithValue("@cantidad", producto.Cantidad);
+                    cmd.Parameters.AddWithValue("@precio", producto.Precio);
                     int rowsAffected = cmd.ExecuteNonQuery();
                     return rowsAffected > 0; // Retorna true si se insertó correctamente
                 }

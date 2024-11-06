@@ -7,13 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using capaDatos;
 using capaEntidades;
 
 namespace capaPresentacion
 {
     public partial class FormProductos : Form
     {
-        List<Producto> productos = new List<Producto>();
         public FormProductos()
         {
             InitializeComponent();
@@ -21,20 +21,24 @@ namespace capaPresentacion
 
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            // Abrir el formulario hijo
             using (FormAgregarProducto formAgregar = new FormAgregarProducto())
             {
                 if (formAgregar.ShowDialog() == DialogResult.OK)
                 {
-                    // Crear un nuevo producto con los datos del formulario hijo
-                    int nuevoId = productos.Count + 1;
-                    Producto nuevoProducto = new Producto(nuevoId, formAgregar.Nombre, formAgregar.Descripcion, formAgregar.Precio, formAgregar.Cantidad);
-                    // Agregar el nuevo producto a la lista
-                    productos.Add(nuevoProducto);
+                    Producto nuevoProducto = new Producto(id: 0, nombre: formAgregar.Nombre,
+                        descripcion: formAgregar.Descripcion, precio: formAgregar.Precio, cantidad: formAgregar.Cantidad);
 
-                    // Actualizar el DataGridView
-                    DGVProductos.DataSource = null;
-                    DGVProductos.DataSource = productos;
+                    bool insertado = ConexionBdd.InsertarProducto(nuevoProducto); // Llamada estática
+
+                    if (insertado)
+                    {
+                        MessageBox.Show("Cliente agregado correctamente.");
+                        CargarProductos(); // Refrescar el DataGridView con la nueva lista de clientes
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al agregar el cliente.");
+                    }
                 }
             }
         }
@@ -43,15 +47,28 @@ namespace capaPresentacion
         {
             this.Close();
         }
+        private void CargarProductos()
+        {
+            try
+            {
+                using (var conexion = new ConexionBdd())
+                {
+                    var productos = conexion.ObtenerProductos(); // Cargar clientes desde la base de datos
+                    DGVProductos.DataSource = productos;
+                    DGVProductos.Enabled = false;
+                    DGVProductos.ClearSelection();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar productos: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void FormProductos_Load(object sender, EventArgs e)
         {
-            productos.Add(new Producto(1, "Galleta", "Galletita tipo pepito", 52.5, 50));
-            productos.Add(new Producto(2, "Pan", "Pan integral siempre vegano", 80, 20));
-            productos.Add(new Producto(3, "Scon", "Scon 4 quesos SALADO", 4000, 6));
-            DGVProductos.DataSource = productos;
-            DGVProductos.Enabled = false;
-            DGVProductos.ClearSelection();
+            CargarProductos();
         }
 
         private void btnEditarProducto_Click(object sender, EventArgs e)
@@ -73,40 +90,50 @@ namespace capaPresentacion
 
         private void btnEliminarProducto_Click(object sender, EventArgs e)
         {
-            DGVProductos.Enabled = !DGVProductos.Enabled;
-
-            if (DGVProductos.Enabled)
+            // Cambiar el estado del DataGridView para permitir la selección
+            if (DGVProductos.Enabled == false)
             {
-                btnEliminarProducto.Text = "Aceptar";
+                DGVProductos.Enabled = true;
+                btnAgregarProducto.Text = "Aceptar";
                 DGVProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                DGVProductos.MultiSelect = false;  // Solo permite seleccionar una fila a la vez
+                DGVProductos.MultiSelect = false;
                 DGVProductos.ClearSelection();
-
-                // Otras acciones cuando se habilita la edición
             }
             else
             {
-                btnEliminarProducto.Text = "Eliminar cliente";
-                // Verifica si hay una fila seleccionada
+                // Verificar si hay una fila seleccionada
                 if (DGVProductos.SelectedRows.Count > 0)
                 {
-                    // Obtén el índice de la fila seleccionada
-                    int rowIndex = DGVProductos.SelectedRows[0].Index;
+                    // Obtener el ID del cliente seleccionado
+                    int idCliente = Convert.ToInt32(DGVProductos.SelectedRows[0].Cells["Id"].Value);
 
-                    // Elimina el objeto correspondiente de la fuente de datos
-                    Producto productoAEliminar = productos[rowIndex];  // Obtén el objeto de la lista
-                    productos.Remove(productoAEliminar);              // Elimínalo de la lista
-
-                    // Vuelve a asignar la lista actualizada como fuente de datos del DataGridView
-                    DGVProductos.DataSource = null;
-                    DGVProductos.DataSource = productos;
+                    // Confirmación antes de eliminar
+                    DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este producto?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        // Conexión a la base de datos y eliminación del cliente
+                        using (var conexion = new ConexionBdd())
+                        {
+                            if (conexion.EliminarCliente(idCliente))
+                            {
+                                MessageBox.Show("Producto eliminado correctamente.");
+                                CargarProductos(); // Refrescar el DataGridView después de la eliminación
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al eliminar el Producto.");
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecciona una fila para eliminar.");
+                    MessageBox.Show("Por favor, selecciona un producto para eliminar.");
                 }
+                // Restablecer el estado del botón y del DataGridView
+                DGVProductos.Enabled = false;
+                btnEliminarProducto.Text = "Eliminar cliente";
                 DGVProductos.ClearSelection();
-                // Otras acciones cuando se finaliza la edición
             }
         }
     }
