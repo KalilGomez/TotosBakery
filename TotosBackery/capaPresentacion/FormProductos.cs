@@ -47,25 +47,7 @@ namespace capaPresentacion
         {
             this.Close();
         }
-        private void CargarProductos()
-        {
-            try
-            {
-                using (var conexion = new ConexionBdd())
-                {
-                    var productos = conexion.ObtenerProductos(); // Cargar clientes desde la base de datos
-                    DGVProductos.DataSource = productos;
-                    DGVProductos.Enabled = false;
-                    DGVProductos.ClearSelection();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al cargar productos: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+        
         private void FormProductos_Load(object sender, EventArgs e)
         {
             CargarProductos();
@@ -167,6 +149,24 @@ namespace capaPresentacion
                 DGVProductos.Enabled = false;
                 btnEliminarProducto.Text = "Eliminar producto";
                 DGVProductos.ClearSelection();
+            }
+        }
+        private void CargarProductos()
+        {
+            try
+            {
+                using (var conexion = new ConexionBdd())
+                {
+                    var productos = conexion.ObtenerProductos(); // Cargar clientes desde la base de datos
+                    DGVProductos.DataSource = productos;
+                    DGVProductos.Enabled = false;
+                    DGVProductos.ClearSelection();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar productos: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
