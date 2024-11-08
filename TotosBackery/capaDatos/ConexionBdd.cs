@@ -161,14 +161,14 @@ namespace capaDatos
                             {
                                 while (reader.Read())
                                 {
-                                    Pedido pedido = new Pedido(
-                                        Convert.ToInt32(reader["id_producto"]),
-                                        reader["estado"].ToString(),
-                                        reader["met_pago"].ToString(),
-                                        Convert.ToDateTime(reader["fecha"]),
-                                        reader["cantidad"].ToString()
-                                    );
-                                    pedidos.Add(pedido);
+                                    //Pedido pedido = new Pedido(
+                                    //    Convert.ToInt32(reader["id_producto"]),
+                                    //    reader["estado"].ToString(),
+                                    //    reader["met_pago"].ToString(),
+                                    //    Convert.ToDateTime(reader["fecha"]),
+                                    //    reader["cantidad"].ToString()
+                                    //);
+                                    //pedidos.Add(pedido);
                                 }
                             }
                         }

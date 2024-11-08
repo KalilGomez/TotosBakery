@@ -27,9 +27,6 @@ namespace capaPresentacion
                 using (var conexion = new ConexionBdd())
                 {
                     var productos = conexion.ObtenerProductos(); // Cargar clientes desde la base de datos
-                    DGVProductos.DataSource = productos;
-                    DGVProductos.Enabled = false;
-                    DGVProductos.ClearSelection();
                 }
             }
             catch (Exception ex)
@@ -54,9 +51,9 @@ namespace capaPresentacion
                     // Crear un nuevo cliente con los datos del formulario hijo
                     int nuevoId = pedidos.Count + 1;
                     string nuevoPed = "Nuevo";
-                    Pedido nuevoPedido = new Pedido(nuevoId, nuevoPed, formAgregar.MetPag, formAgregar.Fecha, formAgregar.Direccion);
+                    
                     // Agregar el nuevo cliente a la lista
-                    pedidos.Add(nuevoPedido);
+
 
                     // Actualizar el DataGridView
                     dgvPedido.DataSource = null;
@@ -70,9 +67,6 @@ namespace capaPresentacion
             DateTime fecha1 = new DateTime(24, 01, 30);
             DateTime fecha2 = new DateTime(24, 06, 28);
             DateTime fecha3 = new DateTime(24, 11, 03);
-            pedidos.Add(new Pedido(1, "Pendiente", "Taka-taka", fecha1, "aqui va la direccion"));
-            pedidos.Add(new Pedido(2, "Entregado", "Chino paga", fecha2, "Calle falsa 123"));
-            pedidos.Add(new Pedido(3, "Nuevo", "Soborno", fecha3, "Balcarce 50"));
             dgvPedido.DataSource = pedidos;
             dgvPedido.Enabled = false;
             dgvPedido.ClearSelection();
