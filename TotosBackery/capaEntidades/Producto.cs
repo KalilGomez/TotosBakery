@@ -27,5 +27,6 @@ namespace capaEntidades
             this.precio = precio;
             this.cantidad = cantidad;
         }
+        public Producto() { }
     }
 }

@@ -73,18 +73,51 @@ namespace capaPresentacion
 
         private void btnEditarProducto_Click(object sender, EventArgs e)
         {
-            DGVProductos.Enabled = !DGVProductos.Enabled;
-
-            if (DGVProductos.Enabled)
+            if (!DGVProductos.Enabled)
             {
-                btnEditarProducto.Text = "Aceptar";
-                // Otras acciones cuando se habilita la edición
+                DGVProductos.Enabled = true;
+                btnEditarProducto.Text = "Guardar cambios";
             }
             else
             {
-                btnEditarProducto.Text = "Editar cliente";
-                DGVProductos.ClearSelection();
-                // Otras acciones cuando se finaliza la edición
+                try
+                {
+                    if (DGVProductos.CurrentRow != null)
+                    {
+                        Producto productoActualizado = new Producto
+                        {
+                            Id = Convert.ToInt32(DGVProductos.CurrentRow.Cells["Id"].Value),
+                            Nombre = DGVProductos.CurrentRow.Cells["Nombre"].Value.ToString(),
+                            Descripcion = DGVProductos.CurrentRow.Cells["Descripcion"].Value.ToString(),
+                            Precio = Convert.ToDouble(DGVProductos.CurrentRow.Cells["Precio"].Value),
+                            Cantidad = Convert.ToInt32(DGVProductos.CurrentRow.Cells["Cantidad"].Value)
+                        };
+
+                        using (var conexion = new ConexionBdd())
+                        {
+                            if (conexion.ActualizarProducto(productoActualizado))
+                            {
+                                MessageBox.Show("Producto actualizado correctamente", "Éxito",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                CargarProductos(); // Refrescar el DataGridView
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo actualizar el producto", "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+
+                    DGVProductos.Enabled = false;
+                    btnAgregarProducto.Text = "Editar cliente";
+                    DGVProductos.ClearSelection();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al actualizar: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

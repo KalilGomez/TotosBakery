@@ -208,6 +208,34 @@ namespace capaDatos
                 throw new Exception($"Error al actualizar cliente: {ex.Message}");
             }
         }
+        public bool ActualizarProducto(Producto producto)
+        {
+            try
+            {
+                using (MySqlConnection conexion = GetConnection())
+                {
+                    string query = @"UPDATE producto 
+                           SET nombre = @nombre, descripcion = @descripcion, cantidad = @cantidad, precio = @precio WHERE id_producto = @id_producto";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@id_producto", producto.Id);
+                        cmd.Parameters.AddWithValue("@nombre", producto.Nombre);
+                        cmd.Parameters.AddWithValue("@descripcion", producto.Descripcion);
+                        cmd.Parameters.AddWithValue("@cantidad", producto.Cantidad);
+                        cmd.Parameters.AddWithValue("@precio", producto.Precio);
+                        // Agrega los demás parámetros según tu estructura
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Puedes manejar el error como prefieras
+                throw new Exception($"Error al actualizar producto: {ex.Message}");
+            }
+        }
         public bool EliminarCliente(int idCliente)
         {
             try
