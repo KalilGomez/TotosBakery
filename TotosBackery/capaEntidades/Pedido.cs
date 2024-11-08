@@ -22,13 +22,15 @@ namespace capaEntidades
         public string Direccion { get => direccion; set => direccion = value; }
         public Cliente OCliente { get => oCliente; set => oCliente = value; }
 
-        public Pedido(int id, string estado, string met_pago, DateTime fecha, string direccion)
+        public Pedido(int id, string estado, string met_pago, DateTime fecha, string direccion, Cliente oCliente)
         {
             this.id = id;
             this.estado = estado;
             this.met_pago = met_pago;
             this.fecha = fecha;
             this.direccion = direccion;
+            this.oCliente = oCliente;
         }
+        public Pedido() { }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using capaDatos;
 using capaEntidades;
 
 namespace capaPresentacion
@@ -18,6 +19,24 @@ namespace capaPresentacion
         public FormPedidos()
         {
             InitializeComponent();
+        }
+        public void CargarPedidos()
+        {
+            try
+            {
+                using (var conexion = new ConexionBdd())
+                {
+                    var productos = conexion.ObtenerProductos(); // Cargar clientes desde la base de datos
+                    DGVProductos.DataSource = productos;
+                    DGVProductos.Enabled = false;
+                    DGVProductos.ClearSelection();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar productos: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)

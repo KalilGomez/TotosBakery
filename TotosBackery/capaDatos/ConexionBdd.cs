@@ -145,6 +145,46 @@ namespace capaDatos
             }
             return productos;
         }
+        public List<Pedido> ObtenerPedidos()
+        {
+            List<Pedido> pedidos = new List<Pedido>();
+            string query = @"select * from pedido";
+            using (MySqlConnection conexion = GetConnection())
+            {
+                if (conexion != null)
+                {
+                    try
+                    {
+                        using (MySqlCommand command = new MySqlCommand(query, conexion))
+                        {
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    Pedido pedido = new Pedido(
+                                        Convert.ToInt32(reader["id_producto"]),
+                                        reader["estado"].ToString(),
+                                        reader["met_pago"].ToString(),
+                                        Convert.ToDateTime(reader["fecha"]),
+                                        reader["cantidad"].ToString()
+                                    );
+                                    pedidos.Add(pedido);
+                                }
+                            }
+                        }
+                    }
+                    catch (MySqlException ex)
+                    {
+                        Console.WriteLine("Error al obtener pedidos: " + ex.Message);
+                    }
+                    finally
+                    {
+                        conexion.Close();
+                    }
+                }
+            }
+            return pedidos;
+        }
         public static bool InsertarCliente(Cliente cliente)
         {
             string queryIClientes = "INSERT INTO cliente (nombre, apellido, telefono, mail, direccion) VALUES (@nombre, @apellido, @telefono, @mail, @direccion)";
@@ -175,6 +215,23 @@ namespace capaDatos
                     cmd.Parameters.AddWithValue("@precio", producto.Precio);
                     int rowsAffected = cmd.ExecuteNonQuery();
                     return rowsAffected > 0; // Retorna true si se insertó correctamente
+                }
+            }
+        }
+        public static bool InsertarPedido(Pedido pedido)
+        {
+            string query = "INSERT INTO producto (estado, metodo_pago, fecha_pedido, direccion_pedido) VALUES (@estado, @metodo_pago, @fecha_pedido, @direccion_pedido)";
+            using (MySqlConnection conexion = GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@Estado", pedido.Estado);
+                    cmd.Parameters.AddWithValue("@Metodo_pago", pedido.Met_pago);
+                    cmd.Parameters.AddWithValue("@Fecha_pedido", pedido.Fecha);
+                    cmd.Parameters.AddWithValue("@Direccion_pedido", pedido.Direccion);
+                    cmd.Parameters.AddWithValue("@ID_cliente", pedido.OCliente.Id);
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    return filasAfectadas > 0; // Retorna true si se insertó al menos una fila
                 }
             }
         }
