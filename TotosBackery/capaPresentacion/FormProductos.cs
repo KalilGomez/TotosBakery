@@ -127,7 +127,7 @@ namespace capaPresentacion
             if (DGVProductos.Enabled == false)
             {
                 DGVProductos.Enabled = true;
-                btnAgregarProducto.Text = "Aceptar";
+                btnEliminarProducto.Text = "Aceptar";
                 DGVProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 DGVProductos.MultiSelect = false;
                 DGVProductos.ClearSelection();
@@ -138,7 +138,7 @@ namespace capaPresentacion
                 if (DGVProductos.SelectedRows.Count > 0)
                 {
                     // Obtener el ID del cliente seleccionado
-                    int idCliente = Convert.ToInt32(DGVProductos.SelectedRows[0].Cells["Id"].Value);
+                    int idProducto = Convert.ToInt32(DGVProductos.SelectedRows[0].Cells["Id"].Value);
 
                     // Confirmación antes de eliminar
                     DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este producto?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -147,7 +147,7 @@ namespace capaPresentacion
                         // Conexión a la base de datos y eliminación del cliente
                         using (var conexion = new ConexionBdd())
                         {
-                            if (conexion.EliminarCliente(idCliente))
+                            if (conexion.EliminarProducto(idProducto))
                             {
                                 MessageBox.Show("Producto eliminado correctamente.");
                                 CargarProductos(); // Refrescar el DataGridView después de la eliminación
@@ -165,7 +165,7 @@ namespace capaPresentacion
                 }
                 // Restablecer el estado del botón y del DataGridView
                 DGVProductos.Enabled = false;
-                btnEliminarProducto.Text = "Eliminar cliente";
+                btnEliminarProducto.Text = "Eliminar producto";
                 DGVProductos.ClearSelection();
             }
         }

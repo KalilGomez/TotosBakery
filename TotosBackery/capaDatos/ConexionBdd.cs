@@ -1,6 +1,5 @@
 ﻿using capaEntidades;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
 namespace capaDatos
 {
     public class ConexionBdd:IDisposable
@@ -256,6 +255,28 @@ namespace capaDatos
             {
                 // Puedes manejar el error como prefieras
                 throw new Exception($"Error al eliminar cliente: {ex.Message}");
+            }
+        }
+        public bool EliminarProducto(int idProducto)
+        {
+            try
+            {
+                using (MySqlConnection conexion = GetConnection())
+                {
+                    string query = "DELETE FROM producto WHERE id_producto = @id_producto";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@id_producto", idProducto);
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0; // Retorna true si se eliminó al menos una fila
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Puedes manejar el error como prefieras
+                throw new Exception($"Error al eliminar producto: {ex.Message}");
             }
         }
     }
