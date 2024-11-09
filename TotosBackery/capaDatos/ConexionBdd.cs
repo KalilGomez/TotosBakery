@@ -145,10 +145,15 @@ namespace capaDatos
             }
             return productos;
         }
-        public List<Pedido> ObtenerPedidos()
+        public List<Pedido> ObtenerPedidos(int idCliente)
         {
             List<Pedido> pedidos = new List<Pedido>();
-            string query = @"select * from pedido";
+            string query = @"SELECT Pedido.ID_pedido, Pedido.Estado, Pedido.Metodo_pago, Pedido.Fecha_pedido, Pedido.Direccion_pedido,
+                            Producto.ID_producto, Producto.Nombre, Producto.Descripcion, Producto.Cantidad, Producto.Precio
+                            FROM Pedido
+                            JOIN Pedido_Producto ON Pedido.ID_pedido = Pedido_Producto.ID_pedido
+                            JOIN Producto ON Pedido_Producto.ID_producto = Producto.ID_producto
+                            WHERE Pedido.ID_cliente = @id_cliente;";
             using (MySqlConnection conexion = GetConnection())
             {
                 if (conexion != null)
@@ -157,18 +162,21 @@ namespace capaDatos
                     {
                         using (MySqlCommand command = new MySqlCommand(query, conexion))
                         {
+                            command.Parameters.AddWithValue("@id_cliente", idCliente);
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
+                                Cliente cliente = new Cliente(idCliente);
                                 while (reader.Read())
                                 {
-                                    //Pedido pedido = new Pedido(
-                                    //    Convert.ToInt32(reader["id_producto"]),
-                                    //    reader["estado"].ToString(),
-                                    //    reader["met_pago"].ToString(),
-                                    //    Convert.ToDateTime(reader["fecha"]),
-                                    //    reader["cantidad"].ToString()
-                                    //);
-                                    //pedidos.Add(pedido);
+                                    Pedido pedido = new Pedido(
+                                        Convert.ToInt32(reader["ID_pedido"]), // Notar que debería ser ID_pedido, no id_producto
+                                        reader["Estado"].ToString(),
+                                        reader["Metodo_pago"].ToString(),
+                                        Convert.ToDateTime(reader["Fecha_pedido"]),
+                                        reader["Direccion_pedido"].ToString(),
+                                        cliente
+                                    );
+                                    pedidos.Add(pedido);
                                 }
                             }
                         }

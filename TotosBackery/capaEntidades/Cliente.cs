@@ -26,5 +26,9 @@
             this.direccion = direccion;
         }
         public Cliente() { }
+        public Cliente(int idCliente)
+        {
+            this.id = idCliente;
+        }
     }
 }
