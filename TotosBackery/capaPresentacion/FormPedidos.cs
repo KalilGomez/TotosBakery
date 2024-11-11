@@ -47,24 +47,36 @@ namespace capaPresentacion
 
         private void btnAgregarPedido_Click(object sender, EventArgs e)
         {
-            // Abrir el formulario hijo
             using (FormAgregarPedido formAgregar = new FormAgregarPedido())
             {
                 if (formAgregar.ShowDialog() == DialogResult.OK)
                 {
-                    // Crear un nuevo cliente con los datos del formulario hijo
-                    //int nuevoId = pedidos.Count + 1;
-                    string nuevoPed = "Nuevo";
-                    
-                    // Agregar el nuevo cliente a la lista
+                    // Crear un nuevo objeto Pedido con los datos del formulario hijo
+                    Pedido nuevoPedido = new Pedido
+                    {
+                        Estado = "Pendiente",  // O el valor que desees asignar por defecto
+                        Met_pago = formAgregar.MetPag,
+                        Fecha = formAgregar.Fecha,
+                        Direccion = formAgregar.Direccion,
+                        OCliente = new Cliente { Id = formAgregar.ClienteId }
+                    };
 
-
-                    // Actualizar el DataGridView
-                    dgvPedido.DataSource = null;
-                    //dgvPedido.DataSource = pedidos;
+                    // Insertar el nuevo pedido en la base de datos
+                    ConexionBdd conexion = new ConexionBdd();
+                    if (conexion.InsertarPedido(nuevoPedido))
+                    {
+                        // Actualizar DataGridView con el nuevo pedido del cliente
+                        CargarPedidos(nuevoPedido.OCliente.Id);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al insertar el pedido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
+
+
 
         private void FormPedidos_Load(object sender, EventArgs e)
         {

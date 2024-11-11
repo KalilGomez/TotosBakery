@@ -1,4 +1,5 @@
-﻿using System;
+﻿using capaDatos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,5 +42,43 @@ namespace capaPresentacion
                 this.Close();
             }
         }
+        private void FormAgregarPedido_Load(object sender, EventArgs e)
+        {
+            CargarClientes();
+            CargarMetodosDePago();
+        }
+        private void CargarClientes()
+        {
+            try
+            {
+                using (var conexion = new ConexionBdd())
+                {
+                    var clientes = conexion.ObtenerClientes(); // Cargar clientes desde la base de datos
+                    cboxCliente.DataSource = clientes;
+                    cboxCliente.DisplayMember = "NombreCompleto"; // Muestra id - nombre apellido en el ComboBox
+                    cboxCliente.ValueMember = "Id"; // Guarda el id del cliente como valor seleccionado
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar clientes: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void CargarMetodosDePago()
+        {
+            cboxMetPag.Items.Add("Efectivo");
+            cboxMetPag.Items.Add("Transferencia");
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        public int ClienteId
+        {
+            get { return (int)cboxCliente.SelectedValue; } // Obtiene el ID del cliente seleccionado
+        }
+
     }
 }

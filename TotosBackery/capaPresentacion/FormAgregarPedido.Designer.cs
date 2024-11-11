@@ -28,134 +28,147 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtDir = new System.Windows.Forms.TextBox();
-            this.lblMetPag = new System.Windows.Forms.Label();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblDirec = new System.Windows.Forms.Label();
-            this.BtnCancelar = new System.Windows.Forms.Button();
-            this.BtnAceptar = new System.Windows.Forms.Button();
-            this.lblCliente = new System.Windows.Forms.Label();
-            this.cboxCliente = new System.Windows.Forms.ComboBox();
-            this.cboxMetPag = new System.Windows.Forms.ComboBox();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
-            this.btnAvanzado = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            txtDir = new TextBox();
+            lblMetPag = new Label();
+            lblFecha = new Label();
+            lblDirec = new Label();
+            BtnCancelar = new Button();
+            BtnAceptar = new Button();
+            lblCliente = new Label();
+            cboxCliente = new ComboBox();
+            cboxMetPag = new ComboBox();
+            dtpFecha = new DateTimePicker();
+            btnAvanzado = new Button();
+            SuspendLayout();
             // 
             // txtDir
             // 
-            this.txtDir.Location = new System.Drawing.Point(410, 120);
-            this.txtDir.Name = "txtDir";
-            this.txtDir.Size = new System.Drawing.Size(100, 20);
-            this.txtDir.TabIndex = 19;
+            txtDir.Location = new Point(478, 138);
+            txtDir.Margin = new Padding(4, 3, 4, 3);
+            txtDir.Name = "txtDir";
+            txtDir.Size = new Size(116, 23);
+            txtDir.TabIndex = 19;
             // 
             // lblMetPag
             // 
-            this.lblMetPag.AutoSize = true;
-            this.lblMetPag.Location = new System.Drawing.Point(314, 184);
-            this.lblMetPag.Name = "lblMetPag";
-            this.lblMetPag.Size = new System.Drawing.Size(85, 13);
-            this.lblMetPag.TabIndex = 16;
-            this.lblMetPag.Text = "Metodo de pago";
+            lblMetPag.AutoSize = true;
+            lblMetPag.Location = new Point(366, 212);
+            lblMetPag.Margin = new Padding(4, 0, 4, 0);
+            lblMetPag.Name = "lblMetPag";
+            lblMetPag.Size = new Size(95, 15);
+            lblMetPag.TabIndex = 16;
+            lblMetPag.Text = "Metodo de pago";
             // 
             // lblFecha
             // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(314, 155);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(37, 13);
-            this.lblFecha.TabIndex = 15;
-            this.lblFecha.Text = "Fecha";
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(366, 179);
+            lblFecha.Margin = new Padding(4, 0, 4, 0);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(38, 15);
+            lblFecha.TabIndex = 15;
+            lblFecha.Text = "Fecha";
             // 
             // lblDirec
             // 
-            this.lblDirec.AutoSize = true;
-            this.lblDirec.Location = new System.Drawing.Point(314, 127);
-            this.lblDirec.Name = "lblDirec";
-            this.lblDirec.Size = new System.Drawing.Size(52, 13);
-            this.lblDirec.TabIndex = 14;
-            this.lblDirec.Text = "Direccion";
+            lblDirec.AutoSize = true;
+            lblDirec.Location = new Point(366, 147);
+            lblDirec.Margin = new Padding(4, 0, 4, 0);
+            lblDirec.Name = "lblDirec";
+            lblDirec.Size = new Size(57, 15);
+            lblDirec.TabIndex = 14;
+            lblDirec.Text = "Direccion";
             // 
             // BtnCancelar
             // 
-            this.BtnCancelar.Location = new System.Drawing.Point(523, 323);
-            this.BtnCancelar.Name = "BtnCancelar";
-            this.BtnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.BtnCancelar.TabIndex = 13;
-            this.BtnCancelar.Text = "Cancelar";
-            this.BtnCancelar.UseVisualStyleBackColor = true;
+            BtnCancelar.Location = new Point(610, 373);
+            BtnCancelar.Margin = new Padding(4, 3, 4, 3);
+            BtnCancelar.Name = "BtnCancelar";
+            BtnCancelar.Size = new Size(88, 27);
+            BtnCancelar.TabIndex = 13;
+            BtnCancelar.Text = "Cancelar";
+            BtnCancelar.UseVisualStyleBackColor = true;
+            BtnCancelar.Click += BtnCancelar_Click;
             // 
             // BtnAceptar
             // 
-            this.BtnAceptar.Location = new System.Drawing.Point(380, 323);
-            this.BtnAceptar.Name = "BtnAceptar";
-            this.BtnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.BtnAceptar.TabIndex = 12;
-            this.BtnAceptar.Text = "Aceptar";
-            this.BtnAceptar.UseVisualStyleBackColor = true;
-            this.BtnAceptar.Click += new System.EventHandler(this.BtnAceptar_Click);
+            BtnAceptar.Location = new Point(443, 373);
+            BtnAceptar.Margin = new Padding(4, 3, 4, 3);
+            BtnAceptar.Name = "BtnAceptar";
+            BtnAceptar.Size = new Size(88, 27);
+            BtnAceptar.TabIndex = 12;
+            BtnAceptar.Text = "Aceptar";
+            BtnAceptar.UseVisualStyleBackColor = true;
+            BtnAceptar.Click += BtnAceptar_Click;
             // 
             // lblCliente
             // 
-            this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(314, 91);
-            this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(39, 13);
-            this.lblCliente.TabIndex = 20;
-            this.lblCliente.Text = "Cliente";
+            lblCliente.AutoSize = true;
+            lblCliente.Location = new Point(366, 105);
+            lblCliente.Margin = new Padding(4, 0, 4, 0);
+            lblCliente.Name = "lblCliente";
+            lblCliente.Size = new Size(44, 15);
+            lblCliente.TabIndex = 20;
+            lblCliente.Text = "Cliente";
             // 
             // cboxCliente
             // 
-            this.cboxCliente.FormattingEnabled = true;
-            this.cboxCliente.Location = new System.Drawing.Point(410, 83);
-            this.cboxCliente.Name = "cboxCliente";
-            this.cboxCliente.Size = new System.Drawing.Size(121, 21);
-            this.cboxCliente.TabIndex = 21;
+            cboxCliente.FormattingEnabled = true;
+            cboxCliente.Location = new Point(478, 96);
+            cboxCliente.Margin = new Padding(4, 3, 4, 3);
+            cboxCliente.Name = "cboxCliente";
+            cboxCliente.Size = new Size(140, 23);
+            cboxCliente.TabIndex = 21;
             // 
             // cboxMetPag
             // 
-            this.cboxMetPag.FormattingEnabled = true;
-            this.cboxMetPag.Location = new System.Drawing.Point(410, 181);
-            this.cboxMetPag.Name = "cboxMetPag";
-            this.cboxMetPag.Size = new System.Drawing.Size(121, 21);
-            this.cboxMetPag.TabIndex = 22;
+            cboxMetPag.FormattingEnabled = true;
+            cboxMetPag.Location = new Point(478, 209);
+            cboxMetPag.Margin = new Padding(4, 3, 4, 3);
+            cboxMetPag.Name = "cboxMetPag";
+            cboxMetPag.Size = new Size(140, 23);
+            cboxMetPag.TabIndex = 22;
             // 
             // dtpFecha
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(410, 149);
-            this.dtpFecha.Name = "dtpFecha";
-            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
-            this.dtpFecha.TabIndex = 23;
+            dtpFecha.Location = new Point(478, 172);
+            dtpFecha.Margin = new Padding(4, 3, 4, 3);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(233, 23);
+            dtpFecha.TabIndex = 23;
             // 
             // btnAvanzado
             // 
-            this.btnAvanzado.Location = new System.Drawing.Point(600, 81);
-            this.btnAvanzado.Name = "btnAvanzado";
-            this.btnAvanzado.Size = new System.Drawing.Size(75, 23);
-            this.btnAvanzado.TabIndex = 24;
-            this.btnAvanzado.Text = "Avanzado";
-            this.btnAvanzado.UseVisualStyleBackColor = true;
+            btnAvanzado.Location = new Point(700, 93);
+            btnAvanzado.Margin = new Padding(4, 3, 4, 3);
+            btnAvanzado.Name = "btnAvanzado";
+            btnAvanzado.Size = new Size(88, 27);
+            btnAvanzado.TabIndex = 24;
+            btnAvanzado.Text = "Avanzado";
+            btnAvanzado.UseVisualStyleBackColor = true;
             // 
             // FormAgregarPedido
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnAvanzado);
-            this.Controls.Add(this.dtpFecha);
-            this.Controls.Add(this.cboxMetPag);
-            this.Controls.Add(this.cboxCliente);
-            this.Controls.Add(this.lblCliente);
-            this.Controls.Add(this.txtDir);
-            this.Controls.Add(this.lblMetPag);
-            this.Controls.Add(this.lblFecha);
-            this.Controls.Add(this.lblDirec);
-            this.Controls.Add(this.BtnCancelar);
-            this.Controls.Add(this.BtnAceptar);
-            this.Name = "FormAgregarPedido";
-            this.Text = "FormAgregarPedido";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 519);
+            Controls.Add(btnAvanzado);
+            Controls.Add(dtpFecha);
+            Controls.Add(cboxMetPag);
+            Controls.Add(cboxCliente);
+            Controls.Add(lblCliente);
+            Controls.Add(txtDir);
+            Controls.Add(lblMetPag);
+            Controls.Add(lblFecha);
+            Controls.Add(lblDirec);
+            Controls.Add(BtnCancelar);
+            Controls.Add(BtnAceptar);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FormAgregarPedido";
+            Text = "FormAgregarPedido";
+            Load += FormAgregarPedido_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
