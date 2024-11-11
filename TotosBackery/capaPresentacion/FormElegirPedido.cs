@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace capaPresentacion
 {
-    public partial class FormElegirPedido: Form
+    public partial class FormElegirPedido : Form
     {
         public FormElegirPedido()
         {
