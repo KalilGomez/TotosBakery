@@ -15,18 +15,20 @@ namespace capaPresentacion
     //ver de agregar un combobox para el estado del pedido!
     public partial class FormPedidos : Form
     {
+        int cliente_id;
         public FormPedidos()
         {
             InitializeComponent();
+            
         }
-        public void CargarPedidos(Cliente cliente)
+        public void CargarPedidos(int cliente)
         {
             try
             {
                 using (var conexion = new ConexionBdd())
                 {
                     // Cargar los pedidos específicos de un cliente desde la base de datos
-                    List<Pedido> pedidos = conexion.ObtenerPedidos(cliente.Id);
+                    List<Pedido> pedidos = conexion.ObtenerPedidos(cliente_id);
 
                     // Actualizar el DataGridView con los pedidos obtenidos
                     dgvPedido.DataSource = null;
@@ -58,7 +60,7 @@ namespace capaPresentacion
                         Met_pago = formAgregar.MetPag,
                         Fecha = formAgregar.Fecha,
                         Direccion = formAgregar.Direccion,
-                        OCliente = new Cliente { Id = formAgregar.ClienteId }
+                        Clienteid = formAgregar.ClienteId
                     };
 
                     // Insertar el nuevo pedido en la base de datos
@@ -66,7 +68,7 @@ namespace capaPresentacion
                     if (conexion.InsertarPedido(nuevoPedido))
                     {
                         // Actualizar DataGridView con el nuevo pedido del cliente
-                        CargarPedidos(nuevoPedido.OCliente.Id);
+                        CargarPedidos(nuevoPedido.Clienteid);
                     }
                     else
                     {
@@ -80,8 +82,8 @@ namespace capaPresentacion
 
         private void FormPedidos_Load(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente(1); // Crea el objeto Cliente con sus propiedades
-            CargarPedidos(cliente);
+
+            CargarPedidos(cliente_id);
 
             dgvPedido.Enabled = false;
             dgvPedido.ClearSelection();

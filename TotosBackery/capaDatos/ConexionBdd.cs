@@ -145,54 +145,36 @@ namespace capaDatos
             }
             return productos;
         }
-        public List<Pedido> ObtenerPedidos(int idCliente)
+        public List<Pedido> ObtenerPedidos(int clienteId)
         {
+            string query = "SELECT * FROM Pedido WHERE id_cliente = @id_cliente";
             List<Pedido> pedidos = new List<Pedido>();
-            string query = @"SELECT Pedido.ID_pedido, Pedido.Estado, Pedido.Metodo_pago, Pedido.Fecha_pedido, Pedido.Direccion_pedido,
-                            Producto.ID_producto, Producto.Nombre, Producto.Descripcion, Producto.Cantidad, Producto.Precio
-                            FROM Pedido
-                            JOIN Pedido_Producto ON Pedido.ID_pedido = Pedido_Producto.ID_pedido
-                            JOIN Producto ON Pedido_Producto.ID_producto = Producto.ID_producto
-                            WHERE Pedido.ID_cliente = @id_cliente;";
             using (MySqlConnection conexion = GetConnection())
             {
-                if (conexion != null)
+                using (MySqlCommand command = new MySqlCommand(query, conexion))
                 {
-                    try
+                    command.Parameters.AddWithValue("@id_cliente", clienteId);
+                    using (MySqlDataReader reader = command.ExecuteReader())
                     {
-                        using (MySqlCommand command = new MySqlCommand(query, conexion))
+                        while (reader.Read())
                         {
-                            command.Parameters.AddWithValue("@id_cliente", idCliente);
-                            using (MySqlDataReader reader = command.ExecuteReader())
+                            Pedido pedido = new Pedido
                             {
-                                Cliente cliente = new Cliente(idCliente);
-                                while (reader.Read())
-                                {
-                                    Pedido pedido = new Pedido(
-                                        Convert.ToInt32(reader["ID_pedido"]), // Notar que debería ser ID_pedido, no id_producto
-                                        reader["Estado"].ToString(),
-                                        reader["Metodo_pago"].ToString(),
-                                        Convert.ToDateTime(reader["Fecha_pedido"]),
-                                        reader["Direccion_pedido"].ToString(),
-                                        cliente
-                                    );
-                                    pedidos.Add(pedido);
-                                }
-                            }
+                                Id = Convert.ToInt32(reader["id_pedido"]),
+                                Estado = reader["estado"].ToString(),
+                                Met_pago = reader["metodo_pago"].ToString(),
+                                Fecha = Convert.ToDateTime(reader["fecha_pedido"]),
+                                Direccion = reader["direccion_pedido"].ToString(),
+                                Clienteid = Convert.ToInt32(reader["id_cliente"]) // Usamos solo el ID
+                            };
+                            pedidos.Add(pedido);
                         }
-                    }
-                    catch (MySqlException ex)
-                    {
-                        Console.WriteLine("Error al obtener pedidos: " + ex.Message);
-                    }
-                    finally
-                    {
-                        conexion.Close();
                     }
                 }
             }
             return pedidos;
         }
+
         public static bool InsertarCliente(Cliente cliente)
         {
             string queryIClientes = "INSERT INTO cliente (nombre, apellido, telefono, mail, direccion) VALUES (@nombre, @apellido, @telefono, @mail, @direccion)";
@@ -226,9 +208,11 @@ namespace capaDatos
                 }
             }
         }
-        public static bool InsertarPedido(Pedido pedido)
+        public bool InsertarPedido(Pedido pedido)
         {
-            string query = "INSERT INTO producto (estado, metodo_pago, fecha_pedido, direccion_pedido) VALUES (@estado, @metodo_pago, @fecha_pedido, @direccion_pedido)";
+            string query = @"INSERT INTO Pedidos (Estado, Metodo_pago, Fecha_pedido, Direccion_pedido, ID_cliente)
+                     VALUES (@Estado, @Metodo_pago, @Fecha_pedido, @Direccion_pedido, @ID_cliente)";
+
             using (MySqlConnection conexion = GetConnection())
             {
                 using (MySqlCommand cmd = new MySqlCommand(query, conexion))
@@ -237,9 +221,9 @@ namespace capaDatos
                     cmd.Parameters.AddWithValue("@Metodo_pago", pedido.Met_pago);
                     cmd.Parameters.AddWithValue("@Fecha_pedido", pedido.Fecha);
                     cmd.Parameters.AddWithValue("@Direccion_pedido", pedido.Direccion);
-                    cmd.Parameters.AddWithValue("@ID_cliente", pedido.OCliente.Id);
+                    cmd.Parameters.AddWithValue("@ID_cliente", pedido.Clienteid); // Aquí solo pasas el ID
                     int filasAfectadas = cmd.ExecuteNonQuery();
-                    return filasAfectadas > 0; // Retorna true si se insertó al menos una fila
+                    return filasAfectadas > 0;
                 }
             }
         }
