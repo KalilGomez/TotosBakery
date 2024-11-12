@@ -202,7 +202,6 @@ namespace capaDatos
             }
             return pedidos;
         }
-
         public static bool InsertarCliente(Cliente cliente)
         {
             string queryIClientes = "INSERT INTO cliente (nombre, apellido, telefono, mail, direccion) VALUES (@nombre, @apellido, @telefono, @mail, @direccion)";
@@ -310,6 +309,38 @@ namespace capaDatos
             {
                 // Puedes manejar el error como prefieras
                 throw new Exception($"Error al actualizar producto: {ex.Message}");
+            }
+        }
+        public bool ActualizarPedido(Pedido pedido)
+        {
+            try
+            {
+                using (MySqlConnection conexion = GetConnection())
+                {
+                    string query = @"UPDATE Pedido
+                   SET Estado = @Estado,
+                       Metodo_pago = @MetPago,
+                       Fecha_pedido = @Fecha,
+                       Direccion_pedido = @Direccion,
+                       ID_cliente = @ClienteId
+                   WHERE ID_pedido = @Id";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", pedido.Id);
+                        cmd.Parameters.AddWithValue("@Estado", pedido.Estado);
+                        cmd.Parameters.AddWithValue("@MetPago", pedido.Met_pago);
+                        cmd.Parameters.AddWithValue("@Fecha", pedido.Fecha);
+                        cmd.Parameters.AddWithValue("@Direccion", pedido.Direccion);
+                        cmd.Parameters.AddWithValue("@ClienteId", pedido.Clienteid);
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Es mejor loguear el error o manejarlo de alguna manera
+                Console.WriteLine(ex.Message);
+                return false;
             }
         }
         public bool EliminarCliente(int idCliente)

@@ -109,18 +109,53 @@ namespace capaPresentacion
         }
         private void btnEditarProducto_Click(object sender, EventArgs e)
         {
-            dgvPedido.Enabled = !dgvPedido.Enabled;
-
-            if (dgvPedido.Enabled)
+            if (!dgvPedido.Enabled)
             {
-                btnEditarProducto.Text = "Aceptar";
-                // Otras acciones cuando se habilita la edición
+                dgvPedido.Enabled = true;
+                btnEditarProducto.Text = "Guardar cambios";
             }
             else
             {
-                btnEditarProducto.Text = "Editar cliente";
-                dgvPedido.ClearSelection();
-                // Otras acciones cuando se finaliza la edición
+                try
+                {
+                    if (dgvPedido.CurrentRow != null)
+                    {
+                        Pedido pedidoActualizado = new Pedido
+                        {
+                            // Ajusta estos nombres según las columnas reales de tu DataGridView
+                            Id = Convert.ToInt32(dgvPedido.CurrentRow.Cells["Id"].Value),
+                            Estado = dgvPedido.CurrentRow.Cells["Estado"].Value.ToString(),
+                            Met_pago = dgvPedido.CurrentRow.Cells["Met_pago"].Value.ToString(),
+                            Fecha = Convert.ToDateTime(dgvPedido.CurrentRow.Cells["Fecha"].Value),
+                            Direccion = dgvPedido.CurrentRow.Cells["Direccion"].Value.ToString(),
+                            Clienteid = Convert.ToInt32(dgvPedido.CurrentRow.Cells["Clienteid"].Value)
+                        };
+
+                        using (var conexion = new ConexionBdd())
+                        {
+                            if (conexion.ActualizarPedido(pedidoActualizado))
+                            {
+                                MessageBox.Show("Pedido actualizado correctamente", "Éxito",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // Recargar los pedidos del cliente actual
+                                CargarPedidos(pedidoActualizado.Clienteid);
+                            }
+                            else
+                            {
+                                MessageBox.Show("No se pudo actualizar el pedido", "Error",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    dgvPedido.Enabled = false;
+                    btnEditarProducto.Text = "Editar pedido";
+                    dgvPedido.ClearSelection();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al actualizar: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         private void btnBuscarPedido_Click(object sender, EventArgs e)
