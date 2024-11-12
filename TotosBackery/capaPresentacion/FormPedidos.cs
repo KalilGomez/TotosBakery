@@ -15,20 +15,25 @@ namespace capaPresentacion
     //ver de agregar un combobox para el estado del pedido!
     public partial class FormPedidos : Form
     {
-        int cliente_id;
+        private bool omitirBusqueda;
+        public FormPedidos(bool omitirBusqueda = false)
+        {
+            InitializeComponent();
+            this.omitirBusqueda = omitirBusqueda;
+        }
         public FormPedidos()
         {
             InitializeComponent();
-            
+
         }
-        public void CargarPedidos(int cliente)
+        public void CargarPedidos(int pedido)
         {
             try
             {
                 using (var conexion = new ConexionBdd())
                 {
                     // Cargar los pedidos específicos de un cliente desde la base de datos
-                    List<Pedido> pedidos = conexion.ObtenerPedidos(cliente_id);
+                    List<Pedido> pedidos = conexion.ObtenerPedidos(pedido);
 
                     // Actualizar el DataGridView con los pedidos obtenidos
                     dgvPedido.DataSource = null;
@@ -41,7 +46,23 @@ namespace capaPresentacion
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        public void CargarTodosPedidos()
+        {
+            try
+            {
+                using (var conexion = new ConexionBdd())
+                {
+                    List<Pedido> pedidos = conexion.ObtenerTodosPedidos();
+                    dgvPedido.DataSource = null;
+                    dgvPedido.DataSource = pedidos;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar pedidos: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -77,18 +98,15 @@ namespace capaPresentacion
                 }
             }
         }
-
-
-
         private void FormPedidos_Load(object sender, EventArgs e)
         {
-
-            CargarPedidos(cliente_id);
-
+            if (!omitirBusqueda)
+            {
+                BuscarPedido();
+            }
             dgvPedido.Enabled = false;
             dgvPedido.ClearSelection();
         }
-
         private void btnEditarProducto_Click(object sender, EventArgs e)
         {
             dgvPedido.Enabled = !dgvPedido.Enabled;
@@ -105,10 +123,31 @@ namespace capaPresentacion
                 // Otras acciones cuando se finaliza la edición
             }
         }
-
-        private void btnCancelarPedido_Click(object sender, EventArgs e)
+        private void btnBuscarPedido_Click(object sender, EventArgs e)
         {
-            //cambiar para que el estado se haga en editar directamente
+            BuscarPedido();
+        }
+        private void BuscarPedido()
+        {
+            using (FormElegirPedido formElegirPedido = new FormElegirPedido())
+            {
+                formElegirPedido.Owner = this;
+                if (formElegirPedido.ShowDialog() == DialogResult.OK)
+                {
+                    int pedidoId = formElegirPedido.PedidoId;
+                    if (pedidoId > 0)
+                    {
+                        // Llama al método para cargar el pedido automáticamente
+                        CargarPedidos(pedidoId);
+                    }
+                    else
+                    {
+                        MessageBox.Show("ID de pedido inválido.");
+                    }
+                }
+                dgvPedido.Enabled = false;
+                dgvPedido.ClearSelection();
+            }
         }
     }
 }
