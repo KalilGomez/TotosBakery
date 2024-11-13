@@ -273,7 +273,6 @@ namespace capaDatos
 
                     try
                     {
-                        conexion.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
                         return rowsAffected > 0;
                     }
@@ -374,6 +373,38 @@ namespace capaDatos
                 return false;
             }
         }
+        public bool ActualizarUsuario(Usuario usuario)
+        {
+            try
+            {
+                using (MySqlConnection conexion = GetConnection())
+                {
+                    string query = @"UPDATE usuario
+                   SET nombre = @nombre,
+                       apellido = @apellido,
+                       usuario = @usuario,
+                       contraseña = @contraseña,
+                       esadmin = @esadmin
+                   WHERE ID_usuario = @Id";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", usuario.Id);
+                        cmd.Parameters.AddWithValue("@nombre", usuario.Nombre);
+                        cmd.Parameters.AddWithValue("@apellido", usuario.Apellido);
+                        cmd.Parameters.AddWithValue("@usuario", usuario.User);
+                        cmd.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
+                        cmd.Parameters.AddWithValue("@esadmin", usuario.Admin);
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Es mejor loguear el error o manejarlo de alguna manera
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
         public bool EliminarCliente(int idCliente)
         {
             try
@@ -416,6 +447,28 @@ namespace capaDatos
             {
                 // Puedes manejar el error como prefieras
                 throw new Exception($"Error al eliminar producto: {ex.Message}");
+            }
+        }
+        public bool EliminarUsuario(int idUsuario)
+        {
+            try
+            {
+                using (MySqlConnection conexion = GetConnection())
+                {
+                    string query = "DELETE FROM usuario WHERE id_usuario = @id_usuario";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@id_usuario", idUsuario);
+                        int filasAfectadas = cmd.ExecuteNonQuery();
+                        return filasAfectadas > 0; // Retorna true si se eliminó al menos una fila
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Puedes manejar el error como prefieras
+                throw new Exception($"Error al eliminar usuario: {ex.Message}");
             }
         }
     }
