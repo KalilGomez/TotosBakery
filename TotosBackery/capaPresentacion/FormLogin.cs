@@ -116,7 +116,7 @@ namespace capaPresentacion
                 {
                     this.Hide();
                     FormPrincipal formPrincipal = new FormPrincipal();
-                    if (usuarioEncontrado.Admin==1)
+                    if (usuarioEncontrado.Admin==true)
                     {
                         formPrincipal.HabilitarBotonUsuarios();
                     }

@@ -28,63 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.dgvUsuario = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuario)).BeginInit();
-            this.SuspendLayout();
+            btnAgregar = new Button();
+            btnEditar = new Button();
+            btnEliminar = new Button();
+            dgvUsuario = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvUsuario).BeginInit();
+            SuspendLayout();
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(177, 343);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 0;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Location = new Point(206, 396);
+            btnAgregar.Margin = new Padding(4, 3, 4, 3);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(88, 27);
+            btnAgregar.TabIndex = 0;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(322, 343);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 23);
-            this.btnEditar.TabIndex = 1;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Location = new Point(376, 396);
+            btnEditar.Margin = new Padding(4, 3, 4, 3);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(88, 27);
+            btnEditar.TabIndex = 1;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(461, 343);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
-            this.btnEliminar.TabIndex = 2;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Location = new Point(538, 396);
+            btnEliminar.Margin = new Padding(4, 3, 4, 3);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(88, 27);
+            btnEliminar.TabIndex = 2;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
             // 
             // dgvUsuario
             // 
-            this.dgvUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuario.Location = new System.Drawing.Point(22, 95);
-            this.dgvUsuario.Name = "dgvUsuario";
-            this.dgvUsuario.Size = new System.Drawing.Size(757, 216);
-            this.dgvUsuario.TabIndex = 3;
+            dgvUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvUsuario.Location = new Point(26, 110);
+            dgvUsuario.Margin = new Padding(4, 3, 4, 3);
+            dgvUsuario.Name = "dgvUsuario";
+            dgvUsuario.Size = new Size(883, 249);
+            dgvUsuario.TabIndex = 3;
             // 
             // FormUsuario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgvUsuario);
-            this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnAgregar);
-            this.Name = "FormUsuario";
-            this.Text = "FormUsuario";
-            this.Load += new System.EventHandler(this.FormUsuario_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuario)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 519);
+            Controls.Add(dgvUsuario);
+            Controls.Add(btnEliminar);
+            Controls.Add(btnEditar);
+            Controls.Add(btnAgregar);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FormUsuario";
+            Text = "FormUsuario";
+            Load += FormUsuario_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvUsuario).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

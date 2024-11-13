@@ -27,7 +27,7 @@ namespace capaDatos
         public static List<Usuario> ObtenerUsuarios()
         {
             List<Usuario> usuarios = new List<Usuario>();
-            string queryUsuarios = @"select usuario, contraseña, esadmin from usuario";
+            string queryUsuarios = @"SELECT ID_usuario, Nombre, Apellido, Usuario, Contraseña, EsAdmin FROM Usuario";
 
             using (MySqlConnection conexion = GetConnection())
             {
@@ -42,9 +42,12 @@ namespace capaDatos
                                 while (reader.Read())
                                 {
                                     Usuario usuario = new Usuario(
-                                        reader["Usuario"].ToString(),
-                                        reader["Contraseña"].ToString(),
-                                        Convert.ToInt32(reader["EsAdmin"])
+                                        id: Convert.ToInt32(reader["ID_usuario"]),
+                                        nombre: reader["Nombre"].ToString(),
+                                        apellido: reader["Apellido"].ToString(),
+                                        user: reader["Usuario"].ToString(),
+                                        contraseña: reader["Contraseña"].ToString(),
+                                        admin: Convert.ToBoolean(reader["EsAdmin"])
                                     );
                                     usuarios.Add(usuario);
                                 }
@@ -54,6 +57,7 @@ namespace capaDatos
                     catch (MySqlException ex)
                     {
                         Console.WriteLine("Error al obtener usuarios: " + ex.Message);
+                        throw; // Es importante relanzar la excepción para que el método que llama sepa que hubo un error
                     }
                     finally
                     {
@@ -251,6 +255,33 @@ namespace capaDatos
                     cmd.Parameters.AddWithValue("@ID_cliente", pedido.Clienteid); // Aquí solo pasas el ID
                     int filasAfectadas = cmd.ExecuteNonQuery();
                     return filasAfectadas > 0;
+                }
+            }
+        }
+        public static bool InsertarUsuario(Usuario usuario)
+        {
+            string query = "INSERT INTO usuario (nombre, apellido, usuario, contraseña, esadmin) VALUES (@nombre, @apellido, @usuario, @contraseña, @esadmin)";
+            using (MySqlConnection conexion = GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@nombre", usuario.Nombre);
+                    cmd.Parameters.AddWithValue("@apellido", usuario.Apellido);
+                    cmd.Parameters.AddWithValue("@usuario", usuario.User);
+                    cmd.Parameters.AddWithValue("@contraseña", usuario.Contraseña);
+                    cmd.Parameters.AddWithValue("@esadmin", usuario.Admin);
+
+                    try
+                    {
+                        conexion.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                    catch (MySqlException ex)
+                    {
+                        // Aquí podrías manejar el error o lanzarlo hacia arriba
+                        throw;
+                    }
                 }
             }
         }
