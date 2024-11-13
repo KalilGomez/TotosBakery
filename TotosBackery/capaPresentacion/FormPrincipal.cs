@@ -44,7 +44,8 @@ namespace capaPresentacion
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-
+            FormUsuario formUsuario = new FormUsuario();
+            formUsuario.Show();
         }
 
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
