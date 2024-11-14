@@ -34,7 +34,7 @@
             txtUsuario = new TextBox();
             txtContraseña = new TextBox();
             btnIniciarSesion = new Button();
-            btnRstPwd = new Button();
+            btnRstPwd = new LinkLabel();
             SuspendLayout();
             // 
             // label1
@@ -92,7 +92,7 @@
             // 
             btnIniciarSesion.BackColor = Color.Salmon;
             btnIniciarSesion.Font = new Font("Calibri", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIniciarSesion.Location = new Point(200, 203);
+            btnIniciarSesion.Location = new Point(320, 195);
             btnIniciarSesion.Margin = new Padding(4, 3, 4, 3);
             btnIniciarSesion.Name = "btnIniciarSesion";
             btnIniciarSesion.Size = new Size(209, 59);
@@ -103,13 +103,13 @@
             // 
             // btnRstPwd
             // 
-            btnRstPwd.Location = new Point(491, 203);
+            btnRstPwd.Location = new Point(371, 272);
             btnRstPwd.Margin = new Padding(4, 3, 4, 3);
             btnRstPwd.Name = "btnRstPwd";
-            btnRstPwd.Size = new Size(149, 59);
+            btnRstPwd.Size = new Size(124, 22);
             btnRstPwd.TabIndex = 6;
+            btnRstPwd.TabStop = true;
             btnRstPwd.Text = "Olvide la contraseña";
-            btnRstPwd.UseVisualStyleBackColor = true;
             btnRstPwd.Click += btnRstPwd_Click;
             // 
             // FormLogin
@@ -144,7 +144,7 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.Button btnIniciarSesion;
-        private System.Windows.Forms.Button btnRstPwd;
+        private System.Windows.Forms.LinkLabel btnRstPwd;
     }
 }
 
