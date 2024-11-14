@@ -28,63 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.lblResetUser = new System.Windows.Forms.Label();
-            this.txtMail = new System.Windows.Forms.TextBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnEnviarReset = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            lblResetUser = new Label();
+            txtUsuario = new TextBox();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            btnEnviarReset = new Button();
+            SuspendLayout();
             // 
             // lblResetUser
             // 
-            this.lblResetUser.AutoSize = true;
-            this.lblResetUser.Location = new System.Drawing.Point(220, 50);
-            this.lblResetUser.Name = "lblResetUser";
-            this.lblResetUser.Size = new System.Drawing.Size(93, 13);
-            this.lblResetUser.TabIndex = 0;
-            this.lblResetUser.Text = "Ingrese su usuario";
+            lblResetUser.AutoSize = true;
+            lblResetUser.Location = new Point(257, 58);
+            lblResetUser.Margin = new Padding(4, 0, 4, 0);
+            lblResetUser.Name = "lblResetUser";
+            lblResetUser.Size = new Size(102, 15);
+            lblResetUser.TabIndex = 0;
+            lblResetUser.Text = "Ingrese su usuario";
             // 
-            // txtMail
+            // txtUsuario
             // 
-            this.txtMail.Location = new System.Drawing.Point(345, 43);
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(100, 20);
-            this.txtMail.TabIndex = 1;
+            txtUsuario.Location = new Point(402, 50);
+            txtUsuario.Margin = new Padding(4, 3, 4, 3);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(116, 23);
+            txtUsuario.TabIndex = 1;
             // 
             // contextMenuStrip1
             // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
             // 
             // btnEnviarReset
             // 
-            this.btnEnviarReset.Location = new System.Drawing.Point(485, 46);
-            this.btnEnviarReset.Name = "btnEnviarReset";
-            this.btnEnviarReset.Size = new System.Drawing.Size(75, 23);
-            this.btnEnviarReset.TabIndex = 3;
-            this.btnEnviarReset.Text = "Enviar";
-            this.btnEnviarReset.UseVisualStyleBackColor = true;
-            this.btnEnviarReset.Click += new System.EventHandler(this.btnEnviarReset_Click);
+            btnEnviarReset.Location = new Point(566, 53);
+            btnEnviarReset.Margin = new Padding(4, 3, 4, 3);
+            btnEnviarReset.Name = "btnEnviarReset";
+            btnEnviarReset.Size = new Size(88, 27);
+            btnEnviarReset.TabIndex = 3;
+            btnEnviarReset.Text = "Aceptar";
+            btnEnviarReset.UseVisualStyleBackColor = true;
+            btnEnviarReset.Click += btnEnviarReset_Click;
             // 
             // FormResetPwd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnEnviarReset);
-            this.Controls.Add(this.txtMail);
-            this.Controls.Add(this.lblResetUser);
-            this.Name = "FormResetPwd";
-            this.Text = "FormResetPwd";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 519);
+            Controls.Add(btnEnviarReset);
+            Controls.Add(txtUsuario);
+            Controls.Add(lblResetUser);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FormResetPwd";
+            Text = "FormResetPwd";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private System.Windows.Forms.Label lblResetUser;
-        private System.Windows.Forms.TextBox txtMail;
+        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnEnviarReset;
     }

@@ -32,5 +32,9 @@ namespace capaEntidades
             this.admin = admin;
         }
         public Usuario() { }
+        public Usuario(string contraseña)
+        {
+            this.contraseña=contraseña;
+        }
     }
 }

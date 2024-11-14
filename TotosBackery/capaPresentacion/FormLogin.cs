@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using capaDatos;
 using capaEntidades;
 using capaNegocio;
 
@@ -19,85 +20,213 @@ namespace capaPresentacion
         {
             InitializeComponent();
             EstablecerEstilo();
+            ConfigurarFormularioSinBordes();
             //Bitmap imagen = new Bitmap(Application.StartupPath + @"\imagenes\login.jpg");
             //this.BackgroundImage = imagen;
             //this.BackgroundImageLayout = ImageLayout.Stretch;
+            /*
+              #f4c1a4 | #e9b79f | #e6a7a2 | #f2e9ba | #d6c99a
+             */
             this.FormClosed += FormLogin_FormClosed;
         }
         private void EstablecerEstilo()
         {
-            // Establecer fondo del formulario a un color gris
-            this.BackColor = ColorTranslator.FromHtml("#808080");
+            // Configuración base del formulario
+            this.Size = new Size(800, 400);
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.BackColor = Color.White;
 
-            // Panel azul a la izquierda
-            Panel panelIzquierdo = new Panel
+            // Panel izquierdo violeta (ya existente, solo actualizamos el estilo)
+            Panel panelIzquierdo = this.Controls.OfType<Panel>().FirstOrDefault();
+            if (panelIzquierdo == null)
             {
-                BackColor = ColorTranslator.FromHtml("#0073E6"),
-                Dock = DockStyle.Left,
-                Width = 150 // Ajusta este valor según sea necesario
+                panelIzquierdo = new Panel();
+                this.Controls.Add(panelIzquierdo);
+            }
+            panelIzquierdo.Size = new Size(250, 400);
+            panelIzquierdo.Dock = DockStyle.Left;
+            panelIzquierdo.BackColor = ColorTranslator.FromHtml("#d6c99a");
+
+            // Recorrer los controles existentes y aplicar estilos
+            foreach (Control control in this.Controls)
+            {
+                // Excluir el panel izquierdo del procesamiento
+                if (control == panelIzquierdo) continue;
+
+                // Aplicar estilos según el tipo de control
+                switch (control)
+                {
+                    case TextBox txt:
+                        EstilizarTextBox(txt);
+                        break;
+                    case Button btn:
+                        EstilizarBoton(btn);
+                        break;
+                    case LinkLabel link:
+                        EstilizarLink(link);
+                        break;
+                    case Label lbl:
+                        EstilizarLabel(lbl);
+                        break;
+                    case CheckBox chk:
+                        EstilizarCheckBox(chk);
+                        break;
+                }
+            }
+        }
+        private Point lastPoint;
+
+        private void ConfigurarFormularioSinBordes()
+        {
+            // Configuración básica del formulario
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            // Agregar botón de cerrar
+            Button btnCerrar = new Button
+            {
+                Size = new Size(25, 25),
+                Location = new Point(this.Width - 30, 5),
+                Text = "×",
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                ForeColor = Color.DimGray,
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand
             };
-            this.Controls.Add(panelIzquierdo);
+            btnCerrar.FlatAppearance.BorderSize = 0;
+            btnCerrar.Click += (s, e) => this.Close();
+            this.Controls.Add(btnCerrar);
 
-            // Estilo para los labels (Título, Usuario, Contraseña)
-            foreach (Control control in this.Controls)
+            // Agregar botón minimizar
+            Button btnMinimizar = new Button
             {
-                if (control is Label label)
+                Size = new Size(25, 25),
+                Location = new Point(this.Width - 55, 5),
+                Text = "―",
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                ForeColor = Color.DimGray,
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand
+            };
+            btnMinimizar.FlatAppearance.BorderSize = 0;
+            btnMinimizar.Click += (s, e) => this.WindowState = FormWindowState.Minimized;
+            this.Controls.Add(btnMinimizar);
+
+            // Eventos para mover el formulario
+            this.MouseDown += (s, e) =>
+            {
+                lastPoint = new Point(e.X, e.Y);
+            };
+
+            this.MouseMove += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Left)
                 {
-                    label.ForeColor = Color.White;
-                    label.Font = new Font("Segoe UI Light", 10);
-                    if (label.Text.Equals("LOGIN", StringComparison.OrdinalIgnoreCase))
-                    {
-                        label.Font = new Font("Segoe UI Light", 20, FontStyle.Regular); // Título más grande
-                    }
+                    this.Left += e.X - lastPoint.X;
+                    this.Top += e.Y - lastPoint.Y;
                 }
-            }
+            };
 
-            // Estilo para los TextBoxes y líneas debajo
-            foreach (Control control in this.Controls)
+            // Efectos hover para los botones
+            btnCerrar.MouseEnter += (s, e) => btnCerrar.ForeColor = Color.Red;
+            btnCerrar.MouseLeave += (s, e) => btnCerrar.ForeColor = Color.DimGray;
+
+            btnMinimizar.MouseEnter += (s, e) => btnMinimizar.ForeColor = Color.Gray;
+            btnMinimizar.MouseLeave += (s, e) => btnMinimizar.ForeColor = Color.DimGray;
+        }
+
+        private void EstilizarTextBox(TextBox textBox)
+        {
+            textBox.BorderStyle = BorderStyle.None;
+            textBox.BackColor = Color.White;
+            textBox.Font = new Font("Segoe UI", 10);
+
+            // Crear o encontrar la línea debajo del TextBox
+            string lineaName = "linea_" + textBox.Name;
+            Panel linea = this.Controls.OfType<Panel>()
+                             .FirstOrDefault(p => p.Name == lineaName);
+
+            if (linea == null)
             {
-                if (control is TextBox textBox)
+                linea = new Panel
                 {
-                    textBox.BorderStyle = BorderStyle.None;
-                    textBox.BackColor = ColorTranslator.FromHtml("#808080");
-                    textBox.ForeColor = Color.White;
-                    textBox.Font = new Font("Segoe UI", 10);
-
-                    // Línea debajo del TextBox
-                    Panel linea = new Panel
-                    {
-                        BackColor = Color.White,
-                        Height = 1,
-                        Width = textBox.Width,
-                        Location = new Point(textBox.Left, textBox.Bottom + 1) // Posición ajustada
-                    };
-                    this.Controls.Add(linea);
-                    linea.BringToFront();
-                }
+                    Name = lineaName,
+                    Size = new Size(textBox.Width, 1),
+                    Location = new Point(textBox.Left, textBox.Bottom + 1),
+                    BackColor = Color.FromArgb(149, 117, 205)
+                };
+                this.Controls.Add(linea);
             }
+            linea.BringToFront();
+        }
 
-            // Estilo para el botón "Iniciar Sesión"
-            foreach (Control control in this.Controls)
+        private void EstilizarBoton(Button button)
+        {
+            if (button.Text.Contains("sesión", StringComparison.OrdinalIgnoreCase))
             {
-                if (control is Button button)
-                {
-                    button.BackColor = ColorTranslator.FromHtml("#333333");
+                button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.FromArgb(149, 117, 205);
+                button.ForeColor = Color.White;
+                button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                button.FlatAppearance.BorderSize = 0;
+                button.Cursor = Cursors.Hand;
+
+                // Eventos hover
+                button.MouseEnter += (s, e) => {
+                    button.BackColor = Color.FromArgb(129, 97, 185); // Violeta más oscuro
+                };
+                button.MouseLeave += (s, e) => {
+                    button.BackColor = Color.FromArgb(149, 117, 205);
+                };
+            }
+            else if (button.Text.Equals("Register", StringComparison.OrdinalIgnoreCase))
+            {
+                button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = Color.White;
+                button.ForeColor = Color.FromArgb(149, 117, 205);
+                button.Font = new Font("Segoe UI", 10);
+                button.FlatAppearance.BorderColor = Color.FromArgb(149, 117, 205);
+                button.FlatAppearance.BorderSize = 1;
+                button.Cursor = Cursors.Hand;
+
+                // Eventos hover
+                button.MouseEnter += (s, e) => {
+                    button.BackColor = Color.FromArgb(149, 117, 205);
                     button.ForeColor = Color.White;
-                    button.FlatStyle = FlatStyle.Flat;
-                    button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-                    button.FlatAppearance.BorderSize = 0;
-                }
+                };
+                button.MouseLeave += (s, e) => {
+                    button.BackColor = Color.White;
+                    button.ForeColor = Color.FromArgb(149, 117, 205);
+                };
             }
+        }
 
-            // Estilo para el LinkLabel "Olvidé la contraseña"
-            foreach (Control control in this.Controls)
+        private void EstilizarLink(LinkLabel link)
+        {
+            link.LinkColor = Color.FromArgb(149, 117, 205);
+            link.ActiveLinkColor = Color.FromArgb(129, 97, 185);
+            link.Font = new Font("Segoe UI", 9);
+            link.LinkBehavior = LinkBehavior.HoverUnderline;
+        }
+
+        private void EstilizarLabel(Label label)
+        {
+            if (label.Text.Contains("BIENVENIDO", StringComparison.OrdinalIgnoreCase))
             {
-                if (control is LinkLabel linkLabel)
-                {
-                    linkLabel.LinkColor = ColorTranslator.FromHtml("#808080");
-                    linkLabel.Font = new Font("Segoe UI", 8, FontStyle.Underline);
-                    linkLabel.LinkBehavior = LinkBehavior.HoverUnderline;
-                }
+                label.Font = new Font("Segoe UI", 20, FontStyle.Bold);
+                label.ForeColor = Color.FromArgb(64, 64, 64);
             }
+            else
+            {
+                label.Font = new Font("Segoe UI", 10);
+                label.ForeColor = Color.FromArgb(64, 64, 64);
+            }
+        }
+
+        private void EstilizarCheckBox(CheckBox checkBox)
+        {
+            checkBox.ForeColor = Color.FromArgb(64, 64, 64);
+            checkBox.Font = new Font("Segoe UI", 9);
         }
 
 
@@ -143,9 +272,32 @@ namespace capaPresentacion
 
         private void btnRstPwd_Click(object sender, EventArgs e)
         {
-            Form formResetPassword = new FormResetPwd();
-            formResetPassword.Show();
+            string usuario = "";
+            using (FormResetPwd formReset = new FormResetPwd())
+            {
+                if (formReset.ShowDialog() == DialogResult.OK)
+                {
+                    usuario = formReset.Usuario;
+                    if (!string.IsNullOrEmpty(usuario))
+                    {
+                        bool reset = ConexionBdd.ResetearContraseña(usuario);
+                        if (reset)
+                        {
+                            MessageBox.Show("La contraseña ha sido restablecida exitosamente.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo restablecer la contraseña. Verifique el nombre de usuario.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nombre de usuario no válido.");
+                    }
+                }
+            }
         }
+
 
         private void FormLogin_KeyDown(object sender, KeyEventArgs e)
         {

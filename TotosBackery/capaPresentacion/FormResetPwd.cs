@@ -13,6 +13,7 @@ namespace capaPresentacion
 {
     public partial class FormResetPwd : Form
     {
+        public string Usuario { get; private set; }
         public FormResetPwd()
         {
             InitializeComponent();
@@ -20,7 +21,9 @@ namespace capaPresentacion
 
         private void btnEnviarReset_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("La contraseña fue cambiada a: 1234", "Cambio de contraseña", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            Usuario = txtUsuario.Text;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

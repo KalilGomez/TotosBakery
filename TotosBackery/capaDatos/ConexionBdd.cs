@@ -471,5 +471,31 @@ namespace capaDatos
                 throw new Exception($"Error al eliminar usuario: {ex.Message}");
             }
         }
+        public static bool ResetearContraseña(string usuario)
+        {
+            try
+            {
+                using (MySqlConnection conexion = GetConnection())
+                {
+                    string query = @"UPDATE usuario
+                             SET contraseña = @contraseña
+                             WHERE usuario = @usuario";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
+                    {
+                        cmd.Parameters.AddWithValue("@contraseña", "1");
+                        cmd.Parameters.AddWithValue("@usuario", usuario);
+
+                        return cmd.ExecuteNonQuery() > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Aquí podrías registrar el error o manejarlo según necesites
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
     }
 }
