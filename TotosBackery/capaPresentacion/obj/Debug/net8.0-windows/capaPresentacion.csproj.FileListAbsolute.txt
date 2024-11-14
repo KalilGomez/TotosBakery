@@ -47,3 +47,4 @@ C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\bin\Debug\
 C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\krb5_64.dll
 C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\bin\Debug\net8.0-windows\runtimes\win-x64\native\krbcc64.dll
 C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.FormElegirPedido.resources
+C:\Users\Kalil\source\repos\TotosBakery\TotosBackery\capaPresentacion\obj\Debug\net8.0-windows\capaPresentacion.Properties.Resources.resources

@@ -35,6 +35,8 @@
             txtContraseña = new TextBox();
             btnIniciarSesion = new Button();
             btnRstPwd = new LinkLabel();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -44,7 +46,7 @@
             label1.Font = new Font("Segoe UI Variable Display Semib", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.DarkMagenta;
             label1.ImageAlign = ContentAlignment.TopCenter;
-            label1.Location = new Point(354, 44);
+            label1.Location = new Point(377, 21);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(141, 30);
@@ -54,7 +56,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(320, 107);
+            label2.Location = new Point(343, 84);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(47, 15);
@@ -64,7 +66,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(299, 141);
+            label3.Location = new Point(322, 118);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(67, 15);
@@ -73,7 +75,7 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(385, 104);
+            txtUsuario.Location = new Point(408, 81);
             txtUsuario.Margin = new Padding(4, 3, 4, 3);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(116, 23);
@@ -81,7 +83,7 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(385, 141);
+            txtContraseña.Location = new Point(408, 118);
             txtContraseña.Margin = new Padding(4, 3, 4, 3);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
@@ -92,7 +94,7 @@
             // 
             btnIniciarSesion.BackColor = Color.Salmon;
             btnIniciarSesion.Font = new Font("Calibri", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIniciarSesion.Location = new Point(320, 195);
+            btnIniciarSesion.Location = new Point(343, 172);
             btnIniciarSesion.Margin = new Padding(4, 3, 4, 3);
             btnIniciarSesion.Name = "btnIniciarSesion";
             btnIniciarSesion.Size = new Size(209, 59);
@@ -103,7 +105,7 @@
             // 
             // btnRstPwd
             // 
-            btnRstPwd.Location = new Point(371, 272);
+            btnRstPwd.Location = new Point(394, 249);
             btnRstPwd.Margin = new Padding(4, 3, 4, 3);
             btnRstPwd.Name = "btnRstPwd";
             btnRstPwd.Size = new Size(124, 22);
@@ -111,6 +113,17 @@
             btnRstPwd.TabStop = true;
             btnRstPwd.Text = "Olvide la contraseña";
             btnRstPwd.Click += btnRstPwd_Click;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = Properties.Resources.Imagen_de_WhatsApp_2024_11_13_a_las_23_imageonline_co_3886040;
+            pictureBox1.Location = new Point(12, 27);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(195, 216);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
             // 
             // FormLogin
             // 
@@ -126,12 +139,14 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(pictureBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4, 3, 4, 3);
             Name = "FormLogin";
             Text = "Form1";
             FormClosed += FormLogin_FormClosed;
             KeyDown += FormLogin_KeyDown;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,6 +160,7 @@
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.Button btnIniciarSesion;
         private System.Windows.Forms.LinkLabel btnRstPwd;
+        private PictureBox pictureBox1;
     }
 }
 
