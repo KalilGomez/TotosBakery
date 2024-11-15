@@ -134,7 +134,6 @@ namespace capaPresentacion
             btnMinimizar.MouseEnter += (s, e) => btnMinimizar.ForeColor = Color.Gray;
             btnMinimizar.MouseLeave += (s, e) => btnMinimizar.ForeColor = Color.DimGray;
         }
-
         private void EstilizarTextBox(TextBox textBox)
         {
             textBox.BorderStyle = BorderStyle.None;
@@ -153,19 +152,18 @@ namespace capaPresentacion
                     Name = lineaName,
                     Size = new Size(textBox.Width, 1),
                     Location = new Point(textBox.Left, textBox.Bottom + 1),
-                    BackColor = Color.FromArgb(149, 117, 205)
+                    BackColor = ColorTranslator.FromHtml("#d6c99a")
                 };
                 this.Controls.Add(linea);
             }
             linea.BringToFront();
         }
-
         private void EstilizarBoton(Button button)
         {
             if (button.Text.Contains("sesión", StringComparison.OrdinalIgnoreCase))
             {
                 button.FlatStyle = FlatStyle.Flat;
-                button.BackColor = Color.FromArgb(149, 117, 205);
+                button.BackColor = ColorTranslator.FromHtml("#e9b79f");
                 button.ForeColor = Color.White;
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
@@ -173,10 +171,10 @@ namespace capaPresentacion
 
                 // Eventos hover
                 button.MouseEnter += (s, e) => {
-                    button.BackColor = Color.FromArgb(129, 97, 185); // Violeta más oscuro
+                    button.BackColor = ColorTranslator.FromHtml("#e9b79f"); // Violeta más oscuro
                 };
                 button.MouseLeave += (s, e) => {
-                    button.BackColor = Color.FromArgb(149, 117, 205);
+                    button.BackColor = ColorTranslator.FromHtml("#e6a7a2");
                 };
             }
             else if (button.Text.Equals("Register", StringComparison.OrdinalIgnoreCase))
@@ -200,15 +198,13 @@ namespace capaPresentacion
                 };
             }
         }
-
         private void EstilizarLink(LinkLabel link)
         {
-            link.LinkColor = Color.FromArgb(149, 117, 205);
+            link.LinkColor = Color.Red;
             link.ActiveLinkColor = Color.FromArgb(129, 97, 185);
             link.Font = new Font("Segoe UI", 9);
             link.LinkBehavior = LinkBehavior.HoverUnderline;
         }
-
         private void EstilizarLabel(Label label)
         {
             if (label.Text.Contains("BIENVENIDO", StringComparison.OrdinalIgnoreCase))
@@ -222,7 +218,6 @@ namespace capaPresentacion
                 label.ForeColor = Color.FromArgb(64, 64, 64);
             }
         }
-
         private void EstilizarCheckBox(CheckBox checkBox)
         {
             checkBox.ForeColor = Color.FromArgb(64, 64, 64);
@@ -230,9 +225,10 @@ namespace capaPresentacion
         }
 
 
+
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos())
+            if (!ValidarCamposVacios())
             {
                 return;
             }
@@ -269,7 +265,6 @@ namespace capaPresentacion
                                MessageBoxIcon.Error);
             }
         }
-
         private void btnRstPwd_Click(object sender, EventArgs e)
         {
             string usuario = "";
@@ -297,8 +292,6 @@ namespace capaPresentacion
                 }
             }
         }
-
-
         private void FormLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -306,12 +299,11 @@ namespace capaPresentacion
                 btnIniciarSesion.PerformClick(); // Simula el clic del botón
             }
         }
-
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-        private bool ValidarCampos()
+        private bool ValidarCamposVacios()
         {
             if (string.IsNullOrWhiteSpace(txtUsuario.Text))
             {
@@ -332,7 +324,6 @@ namespace capaPresentacion
                 txtContraseña.Focus();
                 return false;
             }
-
             return true;
         }
     }
