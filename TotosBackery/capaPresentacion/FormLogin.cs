@@ -21,9 +21,6 @@ namespace capaPresentacion
             InitializeComponent();
             EstablecerEstilo();
             ConfigurarFormularioSinBordes();
-            //Bitmap imagen = new Bitmap(Application.StartupPath + @"\imagenes\login.jpg");
-            //this.BackgroundImage = imagen;
-            //this.BackgroundImageLayout = ImageLayout.Stretch;
             /*
               #f4c1a4 | #e9b79f | #e6a7a2 | #f2e9ba | #d6c99a
              */
