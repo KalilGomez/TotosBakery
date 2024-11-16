@@ -53,10 +53,18 @@ namespace capaPresentacion
             {
                 using (var conexion = new ConexionBdd())
                 {
-                    var clientes = conexion.ObtenerClientes(); // Cargar clientes desde la base de datos
-                    cboxCliente.DataSource = clientes;
-                    cboxCliente.DisplayMember = "NombreCompleto"; // Muestra id - nombre apellido en el ComboBox
-                    cboxCliente.ValueMember = "Id"; // Guarda el id del cliente como valor seleccionado
+                    var clientes = conexion.ObtenerClientes();
+
+                    // Proyectar los datos en un nuevo formato específico para el ComboBox
+                    var clientesParaComboBox = clientes.Select(c => new
+                    {
+                        Id = c.Id,
+                        NombreCompleto = $"[{c.Id}] - {c.Nombre} {c.Apellido}"
+                    }).ToList();
+
+                    cboxCliente.DataSource = clientesParaComboBox;
+                    cboxCliente.DisplayMember = "NombreCompleto"; // Muestra id - nombre apellido
+                    cboxCliente.ValueMember = "Id"; // Asigna el ID como valor seleccionado
                 }
             }
             catch (Exception ex)
@@ -65,6 +73,7 @@ namespace capaPresentacion
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void CargarMetodosDePago()
         {
             cboxMetPag.Items.Add("Efectivo");

@@ -30,9 +30,5 @@
         {
             this.id = idCliente;
         }
-        public string NombreCompleto
-        {
-            get { return $"[{Id}] - {Nombre} {Apellido}"; }
-        }
     }
 }
