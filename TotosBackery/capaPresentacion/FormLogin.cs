@@ -232,7 +232,7 @@ namespace capaPresentacion
 
             try
             {
-                Usuario usuarioEncontrado = LogicaNegocio.ValidarUsuario(txtUsuario.Text, txtContraseña.Text);
+                Usuario usuarioEncontrado = LogicaNegocio.ValidarUsuarioContraseña(txtUsuario.Text, txtContraseña.Text);
 
                 if (usuarioEncontrado != null)
                 {
@@ -319,6 +319,19 @@ namespace capaPresentacion
                                MessageBoxButtons.OK,
                                MessageBoxIcon.Warning);
                 txtContraseña.Focus();
+                return false;
+            }
+            return true;
+        }
+        private bool ValidarCamposVacios2()
+        {
+            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            {
+                MessageBox.Show("Debe ingresar un usuario",
+                               "Campo requerido",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Warning);
+                txtUsuario.Focus();
                 return false;
             }
             return true;
