@@ -270,21 +270,23 @@ namespace capaPresentacion
                 if (formReset.ShowDialog() == DialogResult.OK)
                 {
                     usuario = formReset.Usuario;
-                    if (!string.IsNullOrEmpty(usuario))
+                    if (!ValidarCamposVacios2(usuario))
+                    {
+                        return;
+                    }
+                    try
                     {
                         bool reset = ConexionBdd.ResetearContraseña(usuario);
-                        if (reset)
-                        {
-                            MessageBox.Show("La contraseña ha sido restablecida exitosamente.");
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo restablecer la contraseña. Verifique el nombre de usuario.");
-                        }
+                        MessageBox.Show($"Contraseña reseteada correctamente",
+                               "Aceptar",
+                               MessageBoxButtons.OK);
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Nombre de usuario no válido.");
+                        MessageBox.Show($"Error al intentar resetear la contraseña: {ex.Message}",
+                               "Error",
+                               MessageBoxButtons.OK,
+                               MessageBoxIcon.Error);
                     }
                 }
             }
@@ -323,9 +325,9 @@ namespace capaPresentacion
             }
             return true;
         }
-        private bool ValidarCamposVacios2()
+        private bool ValidarCamposVacios2(string usuario)
         {
-            if (string.IsNullOrWhiteSpace(txtUsuario.Text))
+            if (string.IsNullOrWhiteSpace(usuario))
             {
                 MessageBox.Show("Debe ingresar un usuario",
                                "Campo requerido",
