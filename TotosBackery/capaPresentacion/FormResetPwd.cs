@@ -18,6 +18,8 @@ namespace capaPresentacion
         {
             InitializeComponent();
             EstablecerEstilo();
+            ConfigurarFormularioSinBordes();
+
         }
 
         private void EstablecerEstilo()
@@ -86,7 +88,7 @@ namespace capaPresentacion
         }
         private void EstilizarBoton(Button button)
         {
-            if (button.Text.Contains("sesión", StringComparison.OrdinalIgnoreCase))
+            if (button.Text.Contains("aceptar", StringComparison.OrdinalIgnoreCase))
             {
                 button.FlatStyle = FlatStyle.Flat;
                 button.BackColor = ColorTranslator.FromHtml("#e9b79f");
@@ -96,14 +98,16 @@ namespace capaPresentacion
                 button.Cursor = Cursors.Hand;
 
                 // Eventos hover
-                button.MouseEnter += (s, e) => {
+                button.MouseEnter += (s, e) =>
+                {
                     button.BackColor = ColorTranslator.FromHtml("#e9b79f"); // Violeta más oscuro
                 };
-                button.MouseLeave += (s, e) => {
+                button.MouseLeave += (s, e) =>
+                {
                     button.BackColor = ColorTranslator.FromHtml("#e6a7a2");
                 };
             }
-            else if (button.Text.Equals("Register", StringComparison.OrdinalIgnoreCase))
+            else if (button.Text.Equals("volver", StringComparison.OrdinalIgnoreCase))
             {
                 button.FlatStyle = FlatStyle.Flat;
                 button.BackColor = Color.White;
@@ -114,11 +118,13 @@ namespace capaPresentacion
                 button.Cursor = Cursors.Hand;
 
                 // Eventos hover
-                button.MouseEnter += (s, e) => {
+                button.MouseEnter += (s, e) =>
+                {
                     button.BackColor = Color.FromArgb(149, 117, 205);
                     button.ForeColor = Color.White;
                 };
-                button.MouseLeave += (s, e) => {
+                button.MouseLeave += (s, e) =>
+                {
                     button.BackColor = Color.White;
                     button.ForeColor = Color.FromArgb(149, 117, 205);
                 };
@@ -126,7 +132,7 @@ namespace capaPresentacion
         }
         private void EstilizarLabel(Label label)
         {
-            if (label.Text.Contains("BIENVENIDO", StringComparison.OrdinalIgnoreCase))
+            if (label.Text.Contains("resetear", StringComparison.OrdinalIgnoreCase))
             {
                 label.Font = new Font("Segoe UI", 20, FontStyle.Bold);
                 label.ForeColor = Color.FromArgb(64, 64, 64);
@@ -137,6 +143,64 @@ namespace capaPresentacion
                 label.ForeColor = Color.FromArgb(64, 64, 64);
             }
         }
+        private void ConfigurarFormularioSinBordes()
+        {
+            // Configuración básica del formulario
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            // Agregar botón de cerrar
+            Button btnCerrar = new Button
+            {
+                Size = new Size(25, 25),
+                Location = new Point(this.Width - 30, 5),
+                Text = "×",
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                ForeColor = Color.DimGray,
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand
+            };
+            btnCerrar.FlatAppearance.BorderSize = 0;
+            btnCerrar.Click += (s, e) => this.Close();
+            this.Controls.Add(btnCerrar);
+
+            // Agregar botón minimizar
+            Button btnMinimizar = new Button
+            {
+                Size = new Size(25, 25),
+                Location = new Point(this.Width - 55, 5),
+                Text = "―",
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                ForeColor = Color.DimGray,
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand
+            };
+            btnMinimizar.FlatAppearance.BorderSize = 0;
+            btnMinimizar.Click += (s, e) => this.WindowState = FormWindowState.Minimized;
+            this.Controls.Add(btnMinimizar);
+
+            // Eventos para mover el formulario
+            this.MouseDown += (s, e) =>
+            {
+                lastPoint = new Point(e.X, e.Y);
+            };
+
+            this.MouseMove += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    this.Left += e.X - lastPoint.X;
+                    this.Top += e.Y - lastPoint.Y;
+                }
+            };
+
+            // Efectos hover para los botones
+            btnCerrar.MouseEnter += (s, e) => btnCerrar.ForeColor = Color.Red;
+            btnCerrar.MouseLeave += (s, e) => btnCerrar.ForeColor = Color.DimGray;
+
+            btnMinimizar.MouseEnter += (s, e) => btnMinimizar.ForeColor = Color.Gray;
+            btnMinimizar.MouseLeave += (s, e) => btnMinimizar.ForeColor = Color.DimGray;
+        }
 
 
 
@@ -144,6 +208,11 @@ namespace capaPresentacion
         {
             Usuario = txtUsuario.Text;
             this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

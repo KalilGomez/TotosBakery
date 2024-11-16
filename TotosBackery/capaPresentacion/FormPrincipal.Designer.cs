@@ -105,7 +105,6 @@
             Name = "FormPrincipal";
             StartPosition = FormStartPosition.Manual;
             Text = "Form2";
-            Load += FormPrincipal_Load;
             ResumeLayout(false);
         }
 

@@ -22,18 +22,19 @@ namespace capaPresentacion
             EstablecerEstilo();
             ConfigurarFormularioSinBordes();
             /*
-              #f4c1a4 | #e9b79f | #e6a7a2 | #f2e9ba | #d6c99a
+              #DCDCDC(fondo)
              */
             this.FormClosed += FormLogin_FormClosed;
         }
+        private Point lastPoint;
         private void EstablecerEstilo()
         {
             // Configuración base del formulario
             this.Size = new Size(800, 400);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = Color.White;
+            this.BackColor = ColorTranslator.FromHtml("#DCDCDC");
 
-            // Panel izquierdo violeta (ya existente, solo actualizamos el estilo)
+            // Panel izquierdo
             Panel panelIzquierdo = this.Controls.OfType<Panel>().FirstOrDefault();
             if (panelIzquierdo == null)
             {
@@ -42,15 +43,31 @@ namespace capaPresentacion
             }
             panelIzquierdo.Size = new Size(250, 400);
             panelIzquierdo.Dock = DockStyle.Left;
-            panelIzquierdo.BackColor = ColorTranslator.FromHtml("#d6c99a");
+            panelIzquierdo.BackColor = Color.White;
+
+            // Mover el PictureBox al panel izquierdo
+            PictureBox pictureBox = this.Controls.OfType<PictureBox>().FirstOrDefault();
+            if (pictureBox != null)
+            {
+                // Remover el PictureBox de los controles del formulario
+                this.Controls.Remove(pictureBox);
+                // Agregarlo al panel izquierdo
+                panelIzquierdo.Controls.Add(pictureBox);
+                pictureBox.BackColor = Color.White;
+                pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+
+                // Centrar el PictureBox en el panel
+                pictureBox.Location = new Point(
+                    (panelIzquierdo.Width - pictureBox.Width) / 2,
+                    (panelIzquierdo.Height - pictureBox.Height) / 3  // Dividir por 3 para colocarlo más arriba
+                );
+            }
 
             // Recorrer los controles existentes y aplicar estilos
             foreach (Control control in this.Controls)
             {
-                // Excluir el panel izquierdo del procesamiento
                 if (control == panelIzquierdo) continue;
 
-                // Aplicar estilos según el tipo de control
                 switch (control)
                 {
                     case TextBox txt:
@@ -71,8 +88,6 @@ namespace capaPresentacion
                 }
             }
         }
-        private Point lastPoint;
-
         private void ConfigurarFormularioSinBordes()
         {
             // Configuración básica del formulario
@@ -134,7 +149,7 @@ namespace capaPresentacion
         private void EstilizarTextBox(TextBox textBox)
         {
             textBox.BorderStyle = BorderStyle.None;
-            textBox.BackColor = Color.White;
+            textBox.BackColor = ColorTranslator.FromHtml("#DCDCDC");
             textBox.Font = new Font("Segoe UI", 10);
 
             // Crear o encontrar la línea debajo del TextBox
@@ -147,9 +162,9 @@ namespace capaPresentacion
                 linea = new Panel
                 {
                     Name = lineaName,
-                    Size = new Size(textBox.Width, 1),
+                    Size = new Size(textBox.Width, 2),
                     Location = new Point(textBox.Left, textBox.Bottom + 1),
-                    BackColor = ColorTranslator.FromHtml("#d6c99a")
+                    BackColor = ColorTranslator.FromHtml("#000000")
                 };
                 this.Controls.Add(linea);
             }
@@ -157,10 +172,10 @@ namespace capaPresentacion
         }
         private void EstilizarBoton(Button button)
         {
-            if (button.Text.Contains("sesión", StringComparison.OrdinalIgnoreCase))
+            if (button.Text.Contains("iniciar sesión", StringComparison.OrdinalIgnoreCase))
             {
                 button.FlatStyle = FlatStyle.Flat;
-                button.BackColor = ColorTranslator.FromHtml("#e9b79f");
+                button.BackColor = ColorTranslator.FromHtml("#00BFFF");
                 button.ForeColor = Color.White;
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
@@ -169,11 +184,11 @@ namespace capaPresentacion
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
                 {
-                    button.BackColor = ColorTranslator.FromHtml("#e9b79f"); // Violeta más oscuro
+                    button.BackColor = ColorTranslator.FromHtml("#00BFFF"); // Violeta más oscuro
                 };
                 button.MouseLeave += (s, e) =>
                 {
-                    button.BackColor = ColorTranslator.FromHtml("#e6a7a2");
+                    button.BackColor = ColorTranslator.FromHtml("#87CEEB");
                 };
             }
             else if (button.Text.Equals("Register", StringComparison.OrdinalIgnoreCase))

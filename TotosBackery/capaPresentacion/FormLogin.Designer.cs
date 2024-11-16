@@ -111,16 +111,16 @@
             btnRstPwd.Size = new Size(124, 22);
             btnRstPwd.TabIndex = 6;
             btnRstPwd.TabStop = true;
-            btnRstPwd.Text = "Olvide la contraseña";
+            btnRstPwd.Text = "Olvidé la contraseña";
             btnRstPwd.Click += btnRstPwd_Click;
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = Properties.Resources.Imagen_de_WhatsApp_2024_11_13_a_las_23_imageonline_co_3886040;
-            pictureBox1.Location = new Point(12, 27);
+            pictureBox1.Location = new Point(39, 31);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(195, 216);
+            pictureBox1.Size = new Size(195, 231);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;

@@ -33,12 +33,14 @@
             txtUsuario = new TextBox();
             contextMenuStrip1 = new ContextMenuStrip(components);
             btnEnviarReset = new Button();
+            btnSalir = new Button();
+            lblReset = new Label();
             SuspendLayout();
             // 
             // lblResetUser
             // 
             lblResetUser.AutoSize = true;
-            lblResetUser.Location = new Point(257, 58);
+            lblResetUser.Location = new Point(28, 91);
             lblResetUser.Margin = new Padding(4, 0, 4, 0);
             lblResetUser.Name = "lblResetUser";
             lblResetUser.Size = new Size(102, 15);
@@ -47,7 +49,7 @@
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(402, 50);
+            txtUsuario.Location = new Point(173, 91);
             txtUsuario.Margin = new Padding(4, 3, 4, 3);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(116, 23);
@@ -60,7 +62,7 @@
             // 
             // btnEnviarReset
             // 
-            btnEnviarReset.Location = new Point(566, 53);
+            btnEnviarReset.Location = new Point(42, 153);
             btnEnviarReset.Margin = new Padding(4, 3, 4, 3);
             btnEnviarReset.Name = "btnEnviarReset";
             btnEnviarReset.Size = new Size(88, 27);
@@ -69,11 +71,37 @@
             btnEnviarReset.UseVisualStyleBackColor = true;
             btnEnviarReset.Click += btnEnviarReset_Click;
             // 
+            // btnSalir
+            // 
+            btnSalir.Location = new Point(205, 153);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(75, 23);
+            btnSalir.TabIndex = 4;
+            btnSalir.Text = "Volver";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += button1_Click;
+            // 
+            // lblReset
+            // 
+            lblReset.AutoSize = true;
+            lblReset.BackColor = Color.Transparent;
+            lblReset.Font = new Font("Segoe UI Variable Display Semib", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblReset.ForeColor = Color.DarkMagenta;
+            lblReset.ImageAlign = ContentAlignment.TopCenter;
+            lblReset.Location = new Point(80, 21);
+            lblReset.Margin = new Padding(4, 0, 4, 0);
+            lblReset.Name = "lblReset";
+            lblReset.Size = new Size(221, 30);
+            lblReset.TabIndex = 5;
+            lblReset.Text = "Resetear Contraseña";
+            // 
             // FormResetPwd
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(933, 519);
+            Controls.Add(lblReset);
+            Controls.Add(btnSalir);
             Controls.Add(btnEnviarReset);
             Controls.Add(txtUsuario);
             Controls.Add(lblResetUser);
@@ -90,5 +118,7 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnEnviarReset;
+        private Button btnSalir;
+        private Label lblReset;
     }
 }

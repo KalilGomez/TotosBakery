@@ -17,9 +17,8 @@ namespace capaPresentacion
         public FormPrincipal()
         {
             InitializeComponent();
-            this.Load += FormPrincipal_Load;
-            EstablecerEstilo();
             ConfigurarFormularioSinBordes();
+            EstablecerEstilo();
             btnUsuarios.Enabled = false;
         }
         private Point lastPoint;
@@ -163,6 +162,7 @@ namespace capaPresentacion
         }
         private void ConfigurarFormularioSinBordes()
         {
+            MessageBox.Show("Configurando formulario sin bordes");
             // Configuración básica del formulario
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -251,11 +251,6 @@ namespace capaPresentacion
             this.Close();
             FormLogin formLogin = new FormLogin();
             formLogin.Show();
-        }
-
-        private void FormPrincipal_Load(object sender, EventArgs e)
-        {
-            ConfigurarFormularioSinBordes();
         }
     }
 }
