@@ -167,10 +167,12 @@ namespace capaPresentacion
                 button.Cursor = Cursors.Hand;
 
                 // Eventos hover
-                button.MouseEnter += (s, e) => {
+                button.MouseEnter += (s, e) =>
+                {
                     button.BackColor = ColorTranslator.FromHtml("#e9b79f"); // Violeta más oscuro
                 };
-                button.MouseLeave += (s, e) => {
+                button.MouseLeave += (s, e) =>
+                {
                     button.BackColor = ColorTranslator.FromHtml("#e6a7a2");
                 };
             }
@@ -185,11 +187,13 @@ namespace capaPresentacion
                 button.Cursor = Cursors.Hand;
 
                 // Eventos hover
-                button.MouseEnter += (s, e) => {
+                button.MouseEnter += (s, e) =>
+                {
                     button.BackColor = Color.FromArgb(149, 117, 205);
                     button.ForeColor = Color.White;
                 };
-                button.MouseLeave += (s, e) => {
+                button.MouseLeave += (s, e) =>
+                {
                     button.BackColor = Color.White;
                     button.ForeColor = Color.FromArgb(149, 117, 205);
                 };
@@ -238,7 +242,7 @@ namespace capaPresentacion
                 {
                     this.Hide();
                     FormPrincipal formPrincipal = new FormPrincipal();
-                    if (usuarioEncontrado.Admin==true)
+                    if (usuarioEncontrado.Admin == true)
                     {
                         formPrincipal.HabilitarBotonUsuarios();
                     }

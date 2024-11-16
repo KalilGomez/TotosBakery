@@ -17,9 +17,12 @@ namespace capaPresentacion
         public FormPrincipal()
         {
             InitializeComponent();
+            this.Load += FormPrincipal_Load;
             EstablecerEstilo();
+            ConfigurarFormularioSinBordes();
             btnUsuarios.Enabled = false;
         }
+        private Point lastPoint;
         private void EstablecerEstilo()
         {
             // Configuración base del formulario
@@ -101,10 +104,12 @@ namespace capaPresentacion
                 button.Cursor = Cursors.Hand;
 
                 // Eventos hover
-                button.MouseEnter += (s, e) => {
+                button.MouseEnter += (s, e) =>
+                {
                     button.BackColor = ColorTranslator.FromHtml("#e9b79f"); // Violeta más oscuro
                 };
-                button.MouseLeave += (s, e) => {
+                button.MouseLeave += (s, e) =>
+                {
                     button.BackColor = ColorTranslator.FromHtml("#e6a7a2");
                 };
             }
@@ -119,11 +124,13 @@ namespace capaPresentacion
                 button.Cursor = Cursors.Hand;
 
                 // Eventos hover
-                button.MouseEnter += (s, e) => {
+                button.MouseEnter += (s, e) =>
+                {
                     button.BackColor = Color.FromArgb(149, 117, 205);
                     button.ForeColor = Color.White;
                 };
-                button.MouseLeave += (s, e) => {
+                button.MouseLeave += (s, e) =>
+                {
                     button.BackColor = Color.White;
                     button.ForeColor = Color.FromArgb(149, 117, 205);
                 };
@@ -154,6 +161,64 @@ namespace capaPresentacion
             checkBox.ForeColor = Color.FromArgb(64, 64, 64);
             checkBox.Font = new Font("Segoe UI", 9);
         }
+        private void ConfigurarFormularioSinBordes()
+        {
+            // Configuración básica del formulario
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+            // Agregar botón de cerrar
+            Button btnCerrar = new Button
+            {
+                Size = new Size(25, 25),
+                Location = new Point(this.Width - 30, 5),
+                Text = "×",
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                ForeColor = Color.DimGray,
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand
+            };
+            btnCerrar.FlatAppearance.BorderSize = 0;
+            btnCerrar.Click += (s, e) => this.Close();
+            this.Controls.Add(btnCerrar);
+
+            // Agregar botón minimizar
+            Button btnMinimizar = new Button
+            {
+                Size = new Size(25, 25),
+                Location = new Point(this.Width - 55, 5),
+                Text = "―",
+                Font = new Font("Arial", 12, FontStyle.Bold),
+                ForeColor = Color.DimGray,
+                FlatStyle = FlatStyle.Flat,
+                Cursor = Cursors.Hand
+            };
+            btnMinimizar.FlatAppearance.BorderSize = 0;
+            btnMinimizar.Click += (s, e) => this.WindowState = FormWindowState.Minimized;
+            this.Controls.Add(btnMinimizar);
+
+            // Eventos para mover el formulario
+            this.MouseDown += (s, e) =>
+            {
+                lastPoint = new Point(e.X, e.Y);
+            };
+
+            this.MouseMove += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    this.Left += e.X - lastPoint.X;
+                    this.Top += e.Y - lastPoint.Y;
+                }
+            };
+
+            // Efectos hover para los botones
+            btnCerrar.MouseEnter += (s, e) => btnCerrar.ForeColor = Color.Red;
+            btnCerrar.MouseLeave += (s, e) => btnCerrar.ForeColor = Color.DimGray;
+
+            btnMinimizar.MouseEnter += (s, e) => btnMinimizar.ForeColor = Color.Gray;
+            btnMinimizar.MouseLeave += (s, e) => btnMinimizar.ForeColor = Color.DimGray;
+        }
         public void HabilitarBotonUsuarios()
         {
             btnUsuarios.Enabled = true;
@@ -163,7 +228,7 @@ namespace capaPresentacion
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            Form formClientes= new FormClientes();
+            Form formClientes = new FormClientes();
             formClientes.Show();
         }
         private void button1_Click(object sender, EventArgs e)
@@ -186,6 +251,11 @@ namespace capaPresentacion
             this.Close();
             FormLogin formLogin = new FormLogin();
             formLogin.Show();
+        }
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+            ConfigurarFormularioSinBordes();
         }
     }
 }
