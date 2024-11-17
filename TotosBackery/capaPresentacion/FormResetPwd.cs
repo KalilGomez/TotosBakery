@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
@@ -79,42 +80,41 @@ namespace capaPresentacion
             if (button.Text.IndexOf("Aceptar", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 button.FlatStyle = FlatStyle.Flat;
-                button.BackColor = ColorTranslator.FromHtml("#000000");
+                button.BackColor = ColorTranslator.FromHtml("#FFB6C1");
                 button.ForeColor = Color.White;
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
                 button.Cursor = Cursors.Hand;
 
+
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
                 {
-                    button.BackColor = ColorTranslator.FromHtml("#e9b79f"); // Violeta más oscuro
+                    button.BackColor = ColorTranslator.FromHtml("#E30B5C");
                 };
                 button.MouseLeave += (s, e) =>
                 {
-                    button.BackColor = ColorTranslator.FromHtml("#e6a7a2");
+                    button.BackColor = ColorTranslator.FromHtml("#FFB6C1");
                 };
             }
             else if (button.Text.IndexOf("volver", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 button.FlatStyle = FlatStyle.Flat;
-                button.BackColor = Color.White;
-                button.ForeColor = Color.FromArgb(149, 117, 205);
-                button.Font = new Font("Segoe UI", 10);
-                button.FlatAppearance.BorderColor = Color.FromArgb(149, 117, 205);
-                button.FlatAppearance.BorderSize = 1;
+                button.BackColor = ColorTranslator.FromHtml("#FFB6C1");
+                button.ForeColor = Color.White;
+                button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                button.FlatAppearance.BorderSize = 0;
                 button.Cursor = Cursors.Hand;
+
 
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
                 {
-                    button.BackColor = Color.FromArgb(149, 117, 205);
-                    button.ForeColor = Color.White;
+                    button.BackColor = ColorTranslator.FromHtml("#E30B5C");
                 };
                 button.MouseLeave += (s, e) =>
                 {
-                    button.BackColor = Color.White;
-                    button.ForeColor = Color.FromArgb(149, 117, 205);
+                    button.BackColor = ColorTranslator.FromHtml("#FFB6C1");
                 };
             }
             else
@@ -210,7 +210,6 @@ namespace capaPresentacion
             btnMinimizar.MouseEnter += (s, e) => btnMinimizar.ForeColor = Color.Gray;
             btnMinimizar.MouseLeave += (s, e) => btnMinimizar.ForeColor = Color.DimGray;
         }
-
 
 
         private void btnEnviarReset_Click(object sender, EventArgs e)

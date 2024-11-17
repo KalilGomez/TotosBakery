@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             lblResetUser = new Label();
             txtUsuario = new TextBox();
-            contextMenuStrip1 = new ContextMenuStrip(components);
             btnEnviarReset = new Button();
             btnSalir = new Button();
             SuspendLayout();
@@ -39,29 +37,25 @@
             // lblResetUser
             // 
             lblResetUser.AutoSize = true;
-            lblResetUser.Location = new Point(115, 83);
+            lblResetUser.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblResetUser.Location = new Point(140, 84);
             lblResetUser.Margin = new Padding(4, 0, 4, 0);
             lblResetUser.Name = "lblResetUser";
-            lblResetUser.Size = new Size(102, 15);
+            lblResetUser.Size = new Size(53, 17);
             lblResetUser.TabIndex = 0;
-            lblResetUser.Text = "Ingrese su usuario";
+            lblResetUser.Text = "Usuario";
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(246, 75);
+            txtUsuario.Location = new Point(201, 78);
             txtUsuario.Margin = new Padding(4, 3, 4, 3);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.Size = new Size(116, 23);
             txtUsuario.TabIndex = 1;
             // 
-            // contextMenuStrip1
-            // 
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.Size = new Size(61, 4);
-            // 
             // btnEnviarReset
             // 
-            btnEnviarReset.Location = new Point(115, 137);
+            btnEnviarReset.Location = new Point(115, 158);
             btnEnviarReset.Margin = new Padding(4, 3, 4, 3);
             btnEnviarReset.Name = "btnEnviarReset";
             btnEnviarReset.Size = new Size(88, 27);
@@ -72,9 +66,9 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(278, 137);
+            btnSalir.Location = new Point(263, 158);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
+            btnSalir.Size = new Size(88, 27);
             btnSalir.TabIndex = 4;
             btnSalir.Text = "Volver";
             btnSalir.UseVisualStyleBackColor = true;
@@ -100,9 +94,7 @@
 
         private System.Windows.Forms.Label lblResetUser;
         private System.Windows.Forms.TextBox txtUsuario;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnEnviarReset;
         private Button btnSalir;
-        private Label lblReset;
     }
 }
