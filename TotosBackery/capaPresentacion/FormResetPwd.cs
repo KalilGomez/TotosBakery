@@ -25,7 +25,7 @@ namespace capaPresentacion
             ConfigurarFormularioSinBordes();
 
         }
-
+        private Point lastPoint;
         private void EstablecerEstilo()
         {
             // Configuración base del formulario
@@ -50,7 +50,6 @@ namespace capaPresentacion
                 }
             }
         }
-        private Point lastPoint;
         private void EstilizarTextBox(TextBox textBox)
         {
             textBox.BorderStyle = BorderStyle.None;
@@ -218,7 +217,6 @@ namespace capaPresentacion
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
