@@ -13,6 +13,9 @@ namespace capaPresentacion
 {
     public partial class FormResetPwd : Form
     {
+        /*
+              #DCDCDC(fondo)(fondo)
+             */
         public string Usuario { get; private set; }
         public FormResetPwd()
         {
@@ -25,27 +28,12 @@ namespace capaPresentacion
         private void EstablecerEstilo()
         {
             // Configuración base del formulario
-            this.Size = new Size(800, 400);
+            this.Size = new Size(500, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = Color.White;
-
-            // Panel izquierdo violeta (ya existente, solo actualizamos el estilo)
-            Panel panelIzquierdo = this.Controls.OfType<Panel>().FirstOrDefault();
-            if (panelIzquierdo == null)
-            {
-                panelIzquierdo = new Panel();
-                this.Controls.Add(panelIzquierdo);
-            }
-            panelIzquierdo.Size = new Size(250, 400);
-            panelIzquierdo.Dock = DockStyle.Left;
-            panelIzquierdo.BackColor = ColorTranslator.FromHtml("#d6c99a");
-
+            this.BackColor = ColorTranslator.FromHtml("#DCDCDC");
             // Recorrer los controles existentes y aplicar estilos
             foreach (Control control in this.Controls)
             {
-                // Excluir el panel izquierdo del procesamiento
-                if (control == panelIzquierdo) continue;
-
                 // Aplicar estilos según el tipo de control
                 switch (control)
                 {
@@ -65,7 +53,7 @@ namespace capaPresentacion
         private void EstilizarTextBox(TextBox textBox)
         {
             textBox.BorderStyle = BorderStyle.None;
-            textBox.BackColor = Color.White;
+            textBox.BackColor = ColorTranslator.FromHtml("#DCDCDC");
             textBox.Font = new Font("Segoe UI", 10);
 
             // Crear o encontrar la línea debajo del TextBox
@@ -78,9 +66,9 @@ namespace capaPresentacion
                 linea = new Panel
                 {
                     Name = lineaName,
-                    Size = new Size(textBox.Width, 1),
+                    Size = new Size(textBox.Width, 2),
                     Location = new Point(textBox.Left, textBox.Bottom + 1),
-                    BackColor = ColorTranslator.FromHtml("#d6c99a")
+                    BackColor = ColorTranslator.FromHtml("#000000")
                 };
                 this.Controls.Add(linea);
             }
@@ -132,7 +120,7 @@ namespace capaPresentacion
         }
         private void EstilizarLabel(Label label)
         {
-            if (label.Text.Contains("resetear", StringComparison.OrdinalIgnoreCase))
+            if (label.Text.Contains("Resetear", StringComparison.OrdinalIgnoreCase))
             {
                 label.Font = new Font("Segoe UI", 20, FontStyle.Bold);
                 label.ForeColor = Color.FromArgb(64, 64, 64);

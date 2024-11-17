@@ -184,33 +184,11 @@ namespace capaPresentacion
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
                 {
-                    button.BackColor = ColorTranslator.FromHtml("#00BFFF"); // Violeta más oscuro
+                    button.BackColor = ColorTranslator.FromHtml("#00BFFF");
                 };
                 button.MouseLeave += (s, e) =>
                 {
                     button.BackColor = ColorTranslator.FromHtml("#87CEEB");
-                };
-            }
-            else if (button.Text.Equals("Register", StringComparison.OrdinalIgnoreCase))
-            {
-                button.FlatStyle = FlatStyle.Flat;
-                button.BackColor = Color.White;
-                button.ForeColor = Color.FromArgb(149, 117, 205);
-                button.Font = new Font("Segoe UI", 10);
-                button.FlatAppearance.BorderColor = Color.FromArgb(149, 117, 205);
-                button.FlatAppearance.BorderSize = 1;
-                button.Cursor = Cursors.Hand;
-
-                // Eventos hover
-                button.MouseEnter += (s, e) =>
-                {
-                    button.BackColor = Color.FromArgb(149, 117, 205);
-                    button.ForeColor = Color.White;
-                };
-                button.MouseLeave += (s, e) =>
-                {
-                    button.BackColor = Color.White;
-                    button.ForeColor = Color.FromArgb(149, 117, 205);
                 };
             }
         }
@@ -283,6 +261,7 @@ namespace capaPresentacion
         }
         private void btnRstPwd_Click(object sender, EventArgs e)
         {
+            this.Hide();
             string usuario = "";
             using (FormResetPwd formReset = new FormResetPwd())
             {
@@ -309,6 +288,7 @@ namespace capaPresentacion
                     }
                 }
             }
+            this.Show();
         }
         private void FormLogin_KeyDown(object sender, KeyEventArgs e)
         {

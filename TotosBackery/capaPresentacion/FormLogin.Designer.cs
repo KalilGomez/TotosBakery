@@ -44,7 +44,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Segoe UI Variable Display Semib", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DarkMagenta;
+            label1.ForeColor = Color.Black;
             label1.ImageAlign = ContentAlignment.TopCenter;
             label1.Location = new Point(377, 21);
             label1.Margin = new Padding(4, 0, 4, 0);

@@ -88,7 +88,7 @@
             lblReset.Font = new Font("Segoe UI Variable Display Semib", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblReset.ForeColor = Color.DarkMagenta;
             lblReset.ImageAlign = ContentAlignment.TopCenter;
-            lblReset.Location = new Point(80, 21);
+            lblReset.Location = new Point(140, 9);
             lblReset.Margin = new Padding(4, 0, 4, 0);
             lblReset.Name = "lblReset";
             lblReset.Size = new Size(221, 30);
@@ -99,7 +99,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 519);
+            ClientSize = new Size(484, 261);
             Controls.Add(lblReset);
             Controls.Add(btnSalir);
             Controls.Add(btnEnviarReset);
