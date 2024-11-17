@@ -11,8 +11,7 @@ namespace capaPresentacion
         public FormClientes()
         {
             InitializeComponent();
-            ConfigurarFormularioSinBordes();
-            EstablecerEstilo();
+            this.Load += FormClientes_Load;
         }
         private Point lastPoint;
         private void EstablecerEstilo()
@@ -226,6 +225,8 @@ namespace capaPresentacion
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
+            ConfigurarFormularioSinBordes();
+            EstablecerEstilo();
             CargarClientes(); // Cargar los clientes al iniciar el formulario
         }
         private void button4_Click(object sender, EventArgs e)
