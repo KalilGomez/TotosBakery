@@ -70,10 +70,10 @@
             // 
             // BtnCerrarSesion
             // 
-            BtnCerrarSesion.Location = new Point(198, 261);
+            BtnCerrarSesion.Location = new Point(192, 261);
             BtnCerrarSesion.Margin = new Padding(4, 3, 4, 3);
             BtnCerrarSesion.Name = "BtnCerrarSesion";
-            BtnCerrarSesion.Size = new Size(98, 27);
+            BtnCerrarSesion.Size = new Size(108, 27);
             BtnCerrarSesion.TabIndex = 3;
             BtnCerrarSesion.Text = "Cerrar sesion";
             BtnCerrarSesion.UseVisualStyleBackColor = false;

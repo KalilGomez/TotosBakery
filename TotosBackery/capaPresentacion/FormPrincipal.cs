@@ -38,6 +38,7 @@ namespace capaPresentacion
         }
         private void EstilizarBoton(Button button)
         {
+
             if (new[] { "Clientes", "Productos", "Usuarios", "Pedidos" }
             .Any(keyword => button.Text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
             {
@@ -57,6 +58,27 @@ namespace capaPresentacion
                 button.MouseLeave += (s, e) =>
                 {
                     button.BackColor = ColorTranslator.FromHtml("#FFB6C1");
+                };
+                button.Paint += Button_Paint;
+            }
+            if (button.Text.Contains("cerrar sesion", StringComparison.OrdinalIgnoreCase))
+            {
+                button.FlatStyle = FlatStyle.Flat;
+                button.BackColor = ColorTranslator.FromHtml("#F08080");
+                button.ForeColor = Color.White;
+                button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+                button.FlatAppearance.BorderSize = 0;
+                button.Cursor = Cursors.Hand;
+
+
+                // Eventos hover
+                button.MouseEnter += (s, e) =>
+                {
+                    button.BackColor = ColorTranslator.FromHtml("#DC143C");
+                };
+                button.MouseLeave += (s, e) =>
+                {
+                    button.BackColor = ColorTranslator.FromHtml("#F08080");
                 };
                 button.Paint += Button_Paint;
             }
