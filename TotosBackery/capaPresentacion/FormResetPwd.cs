@@ -25,7 +25,6 @@ namespace capaPresentacion
         private Point lastPoint;
         private void EstablecerEstilo()
         {
-            // Configuración base del formulario
             this.Size = new Size(500, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = ColorTranslator.FromHtml("#FFF0F5");

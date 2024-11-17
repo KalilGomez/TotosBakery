@@ -37,10 +37,10 @@
             // 
             // btnClientes
             // 
-            btnClientes.Location = new Point(128, 173);
+            btnClientes.Location = new Point(0, 34);
             btnClientes.Margin = new Padding(4, 3, 4, 3);
             btnClientes.Name = "btnClientes";
-            btnClientes.Size = new Size(88, 27);
+            btnClientes.Size = new Size(250, 100);
             btnClientes.TabIndex = 0;
             btnClientes.Text = "Clientes";
             btnClientes.UseVisualStyleBackColor = true;
@@ -48,10 +48,10 @@
             // 
             // BtnProductos
             // 
-            BtnProductos.Location = new Point(312, 173);
+            BtnProductos.Location = new Point(249, 34);
             BtnProductos.Margin = new Padding(4, 3, 4, 3);
             BtnProductos.Name = "BtnProductos";
-            BtnProductos.Size = new Size(88, 27);
+            BtnProductos.Size = new Size(250, 100);
             BtnProductos.TabIndex = 1;
             BtnProductos.Text = "Productos";
             BtnProductos.UseVisualStyleBackColor = true;
@@ -59,10 +59,10 @@
             // 
             // BtnPedidos
             // 
-            BtnPedidos.Location = new Point(534, 173);
+            BtnPedidos.Location = new Point(0, 133);
             BtnPedidos.Margin = new Padding(4, 3, 4, 3);
             BtnPedidos.Name = "BtnPedidos";
-            BtnPedidos.Size = new Size(88, 27);
+            BtnPedidos.Size = new Size(250, 100);
             BtnPedidos.TabIndex = 2;
             BtnPedidos.Text = "Pedidos";
             BtnPedidos.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@
             // 
             // BtnCerrarSesion
             // 
-            BtnCerrarSesion.Location = new Point(814, 479);
+            BtnCerrarSesion.Location = new Point(195, 264);
             BtnCerrarSesion.Margin = new Padding(4, 3, 4, 3);
             BtnCerrarSesion.Name = "BtnCerrarSesion";
             BtnCerrarSesion.Size = new Size(105, 27);
@@ -81,10 +81,10 @@
             // 
             // btnUsuarios
             // 
-            btnUsuarios.Location = new Point(789, 173);
+            btnUsuarios.Location = new Point(250, 133);
             btnUsuarios.Margin = new Padding(4, 3, 4, 3);
             btnUsuarios.Name = "btnUsuarios";
-            btnUsuarios.Size = new Size(88, 27);
+            btnUsuarios.Size = new Size(250, 100);
             btnUsuarios.TabIndex = 4;
             btnUsuarios.Text = "Usuarios";
             btnUsuarios.UseVisualStyleBackColor = true;
@@ -94,7 +94,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 519);
+            ClientSize = new Size(500, 300);
             Controls.Add(btnUsuarios);
             Controls.Add(BtnCerrarSesion);
             Controls.Add(BtnPedidos);
