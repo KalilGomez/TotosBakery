@@ -91,6 +91,7 @@ namespace capaPresentacion
                 {
                     button.BackColor = ColorTranslator.FromHtml("#FFB6C1");
                 };
+                button.Paint += Button_Paint;
             }
             else if (button.Text.IndexOf("volver", StringComparison.OrdinalIgnoreCase) >= 0)
             {
@@ -204,6 +205,19 @@ namespace capaPresentacion
 
             btnMinimizar.MouseEnter += (s, e) => btnMinimizar.ForeColor = Color.Gray;
             btnMinimizar.MouseLeave += (s, e) => btnMinimizar.ForeColor = Color.DimGray;
+        }
+        private void Button_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = sender as Button;
+            if (btn != null)
+            {
+                // Dibujar borde blanco
+                Pen pen = new Pen(Color.White, 1); // Color blanco y grosor 2
+                Rectangle rect = btn.ClientRectangle;
+                rect.Width -= 1; // Ajustar ancho del rectángulo
+                rect.Height -= 1; // Ajustar alto del rectángulo
+                e.Graphics.DrawRectangle(pen, rect);
+            }
         }
 
 
