@@ -21,9 +21,6 @@ namespace capaPresentacion
             InitializeComponent();
             EstablecerEstilo();
             ConfigurarFormularioSinBordes();
-            /*
-              #DCDCDC(fondo)
-             */
             this.FormClosed += FormLogin_FormClosed;
         }
         private Point lastPoint;
@@ -32,7 +29,7 @@ namespace capaPresentacion
             // Configuración base del formulario
             this.Size = new Size(800, 400);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = ColorTranslator.FromHtml("#DCDCDC");
+            this.BackColor = ColorTranslator.FromHtml("#FFF0F5");
 
             // Panel izquierdo
             Panel panelIzquierdo = this.Controls.OfType<Panel>().FirstOrDefault();
@@ -59,7 +56,7 @@ namespace capaPresentacion
                 // Centrar el PictureBox en el panel
                 pictureBox.Location = new Point(
                     (panelIzquierdo.Width - pictureBox.Width) / 2,
-                    (panelIzquierdo.Height - pictureBox.Height) / 3  // Dividir por 3 para colocarlo más arriba
+                    (panelIzquierdo.Height - pictureBox.Height) / 1+40  // Dividir por 3 para colocarlo más arriba
                 );
             }
 
@@ -149,7 +146,7 @@ namespace capaPresentacion
         private void EstilizarTextBox(TextBox textBox)
         {
             textBox.BorderStyle = BorderStyle.None;
-            textBox.BackColor = ColorTranslator.FromHtml("#DCDCDC");
+            textBox.BackColor = ColorTranslator.FromHtml("#FFF0F5");
             textBox.Font = new Font("Segoe UI", 10);
 
             // Crear o encontrar la línea debajo del TextBox
@@ -175,20 +172,21 @@ namespace capaPresentacion
             if (button.Text.Contains("iniciar sesión", StringComparison.OrdinalIgnoreCase))
             {
                 button.FlatStyle = FlatStyle.Flat;
-                button.BackColor = ColorTranslator.FromHtml("#00BFFF");
+                button.BackColor = ColorTranslator.FromHtml("#FFB6C1");
                 button.ForeColor = Color.White;
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
                 button.Cursor = Cursors.Hand;
+                
 
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
                 {
-                    button.BackColor = ColorTranslator.FromHtml("#00BFFF");
+                    button.BackColor = ColorTranslator.FromHtml("#E30B5C");
                 };
                 button.MouseLeave += (s, e) =>
                 {
-                    button.BackColor = ColorTranslator.FromHtml("#87CEEB");
+                    button.BackColor = ColorTranslator.FromHtml("#FFB6C1");
                 };
             }
         }

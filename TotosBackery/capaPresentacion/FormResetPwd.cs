@@ -30,7 +30,7 @@ namespace capaPresentacion
             // Configuración base del formulario
             this.Size = new Size(500, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.BackColor = ColorTranslator.FromHtml("#DCDCDC");
+            this.BackColor = ColorTranslator.FromHtml("#FFF0F5");
             // Recorrer los controles existentes y aplicar estilos
             foreach (Control control in this.Controls)
             {
@@ -53,7 +53,7 @@ namespace capaPresentacion
         private void EstilizarTextBox(TextBox textBox)
         {
             textBox.BorderStyle = BorderStyle.None;
-            textBox.BackColor = ColorTranslator.FromHtml("#DCDCDC");
+            textBox.BackColor = ColorTranslator.FromHtml("#FFF0F5");
             textBox.Font = new Font("Segoe UI", 10);
 
             // Crear o encontrar la línea debajo del TextBox
