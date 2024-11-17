@@ -76,10 +76,10 @@ namespace capaPresentacion
         }
         private void EstilizarBoton(Button button)
         {
-            if (button.Text.Contains("aceptar", StringComparison.OrdinalIgnoreCase))
+            if (button.Text.IndexOf("Aceptar", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 button.FlatStyle = FlatStyle.Flat;
-                button.BackColor = ColorTranslator.FromHtml("#e9b79f");
+                button.BackColor = ColorTranslator.FromHtml("#000000");
                 button.ForeColor = Color.White;
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
@@ -95,7 +95,7 @@ namespace capaPresentacion
                     button.BackColor = ColorTranslator.FromHtml("#e6a7a2");
                 };
             }
-            else if (button.Text.Equals("volver", StringComparison.OrdinalIgnoreCase))
+            else if (button.Text.IndexOf("volver", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 button.FlatStyle = FlatStyle.Flat;
                 button.BackColor = Color.White;
@@ -117,6 +117,27 @@ namespace capaPresentacion
                     button.ForeColor = Color.FromArgb(149, 117, 205);
                 };
             }
+            else
+            {
+                // Estilo por defecto para otros botones
+                button.FlatStyle = FlatStyle.Standard;
+                button.BackColor = SystemColors.Control;
+                button.ForeColor = SystemColors.ControlText;
+                button.Font = new Font("Segoe UI", 10, FontStyle.Regular);
+                button.FlatAppearance.BorderSize = 1;
+                button.Cursor = Cursors.Hand;
+            }
+            //if (new[] { "volver", "aceptar" }
+            //.Any(keyword => button.Text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
+            //{
+            //    // Configuración para botones "volver" y "aceptar"
+            //}
+            //if (button.Text.IndexOf("volver", StringComparison.OrdinalIgnoreCase) >= 0 ||
+            //button.Text.IndexOf("aceptar", StringComparison.OrdinalIgnoreCase) >= 0)
+            //{
+            //    // Configuración para botones "volver" y "aceptar"
+            //}
+
         }
         private void EstilizarLabel(Label label)
         {

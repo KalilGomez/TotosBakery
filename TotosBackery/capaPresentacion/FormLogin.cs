@@ -270,7 +270,9 @@ namespace capaPresentacion
                     usuario = formReset.Usuario;
                     if (!ValidarCamposVacios2(usuario))
                     {
+                        this.Show();
                         return;
+                        
                     }
                     try
                     {
