@@ -105,6 +105,7 @@
             Name = "FormPrincipal";
             StartPosition = FormStartPosition.Manual;
             Text = "Form2";
+            FormClosed += FormPrincipal_FormClosed;
             ResumeLayout(false);
         }
 

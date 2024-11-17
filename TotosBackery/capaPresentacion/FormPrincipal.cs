@@ -162,7 +162,6 @@ namespace capaPresentacion
         }
         private void ConfigurarFormularioSinBordes()
         {
-            MessageBox.Show("Configurando formulario sin bordes");
             // Configuración básica del formulario
             this.FormBorderStyle = FormBorderStyle.None;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -248,9 +247,23 @@ namespace capaPresentacion
         }
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
-            this.Close();
+            // Hide current form
+            this.Hide();
+
+            // Create and show login form
             FormLogin formLogin = new FormLogin();
-            formLogin.Show();
+            formLogin.ShowDialog();
+
+            // After login form is closed, close the main form
+            this.Close();
+        }
+        private void FormPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Remove the recursive call to BtnCerrarSesion_Click
+            if (!IsDisposed && Application.OpenForms.Count == 1)
+            {
+                Application.Exit();
+            }
         }
     }
 }

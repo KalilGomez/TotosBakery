@@ -14,9 +14,6 @@ namespace capaPresentacion
 {
     public partial class FormResetPwd : Form
     {
-        /*
-              #DCDCDC(fondo)(fondo)
-             */
         public string Usuario { get; private set; }
         public FormResetPwd()
         {
