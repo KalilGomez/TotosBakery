@@ -28,79 +28,85 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DGVClientes = new System.Windows.Forms.DataGridView();
-            this.BtnAgregar = new System.Windows.Forms.Button();
-            this.BtnEditar = new System.Windows.Forms.Button();
-            this.BtnEliminar = new System.Windows.Forms.Button();
-            this.BtnSalir = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVClientes)).BeginInit();
-            this.SuspendLayout();
+            DGVClientes = new DataGridView();
+            BtnAgregar = new Button();
+            BtnEditar = new Button();
+            BtnEliminar = new Button();
+            BtnSalir = new Button();
+            ((System.ComponentModel.ISupportInitialize)DGVClientes).BeginInit();
+            SuspendLayout();
             // 
             // DGVClientes
             // 
-            this.DGVClientes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.DGVClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVClientes.Location = new System.Drawing.Point(12, 79);
-            this.DGVClientes.Name = "DGVClientes";
-            this.DGVClientes.Size = new System.Drawing.Size(776, 213);
-            this.DGVClientes.TabIndex = 0;
+            DGVClientes.BorderStyle = BorderStyle.Fixed3D;
+            DGVClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVClientes.Location = new Point(14, 91);
+            DGVClientes.Margin = new Padding(4, 3, 4, 3);
+            DGVClientes.Name = "DGVClientes";
+            DGVClientes.ScrollBars = ScrollBars.None;
+            DGVClientes.Size = new Size(905, 246);
+            DGVClientes.TabIndex = 0;
             // 
             // BtnAgregar
             // 
-            this.BtnAgregar.Location = new System.Drawing.Point(55, 322);
-            this.BtnAgregar.Name = "BtnAgregar";
-            this.BtnAgregar.Size = new System.Drawing.Size(97, 23);
-            this.BtnAgregar.TabIndex = 1;
-            this.BtnAgregar.Text = "Agregar Cliente";
-            this.BtnAgregar.UseVisualStyleBackColor = true;
-            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
+            BtnAgregar.Location = new Point(64, 372);
+            BtnAgregar.Margin = new Padding(4, 3, 4, 3);
+            BtnAgregar.Name = "BtnAgregar";
+            BtnAgregar.Size = new Size(113, 27);
+            BtnAgregar.TabIndex = 1;
+            BtnAgregar.Text = "Agregar Cliente";
+            BtnAgregar.UseVisualStyleBackColor = true;
+            BtnAgregar.Click += BtnAgregar_Click;
             // 
             // BtnEditar
             // 
-            this.BtnEditar.Location = new System.Drawing.Point(344, 321);
-            this.BtnEditar.Name = "BtnEditar";
-            this.BtnEditar.Size = new System.Drawing.Size(131, 23);
-            this.BtnEditar.TabIndex = 2;
-            this.BtnEditar.Text = "Editar cliente";
-            this.BtnEditar.UseVisualStyleBackColor = true;
-            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
+            BtnEditar.Location = new Point(401, 370);
+            BtnEditar.Margin = new Padding(4, 3, 4, 3);
+            BtnEditar.Name = "BtnEditar";
+            BtnEditar.Size = new Size(153, 27);
+            BtnEditar.TabIndex = 2;
+            BtnEditar.Text = "Editar cliente";
+            BtnEditar.UseVisualStyleBackColor = true;
+            BtnEditar.Click += BtnEditar_Click;
             // 
             // BtnEliminar
             // 
-            this.BtnEliminar.Location = new System.Drawing.Point(647, 321);
-            this.BtnEliminar.Name = "BtnEliminar";
-            this.BtnEliminar.Size = new System.Drawing.Size(100, 23);
-            this.BtnEliminar.TabIndex = 3;
-            this.BtnEliminar.Text = "Eliminar cliente";
-            this.BtnEliminar.UseVisualStyleBackColor = true;
-            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
+            BtnEliminar.Location = new Point(755, 370);
+            BtnEliminar.Margin = new Padding(4, 3, 4, 3);
+            BtnEliminar.Name = "BtnEliminar";
+            BtnEliminar.Size = new Size(117, 27);
+            BtnEliminar.TabIndex = 3;
+            BtnEliminar.Text = "Eliminar cliente";
+            BtnEliminar.UseVisualStyleBackColor = true;
+            BtnEliminar.Click += BtnEliminar_Click;
             // 
             // BtnSalir
             // 
-            this.BtnSalir.Location = new System.Drawing.Point(713, 415);
-            this.BtnSalir.Name = "BtnSalir";
-            this.BtnSalir.Size = new System.Drawing.Size(75, 23);
-            this.BtnSalir.TabIndex = 4;
-            this.BtnSalir.Text = "Salir";
-            this.BtnSalir.UseVisualStyleBackColor = true;
-            this.BtnSalir.Click += new System.EventHandler(this.button4_Click);
+            BtnSalir.Location = new Point(832, 479);
+            BtnSalir.Margin = new Padding(4, 3, 4, 3);
+            BtnSalir.Name = "BtnSalir";
+            BtnSalir.Size = new Size(88, 27);
+            BtnSalir.TabIndex = 4;
+            BtnSalir.Text = "Salir";
+            BtnSalir.UseVisualStyleBackColor = true;
+            BtnSalir.Click += button4_Click;
             // 
             // FormClientes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.BtnSalir);
-            this.Controls.Add(this.BtnEliminar);
-            this.Controls.Add(this.BtnEditar);
-            this.Controls.Add(this.BtnAgregar);
-            this.Controls.Add(this.DGVClientes);
-            this.Name = "FormClientes";
-            this.Text = "Form3";
-            this.Load += new System.EventHandler(this.FormClientes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DGVClientes)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 519);
+            Controls.Add(BtnSalir);
+            Controls.Add(BtnEliminar);
+            Controls.Add(BtnEditar);
+            Controls.Add(BtnAgregar);
+            Controls.Add(DGVClientes);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FormClientes";
+            Text = "Form3";
+            Load += FormClientes_Load;
+            ((System.ComponentModel.ISupportInitialize)DGVClientes).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
