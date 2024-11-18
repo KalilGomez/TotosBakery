@@ -34,6 +34,9 @@ namespace capaPresentacion
                     MessageBox.Show("Por favor, complete todos los campos.");
                     return;
                 }
+                if (!ValidarSeleccionCliente()) return;
+                if (!ValidarFechaAntigua()) return;
+
                 Cliente = cboxCliente.ToString();
                 Direccion = txtDir.Text;
                 Fecha = dtpFecha.Value;
@@ -88,6 +91,23 @@ namespace capaPresentacion
         {
             get { return (int)cboxCliente.SelectedValue; } // Obtiene el ID del cliente seleccionado
         }
-
+        private bool ValidarSeleccionCliente()
+        {
+            if (cboxCliente.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un cliente.");
+                return false;
+            }
+            return true;
+        }
+        private bool ValidarFechaAntigua()
+        {
+            if (dtpFecha.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("La fecha no puede ser pasada.");
+                return false;
+            }
+            return true;
+        }
     }
 }

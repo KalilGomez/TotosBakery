@@ -29,6 +29,9 @@ namespace capaPresentacion
                 MessageBox.Show("Por favor, complete todos los campos.");
                 return;
             }
+            if (!ValidarPrecio()) return;
+            if (!ValidarCantidad()) return;
+
             Nombre = txtNombre.Text;
             Descripcion = txtDescripcion.Text;
             Precio = double.Parse(txtPrecio.Text);
@@ -46,6 +49,8 @@ namespace capaPresentacion
                 MessageBox.Show("Por favor, complete todos los campos.");
                 return;
             }
+            if (!ValidarPrecio()) return;
+            if (!ValidarCantidad()) return;
             Nombre = txtNombre.Text;
             Descripcion = txtDescripcion.Text;
             Precio = int.Parse(txtPrecio.Text);
@@ -53,5 +58,39 @@ namespace capaPresentacion
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private bool ValidarPrecio()
+        {
+            if (!double.TryParse(txtPrecio.Text, out double precio))
+            {
+                MessageBox.Show("El precio ingresado no es válido. Debe ser un número.");
+                return false;
+            }
+
+            if (precio <= 0)
+            {
+                MessageBox.Show("El precio debe ser un número mayor que cero.");
+                return false;
+            }
+
+            return true;
+        }
+        private bool ValidarCantidad()
+        {
+            if (!int.TryParse(txtCantidad.Text, out int cantidad))
+            {
+                MessageBox.Show("La cantidad ingresada no es válida. Debe ser un número entero.");
+                return false;
+            }
+
+            if (cantidad <= 0)
+            {
+                MessageBox.Show("La cantidad debe ser un número mayor que cero.");
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

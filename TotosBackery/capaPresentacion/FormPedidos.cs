@@ -130,6 +130,11 @@ namespace capaPresentacion
                             Direccion = dgvPedido.CurrentRow.Cells["Direccion"].Value.ToString(),
                             Clienteid = Convert.ToInt32(dgvPedido.CurrentRow.Cells["Clienteid"].Value)
                         };
+                        if (!ValidarCamposNoVacios(pedidoActualizado) ||
+                            !ValidarFechaValida(pedidoActualizado.Fecha))
+                        {
+                            return;  // Si alguna validación falla, no continuar con la actualización
+                        }
 
                         using (var conexion = new ConexionBdd())
                         {
@@ -184,5 +189,30 @@ namespace capaPresentacion
                 dgvPedido.ClearSelection();
             }
         }
+        // Método para validar que no haya campos vacíos
+        private bool ValidarCamposNoVacios(Pedido pedido)
+        {
+            if (string.IsNullOrWhiteSpace(pedido.Estado) ||
+                string.IsNullOrWhiteSpace(pedido.Met_pago) ||
+                string.IsNullOrWhiteSpace(pedido.Direccion))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return false;  
+            }
+            return true;  
+        }
+        // Método para validar el formato de la fecha (no puede ser futura)
+        private bool ValidarFechaValida(DateTime fecha)
+        {
+            if (fecha < DateTime.Now)
+            {
+                MessageBox.Show("La fecha no puede ser en antigua a la actual.");
+                return false;  
+            }
+            return true;  
+        }
+
+
+
     }
 }

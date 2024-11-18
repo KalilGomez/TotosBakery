@@ -90,6 +90,14 @@ namespace capaPresentacion
                             Direccion = DGVClientes.CurrentRow.Cells["Direccion"].Value.ToString()
                         };
 
+                        if (!ValidarCamposNoVacios(clienteActualizado.Nombre, clienteActualizado.Apellido, clienteActualizado.Telefono, clienteActualizado.Mail, clienteActualizado.Direccion) ||
+                    !ValidarTelefonoEsEntero(clienteActualizado.Telefono) ||
+                    !ValidarCorreoConArroba(clienteActualizado.Mail))
+                        {
+                            return;  // Si alguna validación falla, no continuar con el proceso de actualización
+                        }
+
+
                         using (var conexion = new ConexionBdd())
                         {
                             if (conexion.ActualizarCliente(clienteActualizado))
@@ -166,6 +174,53 @@ namespace capaPresentacion
                 DGVClientes.ClearSelection();
             }
         }
+
+        // Método para verificar si algún campo está vacío
+        private bool ValidarCamposNoVacios(string nombre, string apellido, string telefono, string mail, string direccion)
+        {
+            if (string.IsNullOrWhiteSpace(nombre) ||
+                string.IsNullOrWhiteSpace(apellido) ||
+                string.IsNullOrWhiteSpace(telefono) ||
+                string.IsNullOrWhiteSpace(mail) ||
+                string.IsNullOrWhiteSpace(direccion))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return false;  // Si algún campo está vacío, devuelve false
+            }
+            return true; // Si todos los campos están completos, devuelve true
+        }
+
+        // Método para verificar si el teléfono es un número entero
+        private bool ValidarTelefonoEsEntero(string telefono)
+        {
+            // Intentamos convertir el teléfono a un int
+            if (!int.TryParse(telefono, out _))
+            {
+                MessageBox.Show("El teléfono debe ser un número entero.");
+                return false;
+            }
+
+            // Verificar que el teléfono tenga una longitud específica (por ejemplo, 10 dígitos)
+            if (telefono.Length != 10)
+            {
+                MessageBox.Show("El teléfono debe contener 10 dígitos.");
+                return false;
+            }
+
+            return true;
+        }
+
+        // Método para verificar si el correo contiene el símbolo "@"
+        private bool ValidarCorreoConArroba(string mail)
+        {
+            if (!mail.Contains("@"))
+            {
+                MessageBox.Show("El correo electrónico debe contener el símbolo '@'.");
+                return false;  // Si no contiene "@", devuelve false
+            }
+            return true; // Si contiene "@", devuelve true
+        }
+
 
     }
 }

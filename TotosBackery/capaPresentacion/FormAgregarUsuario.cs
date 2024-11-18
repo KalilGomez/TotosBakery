@@ -24,6 +24,9 @@ namespace capaPresentacion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (!ValidarCamposVacios()) {  return; }
+            if (!ValidarNombreApellido()) {  return; }
+
             Nombre=txtNombre.Text;
             Apellido=txtApellido.Text;
             Usuario=txtUsuario.Text;
@@ -32,5 +35,33 @@ namespace capaPresentacion
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+        private bool ValidarCamposVacios()
+        {
+            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtApellido.Text) ||
+                string.IsNullOrWhiteSpace(txtUsuario.Text) ||
+                string.IsNullOrWhiteSpace(txtContraseña.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return false;
+            }
+            return true;
+        }
+        private bool ValidarNombreApellido()
+        {
+            if (!txtNombre.Text.All(c => Char.IsLetter(c) || c == ' '))
+            {
+                MessageBox.Show("El nombre solo puede contener letras y espacios.");
+                return false;
+            }
+
+            if (!txtApellido.Text.All(c => Char.IsLetter(c) || c == ' '))
+            {
+                MessageBox.Show("El apellido solo puede contener letras y espacios.");
+                return false;
+            }
+            return true;
+        }
+
     }
 }

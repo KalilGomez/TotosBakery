@@ -121,6 +121,10 @@ namespace capaPresentacion
                             Contraseña = dgvUsuario.CurrentRow.Cells["Contraseña"].Value.ToString(),
                             Admin = Convert.ToBoolean(dgvUsuario.CurrentRow.Cells["admin"].Value)
                         };
+                        if (!ValidarCamposNoVacios(usuarioActualizado))
+                        {
+                            return; // Si alguna validación falla, no continuar con la actualización
+                        }
 
                         using (var conexion = new ConexionBdd())
                         {
@@ -197,6 +201,19 @@ namespace capaPresentacion
                 btnEliminar.Text = "Eliminar cliente";
                 dgvUsuario.ClearSelection();
             }
+        }
+        private bool ValidarCamposNoVacios(Usuario usuario)
+        {
+            if (string.IsNullOrWhiteSpace(usuario.Nombre) ||
+                string.IsNullOrWhiteSpace(usuario.Apellido) ||
+                string.IsNullOrWhiteSpace(usuario.User) ||
+                string.IsNullOrWhiteSpace(usuario.Contraseña))
+            {
+                MessageBox.Show("Todos los campos son obligatorios.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
     }
 }

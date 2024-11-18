@@ -74,6 +74,12 @@ namespace capaPresentacion
                             Precio = Convert.ToDouble(DGVProductos.CurrentRow.Cells["Precio"].Value),
                             Cantidad = Convert.ToInt32(DGVProductos.CurrentRow.Cells["Cantidad"].Value)
                         };
+                        if (!ValidarCamposNoVacios(productoActualizado) ||
+                            !ValidarPrecioPositivo(productoActualizado.Precio) ||
+                            !ValidarCantidadPositiva(productoActualizado.Cantidad))
+                        {
+                            return; // Si alguna validación falla, no continuar con la actualización
+                        }
 
                         using (var conexion = new ConexionBdd())
                         {
@@ -168,6 +174,39 @@ namespace capaPresentacion
                 MessageBox.Show($"Error al cargar productos: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private bool ValidarCamposNoVacios(Producto producto)
+        {
+            if (string.IsNullOrWhiteSpace(producto.Nombre) ||
+                string.IsNullOrWhiteSpace(producto.Descripcion))
+            {
+                MessageBox.Show("El nombre y la descripción no pueden estar vacíos.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidarPrecioPositivo(double precio)
+        {
+            if (precio <= 0)
+            {
+                MessageBox.Show("El precio debe ser mayor que 0.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidarCantidadPositiva(int cantidad)
+        {
+            if (cantidad <= 0)
+            {
+                MessageBox.Show("La cantidad debe ser mayor que 0.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
         }
     }
 }

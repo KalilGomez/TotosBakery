@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj": {}
+    "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj": {
+    "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaDatos\\capaDatos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj",
+        "projectUniqueName": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaDatos\\capaDatos.csproj",
         "projectName": "capaDatos",
-        "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj",
-        "packagesPath": "C:\\Users\\Kalil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\obj\\",
+        "projectPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaDatos\\capaDatos.csproj",
+        "packagesPath": "C:\\Users\\jonyd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaDatos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kalil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jonyd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
+              "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+                "projectPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
               }
             }
           }
@@ -70,21 +70,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+    "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
+        "projectUniqueName": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
         "projectName": "capaEntidades",
-        "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
-        "packagesPath": "C:\\Users\\Kalil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\obj\\",
+        "projectPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
+        "packagesPath": "C:\\Users\\jonyd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kalil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jonyd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -130,21 +130,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj": {
+    "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaNegocio\\capaNegocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj",
+        "projectUniqueName": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaNegocio\\capaNegocio.csproj",
         "projectName": "capaNegocio",
-        "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj",
-        "packagesPath": "C:\\Users\\Kalil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\obj\\",
+        "projectPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaNegocio\\capaNegocio.csproj",
+        "packagesPath": "C:\\Users\\jonyd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaNegocio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kalil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jonyd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -158,11 +158,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj"
+              "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaDatos\\capaDatos.csproj": {
+                "projectPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaDatos\\capaDatos.csproj"
               },
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
+              "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+                "projectPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
               }
             }
           }
@@ -197,21 +197,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj": {
+    "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj",
+        "projectUniqueName": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj",
         "projectName": "capaPresentacion",
-        "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj",
-        "packagesPath": "C:\\Users\\Kalil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\obj\\",
+        "projectPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj",
+        "packagesPath": "C:\\Users\\jonyd\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaPresentacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kalil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jonyd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -225,11 +225,11 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
+              "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+                "projectPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
               },
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj"
+              "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaNegocio\\capaNegocio.csproj": {
+                "projectPath": "C:\\Users\\jonyd\\OneDrive\\Escritorio\\tp-seminario\\TotosBackery\\capaNegocio\\capaNegocio.csproj"
               }
             }
           }
@@ -267,7 +267,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
