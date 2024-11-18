@@ -122,7 +122,7 @@ namespace capaPresentacion
                             Admin = Convert.ToBoolean(dgvUsuario.CurrentRow.Cells["admin"].Value)
                         };
                         if (!ValidarCamposNoVacios(usuarioActualizado))
-                        {
+                        { 
                             return; // Si alguna validación falla, no continuar con la actualización
                         }
 
