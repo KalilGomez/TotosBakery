@@ -32,12 +32,13 @@
             btnEditar = new Button();
             btnEliminar = new Button();
             dgvUsuario = new DataGridView();
+            btnSalir = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).BeginInit();
             SuspendLayout();
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(206, 396);
+            btnAgregar.Location = new Point(188, 480);
             btnAgregar.Margin = new Padding(4, 3, 4, 3);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(88, 27);
@@ -48,7 +49,7 @@
             // 
             // btnEditar
             // 
-            btnEditar.Location = new Point(376, 396);
+            btnEditar.Location = new Point(336, 480);
             btnEditar.Margin = new Padding(4, 3, 4, 3);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(88, 27);
@@ -59,7 +60,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(538, 396);
+            btnEliminar.Location = new Point(472, 480);
             btnEliminar.Margin = new Padding(4, 3, 4, 3);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(88, 27);
@@ -77,11 +78,22 @@
             dgvUsuario.Size = new Size(883, 249);
             dgvUsuario.TabIndex = 3;
             // 
+            // btnSalir
+            // 
+            btnSalir.Location = new Point(615, 480);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(88, 27);
+            btnSalir.TabIndex = 4;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
             // FormUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(933, 519);
+            Controls.Add(btnSalir);
             Controls.Add(dgvUsuario);
             Controls.Add(btnEliminar);
             Controls.Add(btnEditar);
@@ -100,5 +112,6 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.DataGridView dgvUsuario;
+        private Button btnSalir;
     }
 }

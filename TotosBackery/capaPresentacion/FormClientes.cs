@@ -11,7 +11,6 @@ namespace capaPresentacion
         public FormClientes()
         {
             InitializeComponent();
-            this.Load += FormClientes_Load;
         }
         private Point lastPoint;
         private void EstablecerEstilo()
