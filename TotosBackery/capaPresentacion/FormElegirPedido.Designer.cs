@@ -91,7 +91,9 @@
             Controls.Add(txtElegirPedido);
             Controls.Add(lblElegirPedido);
             Name = "FormElegirPedido";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormElegirPedido";
+            Load += FormElegirPedido_Load;
             ResumeLayout(false);
             PerformLayout();
         }

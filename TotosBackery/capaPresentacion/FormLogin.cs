@@ -56,7 +56,7 @@ namespace capaPresentacion
                 // Centrar el PictureBox en el panel
                 pictureBox.Location = new Point(
                     (panelIzquierdo.Width - pictureBox.Width) / 2,
-                    (panelIzquierdo.Height - pictureBox.Height) / 1+40  // Dividir por 3 para colocarlo más arriba
+                    (panelIzquierdo.Height - pictureBox.Height) / 1 + 40  // Dividir por 3 para colocarlo más arriba
                 );
             }
 
@@ -177,7 +177,7 @@ namespace capaPresentacion
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
                 button.Cursor = Cursors.Hand;
-                
+
 
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
