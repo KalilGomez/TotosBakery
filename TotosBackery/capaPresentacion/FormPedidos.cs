@@ -211,7 +211,7 @@ namespace capaPresentacion
         private void EstilizarBoton(Button button)
         {
 
-            if (new[] { "agregar", "editar", "eliminar" }
+            if (new[] { "agregar", "editar", "eliminar", "buscar" }
             .Any(keyword => button.Text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
             {
                 button.FlatStyle = FlatStyle.Flat;

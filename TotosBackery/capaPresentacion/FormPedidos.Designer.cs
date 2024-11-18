@@ -47,40 +47,40 @@
             // 
             // btnAgregarProducto
             // 
-            btnAgregarProducto.Location = new Point(78, 460);
+            btnAgregarProducto.Location = new Point(130, 480);
             btnAgregarProducto.Margin = new Padding(4, 3, 4, 3);
             btnAgregarProducto.Name = "btnAgregarProducto";
-            btnAgregarProducto.Size = new Size(113, 27);
+            btnAgregarProducto.Size = new Size(88, 27);
             btnAgregarProducto.TabIndex = 1;
-            btnAgregarProducto.Text = "Agregar pedido";
+            btnAgregarProducto.Text = "Agregar";
             btnAgregarProducto.UseVisualStyleBackColor = true;
             btnAgregarProducto.Click += btnAgregarPedido_Click;
             // 
             // btnEditarProducto
             // 
-            btnEditarProducto.Location = new Point(295, 460);
+            btnEditarProducto.Location = new Point(326, 480);
             btnEditarProducto.Margin = new Padding(4, 3, 4, 3);
             btnEditarProducto.Name = "btnEditarProducto";
-            btnEditarProducto.Size = new Size(125, 27);
+            btnEditarProducto.Size = new Size(88, 27);
             btnEditarProducto.TabIndex = 2;
-            btnEditarProducto.Text = "Editar pedido";
+            btnEditarProducto.Text = "Editar";
             btnEditarProducto.UseVisualStyleBackColor = true;
             btnEditarProducto.Click += btnEditarProducto_Click;
             // 
             // btnBuscarPedido
             // 
-            btnBuscarPedido.Location = new Point(578, 460);
+            btnBuscarPedido.Location = new Point(517, 480);
             btnBuscarPedido.Margin = new Padding(4, 3, 4, 3);
             btnBuscarPedido.Name = "btnBuscarPedido";
-            btnBuscarPedido.Size = new Size(127, 27);
+            btnBuscarPedido.Size = new Size(88, 27);
             btnBuscarPedido.TabIndex = 3;
-            btnBuscarPedido.Text = "Buscar pedido";
+            btnBuscarPedido.Text = "Buscar";
             btnBuscarPedido.UseVisualStyleBackColor = true;
             btnBuscarPedido.Click += btnBuscarPedido_Click;
             // 
             // button4
             // 
-            button4.Location = new Point(832, 479);
+            button4.Location = new Point(700, 480);
             button4.Margin = new Padding(4, 3, 4, 3);
             button4.Name = "button4";
             button4.Size = new Size(88, 27);
@@ -101,6 +101,7 @@
             Controls.Add(dgvPedido);
             Margin = new Padding(4, 3, 4, 3);
             Name = "FormPedidos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form5";
             Load += FormPedidos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPedido).EndInit();

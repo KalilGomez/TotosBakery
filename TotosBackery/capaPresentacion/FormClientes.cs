@@ -224,9 +224,9 @@ namespace capaPresentacion
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
-            ConfigurarFormularioSinBordes();
-            EstablecerEstilo();
             CargarClientes(); // Cargar los clientes al iniciar el formulario
+            EstablecerEstilo();
+            ConfigurarFormularioSinBordes();
         }
         private void button4_Click(object sender, EventArgs e)
         {

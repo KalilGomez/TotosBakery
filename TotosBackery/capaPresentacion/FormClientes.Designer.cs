@@ -49,40 +49,40 @@
             // 
             // BtnAgregar
             // 
-            BtnAgregar.Location = new Point(64, 372);
+            BtnAgregar.Location = new Point(166, 480);
             BtnAgregar.Margin = new Padding(4, 3, 4, 3);
             BtnAgregar.Name = "BtnAgregar";
-            BtnAgregar.Size = new Size(113, 27);
+            BtnAgregar.Size = new Size(88, 27);
             BtnAgregar.TabIndex = 1;
-            BtnAgregar.Text = "Agregar Cliente";
+            BtnAgregar.Text = "Agregar";
             BtnAgregar.UseVisualStyleBackColor = true;
             BtnAgregar.Click += BtnAgregar_Click;
             // 
             // BtnEditar
             // 
-            BtnEditar.Location = new Point(401, 370);
+            BtnEditar.Location = new Point(338, 480);
             BtnEditar.Margin = new Padding(4, 3, 4, 3);
             BtnEditar.Name = "BtnEditar";
-            BtnEditar.Size = new Size(153, 27);
+            BtnEditar.Size = new Size(88, 27);
             BtnEditar.TabIndex = 2;
-            BtnEditar.Text = "Editar cliente";
+            BtnEditar.Text = "Editar";
             BtnEditar.UseVisualStyleBackColor = true;
             BtnEditar.Click += BtnEditar_Click;
             // 
             // BtnEliminar
             // 
-            BtnEliminar.Location = new Point(755, 370);
+            BtnEliminar.Location = new Point(535, 480);
             BtnEliminar.Margin = new Padding(4, 3, 4, 3);
             BtnEliminar.Name = "BtnEliminar";
-            BtnEliminar.Size = new Size(117, 27);
+            BtnEliminar.Size = new Size(88, 27);
             BtnEliminar.TabIndex = 3;
-            BtnEliminar.Text = "Eliminar cliente";
+            BtnEliminar.Text = "Eliminar";
             BtnEliminar.UseVisualStyleBackColor = true;
             BtnEliminar.Click += BtnEliminar_Click;
             // 
             // BtnSalir
             // 
-            BtnSalir.Location = new Point(832, 479);
+            BtnSalir.Location = new Point(701, 480);
             BtnSalir.Margin = new Padding(4, 3, 4, 3);
             BtnSalir.Name = "BtnSalir";
             BtnSalir.Size = new Size(88, 27);
@@ -103,6 +103,7 @@
             Controls.Add(DGVClientes);
             Margin = new Padding(4, 3, 4, 3);
             Name = "FormClientes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form3";
             Load += FormClientes_Load;
             ((System.ComponentModel.ISupportInitialize)DGVClientes).EndInit();

@@ -100,6 +100,7 @@
             Controls.Add(btnAgregar);
             Margin = new Padding(4, 3, 4, 3);
             Name = "FormUsuario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormUsuario";
             Load += FormUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).EndInit();

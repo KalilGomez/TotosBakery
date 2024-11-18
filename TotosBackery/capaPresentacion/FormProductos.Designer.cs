@@ -28,78 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DGVProductos = new System.Windows.Forms.DataGridView();
-            this.btnAgregarProducto = new System.Windows.Forms.Button();
-            this.btnEditarProducto = new System.Windows.Forms.Button();
-            this.btnEliminarProducto = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVProductos)).BeginInit();
-            this.SuspendLayout();
+            DGVProductos = new DataGridView();
+            btnAgregarProducto = new Button();
+            btnEditarProducto = new Button();
+            btnEliminarProducto = new Button();
+            btnSalir = new Button();
+            ((System.ComponentModel.ISupportInitialize)DGVProductos).BeginInit();
+            SuspendLayout();
             // 
             // DGVProductos
             // 
-            this.DGVProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVProductos.Location = new System.Drawing.Point(15, 88);
-            this.DGVProductos.Name = "DGVProductos";
-            this.DGVProductos.Size = new System.Drawing.Size(773, 244);
-            this.DGVProductos.TabIndex = 0;
+            DGVProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DGVProductos.Location = new Point(18, 102);
+            DGVProductos.Margin = new Padding(4, 3, 4, 3);
+            DGVProductos.Name = "DGVProductos";
+            DGVProductos.Size = new Size(902, 282);
+            DGVProductos.TabIndex = 0;
             // 
             // btnAgregarProducto
             // 
-            this.btnAgregarProducto.Location = new System.Drawing.Point(15, 385);
-            this.btnAgregarProducto.Name = "btnAgregarProducto";
-            this.btnAgregarProducto.Size = new System.Drawing.Size(113, 23);
-            this.btnAgregarProducto.TabIndex = 1;
-            this.btnAgregarProducto.Text = "Agregar producto";
-            this.btnAgregarProducto.UseVisualStyleBackColor = true;
-            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
+            btnAgregarProducto.Location = new Point(169, 480);
+            btnAgregarProducto.Margin = new Padding(4, 3, 4, 3);
+            btnAgregarProducto.Name = "btnAgregarProducto";
+            btnAgregarProducto.Size = new Size(88, 27);
+            btnAgregarProducto.TabIndex = 1;
+            btnAgregarProducto.Text = "Agregar producto";
+            btnAgregarProducto.UseVisualStyleBackColor = true;
+            btnAgregarProducto.Click += btnAgregarProducto_Click;
             // 
             // btnEditarProducto
             // 
-            this.btnEditarProducto.Location = new System.Drawing.Point(184, 385);
-            this.btnEditarProducto.Name = "btnEditarProducto";
-            this.btnEditarProducto.Size = new System.Drawing.Size(118, 23);
-            this.btnEditarProducto.TabIndex = 2;
-            this.btnEditarProducto.Text = "Editar producto";
-            this.btnEditarProducto.UseVisualStyleBackColor = true;
-            this.btnEditarProducto.Click += new System.EventHandler(this.btnEditarProducto_Click);
+            btnEditarProducto.Location = new Point(335, 480);
+            btnEditarProducto.Margin = new Padding(4, 3, 4, 3);
+            btnEditarProducto.Name = "btnEditarProducto";
+            btnEditarProducto.Size = new Size(88, 27);
+            btnEditarProducto.TabIndex = 2;
+            btnEditarProducto.Text = "Editar producto";
+            btnEditarProducto.UseVisualStyleBackColor = true;
+            btnEditarProducto.Click += btnEditarProducto_Click;
             // 
             // btnEliminarProducto
             // 
-            this.btnEliminarProducto.Location = new System.Drawing.Point(356, 385);
-            this.btnEliminarProducto.Name = "btnEliminarProducto";
-            this.btnEliminarProducto.Size = new System.Drawing.Size(125, 23);
-            this.btnEliminarProducto.TabIndex = 3;
-            this.btnEliminarProducto.Text = "Eliminar producto";
-            this.btnEliminarProducto.UseVisualStyleBackColor = true;
-            this.btnEliminarProducto.Click += new System.EventHandler(this.btnEliminarProducto_Click);
+            btnEliminarProducto.Location = new Point(505, 480);
+            btnEliminarProducto.Margin = new Padding(4, 3, 4, 3);
+            btnEliminarProducto.Name = "btnEliminarProducto";
+            btnEliminarProducto.Size = new Size(88, 27);
+            btnEliminarProducto.TabIndex = 3;
+            btnEliminarProducto.Text = "Eliminar producto";
+            btnEliminarProducto.UseVisualStyleBackColor = true;
+            btnEliminarProducto.Click += btnEliminarProducto_Click;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(713, 415);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
-            this.btnSalir.TabIndex = 4;
-            this.btnSalir.Text = "Salir";
-            this.btnSalir.UseVisualStyleBackColor = true;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
+            btnSalir.Location = new Point(675, 480);
+            btnSalir.Margin = new Padding(4, 3, 4, 3);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(88, 27);
+            btnSalir.TabIndex = 4;
+            btnSalir.Text = "Salir";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
             // 
             // FormProductos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.btnEliminarProducto);
-            this.Controls.Add(this.btnEditarProducto);
-            this.Controls.Add(this.btnAgregarProducto);
-            this.Controls.Add(this.DGVProductos);
-            this.Name = "FormProductos";
-            this.Text = "Form4";
-            this.Load += new System.EventHandler(this.FormProductos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DGVProductos)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(933, 519);
+            Controls.Add(btnSalir);
+            Controls.Add(btnEliminarProducto);
+            Controls.Add(btnEditarProducto);
+            Controls.Add(btnAgregarProducto);
+            Controls.Add(DGVProductos);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "FormProductos";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Form4";
+            Load += FormProductos_Load;
+            ((System.ComponentModel.ISupportInitialize)DGVProductos).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
