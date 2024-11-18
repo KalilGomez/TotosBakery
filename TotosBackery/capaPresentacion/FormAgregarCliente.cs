@@ -21,7 +21,6 @@ namespace capaPresentacion
         {
             InitializeComponent();
         }
-
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             // Validar que los campos no estén vacíos

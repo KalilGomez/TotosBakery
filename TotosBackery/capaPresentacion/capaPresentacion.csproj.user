@@ -19,9 +19,6 @@
     <Compile Update="FormElegirPedido.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormElegirPwd.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
