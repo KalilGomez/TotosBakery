@@ -17,7 +17,6 @@ namespace capaPresentacion
         public FormUsuario()
         {
             InitializeComponent();
-
         }
         private void FormUsuario_Load(object sender, EventArgs e)
         {
