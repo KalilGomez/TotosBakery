@@ -114,5 +114,23 @@ namespace capaNegocio
             }
             return true;  // Si contiene "@", retorna verdadero
         }
+        private bool ValidarSeleccionCliente()
+        {
+            if (cboxCliente.SelectedIndex == -1)
+            {
+                MessageBox.Show("Por favor, seleccione un cliente.");
+                return false;
+            }
+            return true;
+        }
+        private bool ValidarFechaAntigua()
+        {
+            if (dtpFecha.Value.Date < DateTime.Now.Date)
+            {
+                MessageBox.Show("La fecha no puede ser pasada.");
+                return false;
+            }
+            return true;
+        }
     }
 }
