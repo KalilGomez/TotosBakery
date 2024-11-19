@@ -53,18 +53,15 @@ namespace capaPresentacion
         {
             try
             {
-                // Validar campos vacíos primero
                 if (!ValidarCamposNoVacios(txtNombre, txtDescripcion, txtPrecio, txtCantidad))
                 {
                     return;
                 }
 
-                // Guardar temporalmente los valores para validar
                 string nombreTemp = txtNombre.Text.Trim();
                 string precioTemp = txtPrecio.Text.Trim();
                 string cantidadTemp = txtCantidad.Text.Trim();
 
-                // Validar nombre
                 if (!LogicaNegocio.ValidarNombre(nombreTemp))
                 {
                     MessageBox.Show("Error en el nombre del producto. Solo se permiten letras.",
@@ -73,7 +70,6 @@ namespace capaPresentacion
                     return;
                 }
 
-                // Validar precio
                 if (!LogicaNegocio.ValidarPrecio(precioTemp))
                 {
                     MessageBox.Show("El precio debe ser un número mayor que 0.",
@@ -82,7 +78,6 @@ namespace capaPresentacion
                     return;
                 }
 
-                // Validar cantidad
                 if (!LogicaNegocio.ValidarCantidad(cantidadTemp))
                 {
                     MessageBox.Show("La cantidad debe ser un número entero mayor que 0.",
@@ -91,7 +86,6 @@ namespace capaPresentacion
                     return;
                 }
 
-                // Si todas las validaciones pasan, asignamos los valores
                 Nombre = nombreTemp;
                 Descripcion = txtDescripcion.Text.Trim();
                 Precio = double.Parse(precioTemp);

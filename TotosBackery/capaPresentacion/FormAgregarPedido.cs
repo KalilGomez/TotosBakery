@@ -13,34 +13,70 @@ namespace capaPresentacion
 {
     public partial class FormAgregarPedido : Form
     {
+        /// <summary>
+        /// Obtiene o establece el cliente del pedido.
+        /// </summary>
         public string Cliente { get; private set; }
+
+        /// <summary>
+        /// Obtiene o establece la dirección del pedido.
+        /// </summary>
         public string Direccion { get; private set; }
+
+        /// <summary>
+        /// Obtiene o establece la fecha del pedido.
+        /// </summary>
         public DateTime Fecha { get; private set; }
+
+        /// <summary>
+        /// Obtiene o establece el método de pago del pedido.
+        /// </summary>
         public string MetPag { get; private set; }
+
+        /// <summary>
+        /// Constructor de la clase FormAgregarPedido.
+        /// Inicializa los componentes del formulario.
+        /// </summary>
         public FormAgregarPedido()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Manejador de evento para el clic del botón Aceptar.
+        /// Asigna los valores ingresados en los campos de texto a las propiedades correspondientes,
+        /// valida que los campos no estén vacíos y cierra el formulario.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
+            Cliente = cboxCliente.ToString();
+            Direccion = txtDir.Text;
+            Fecha = dtpFecha.Value;
+            MetPag = cboxMetPag.ToString();
+            if (ValidarCamposNoVacios(cboxCliente, txtDir, dtpFecha, cboxMetPag))
             {
-                Cliente = cboxCliente.ToString();
-                Direccion = txtDir.Text;
-                Fecha = dtpFecha.Value;
-                MetPag = cboxMetPag.ToString();
-                if (ValidarCamposNoVacios(cboxCliente, txtDir, dtpFecha, cboxMetPag))
-                {
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
+
+        /// <summary>
+        /// Manejador de evento para la carga del formulario de agregar pedido.
+        /// Llama a los métodos para cargar los clientes y los métodos de pago.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void FormAgregarPedido_Load(object sender, EventArgs e)
         {
             CargarClientes();
             CargarMetodosDePago();
         }
+
+        /// <summary>
+        /// Carga la lista de clientes desde la base de datos y los muestra en un ComboBox.
+        /// </summary>
         private void CargarClientes()
         {
             try
@@ -49,7 +85,6 @@ namespace capaPresentacion
                 {
                     var clientes = conexion.ObtenerClientes();
 
-                    // Proyectar los datos en un nuevo formato específico para el ComboBox
                     var clientesParaComboBox = clientes.Select(c => new
                     {
                         Id = c.Id,
@@ -57,8 +92,8 @@ namespace capaPresentacion
                     }).ToList();
 
                     cboxCliente.DataSource = clientesParaComboBox;
-                    cboxCliente.DisplayMember = "NombreCompleto"; // Muestra id - nombre apellido
-                    cboxCliente.ValueMember = "Id"; // Asigna el ID como valor seleccionado
+                    cboxCliente.DisplayMember = "NombreCompleto";
+                    cboxCliente.ValueMember = "Id";
                 }
             }
             catch (Exception ex)
@@ -68,20 +103,43 @@ namespace capaPresentacion
             }
         }
 
+        /// <summary>
+        /// Carga los métodos de pago en el ComboBox.
+        /// </summary>
         private void CargarMetodosDePago()
         {
             cboxMetPag.Items.Add("Efectivo");
             cboxMetPag.Items.Add("Transferencia");
         }
 
+        /// <summary>
+        /// Manejador de evento para el clic del botón Cancelar.
+        /// Cierra el formulario.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        /// <summary>
+        /// Obtiene el ID del cliente seleccionado en el ComboBox.
+        /// </summary>
         public int ClienteId
         {
-            get { return (int)cboxCliente.SelectedValue; } // Obtiene el ID del cliente seleccionado
+            get { return (int)cboxCliente.SelectedValue; }
         }
+
+        /// <summary>
+        /// Valida que los campos de texto, combo box y date time picker no estén vacíos.
+        /// Muestra un mensaje de advertencia si algún campo está vacío.
+        /// </summary>
+        /// <param name="a">El ComboBox del cliente.</param>
+        /// <param name="b">El campo de texto de la dirección.</param>
+        /// <param name="c">El DateTimePicker de la fecha.</param>
+        /// <param name="d">El ComboBox del método de pago.</param>
+        /// <returns>Devuelve true si todos los campos están llenos, de lo contrario, devuelve false.</returns>
         private bool ValidarCamposNoVacios(ComboBox a, TextBox b, DateTimePicker c, ComboBox d)
         {
             if (string.IsNullOrWhiteSpace(a.Text) ||
@@ -94,5 +152,6 @@ namespace capaPresentacion
             }
             return true;
         }
+
     }
 }
