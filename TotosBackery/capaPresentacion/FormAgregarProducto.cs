@@ -1,4 +1,5 @@
-﻿using System;
+﻿using capaNegocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,46 +13,121 @@ namespace capaPresentacion
 {
     public partial class FormAgregarProducto : Form
     {
+        /// <summary>
+        /// Obtiene o establece el nombre del producto.
+        /// </summary>
         public string Nombre { get; private set; }
+
+        /// <summary>
+        /// Obtiene o establece la descripción del producto.
+        /// </summary>
         public string Descripcion { get; private set; }
+
+        /// <summary>
+        /// Obtiene o establece el precio del producto.
+        /// </summary>
         public double Precio { get; private set; }
+
+        /// <summary>
+        /// Obtiene o establece la cantidad del producto.
+        /// </summary>
         public int Cantidad { get; private set; }
+
+        /// <summary>
+        /// Constructor de la clase FormAgregarProducto.
+        /// Inicializa los componentes del formulario.
+        /// </summary>
         public FormAgregarProducto()
         {
             InitializeComponent();
         }
-        private void BtnAceptar_Click(object sender, EventArgs e)
-        {
-            // Validar que los campos no estén vacíos
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtDescripcion.Text))
-            {
-                MessageBox.Show("Por favor, complete todos los campos.");
-                return;
-            }
-            Nombre = txtNombre.Text;
-            Descripcion = txtDescripcion.Text;
-            Precio = double.Parse(txtPrecio.Text);
-            Cantidad = int.Parse(txtCantidad.Text);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
 
+        /// <summary>
+        /// Manejador de evento para el clic del botón Aceptar.
+        /// Valida los campos ingresados y, si son correctos, asigna los valores a las propiedades correspondientes
+        /// y cierra el formulario con un resultado de diálogo OK.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
-            // Validar que los campos no estén vacíos
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            try
+            {
+                // Validar campos vacíos primero
+                if (!ValidarCamposNoVacios(txtNombre, txtDescripcion, txtPrecio, txtCantidad))
+                {
+                    return;
+                }
+
+                // Guardar temporalmente los valores para validar
+                string nombreTemp = txtNombre.Text.Trim();
+                string precioTemp = txtPrecio.Text.Trim();
+                string cantidadTemp = txtCantidad.Text.Trim();
+
+                // Validar nombre
+                if (!LogicaNegocio.ValidarNombre(nombreTemp))
+                {
+                    MessageBox.Show("Error en el nombre del producto. Solo se permiten letras.",
+                        "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtNombre.Focus();
+                    return;
+                }
+
+                // Validar precio
+                if (!LogicaNegocio.ValidarPrecio(precioTemp))
+                {
+                    MessageBox.Show("El precio debe ser un número mayor que 0.",
+                        "Validación de precio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtPrecio.Focus();
+                    return;
+                }
+
+                // Validar cantidad
+                if (!LogicaNegocio.ValidarCantidad(cantidadTemp))
+                {
+                    MessageBox.Show("La cantidad debe ser un número entero mayor que 0.",
+                        "Validación de cantidad", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCantidad.Focus();
+                    return;
+                }
+
+                // Si todas las validaciones pasan, asignamos los valores
+                Nombre = nombreTemp;
+                Descripcion = txtDescripcion.Text.Trim();
+                Precio = double.Parse(precioTemp);
+                Cantidad = int.Parse(cantidadTemp);
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar el producto: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Valida que los campos de texto no estén vacíos.
+        /// Muestra un mensaje de advertencia si algún campo está vacío.
+        /// </summary>
+        /// <param name="a">El campo de texto del nombre.</param>
+        /// <param name="b">El campo de texto de la descripción.</param>
+        /// <param name="c">El campo de texto del precio.</param>
+        /// <param name="d">El campo de texto de la cantidad.</param>
+        /// <returns>Devuelve true si todos los campos están llenos, de lo contrario, devuelve false.</returns>
+        private bool ValidarCamposNoVacios(TextBox a, TextBox b, TextBox c, TextBox d)
+        {
+            if (string.IsNullOrWhiteSpace(a.Text) ||
+                string.IsNullOrWhiteSpace(b.Text) ||
+                string.IsNullOrWhiteSpace(c.Text) ||
+                string.IsNullOrWhiteSpace(d.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos.");
-                return;
+                return false;
             }
-            Nombre = txtNombre.Text;
-            Descripcion = txtDescripcion.Text;
-            Precio = int.Parse(txtPrecio.Text);
-            Cantidad = int.Parse(txtCantidad.Text);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            return true;
         }
+
     }
 }

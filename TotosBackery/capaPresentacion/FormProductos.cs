@@ -31,12 +31,12 @@ namespace capaPresentacion
 
                     if (insertado)
                     {
-                        MessageBox.Show("Cliente agregado correctamente.");
+                        MessageBox.Show("Producto agregado correctamente.");
                         CargarProductos(); // Refrescar el DataGridView con la nueva lista de clientes
                     }
                     else
                     {
-                        MessageBox.Show("Error al agregar el cliente.");
+                        MessageBox.Show("Error al agregar el producto.");
                     }
                 }
             }

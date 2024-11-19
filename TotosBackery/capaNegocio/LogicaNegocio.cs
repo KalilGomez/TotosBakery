@@ -109,104 +109,20 @@ namespace capaNegocio
             return true;
         }
 
-        //private bool ValidarPrecio()
-        //{
-        //    if (!double.TryParse(txtPrecio.Text, out double precio))
-        //    {
-        //        MessageBox.Show("El precio ingresado no es válido. Debe ser un número.");
-        //        return false;
-        //    }
+        public static bool ValidarPrecio(string precioTexto)
+        {
+            return double.TryParse(precioTexto, out double precio) && precio > 0;
+        }
 
-        //    if (precio <= 0)
-        //    {
-        //        MessageBox.Show("El precio debe ser un número mayor que cero.");
-        //        return false;
-        //    }
+        public static bool ValidarCantidad(string cantidadTexto)
+        {
+            return int.TryParse(cantidadTexto, out int cantidad) && cantidad > 0;
+        }
 
-        //    return true;
-        //}
-        //private bool ValidarCantidad()
-        //{
-        //    if (!int.TryParse(txtCantidad.Text, out int cantidad))
-        //    {
-        //        MessageBox.Show("La cantidad ingresada no es válida. Debe ser un número entero.");
-        //        return false;
-        //    }
-
-        //    if (cantidad <= 0)
-        //    {
-        //        MessageBox.Show("La cantidad debe ser un número mayor que cero.");
-        //        return false;
-        //    }
-
-        //    return true;
-        //}
-        //private bool ValidarNombreApellido()
-        //{
-        //    if (!txtNombre.Text.All(c => Char.IsLetter(c) || c == ' '))
-        //    {
-        //        MessageBox.Show("El nombre solo puede contener letras y espacios.");
-        //        return false;
-        //    }
-
-        //    if (!txtApellido.Text.All(c => Char.IsLetter(c) || c == ' '))
-        //    {
-        //        MessageBox.Show("El apellido solo puede contener letras y espacios.");
-        //        return false;
-        //    }
-        //    return true;
-        //}
-        //// Método para verificar si el correo contiene el símbolo "@"
-        //private bool ValidarCorreoConArroba(string mail)
-        //{
-        //    if (!mail.Contains("@"))
-        //    {
-        //        MessageBox.Show("El correo electrónico debe contener el símbolo '@'.");
-        //        return false;  // Si no contiene "@", devuelve false
-        //    }
-        //    return true; // Si contiene "@", devuelve true
-        //}
-        //private bool ValidarCamposNoVacios(Pedido pedido)
-        //{
-        //    if (string.IsNullOrWhiteSpace(pedido.Estado) ||
-        //        string.IsNullOrWhiteSpace(pedido.Met_pago) ||
-        //        string.IsNullOrWhiteSpace(pedido.Direccion))
-        //    {
-        //        MessageBox.Show("Por favor, complete todos los campos.");
-        //        return false;
-        //    }
-        //    return true;
-        //}
-        //// Método para validar el formato de la fecha (no puede ser futura)
-        //private bool ValidarFechaValida(DateTime fecha)
-        //{
-        //    if (fecha < DateTime.Now)
-        //    {
-        //        MessageBox.Show("La fecha no puede ser en antigua a la actual.");
-        //        return false;
-        //    }
-        //    return true;
-        //}
-        //private bool ValidarPrecioPositivo(double precio)
-        //{
-        //    if (precio <= 0)
-        //    {
-        //        MessageBox.Show("El precio debe ser mayor que 0.", "Validación",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-        //    return true;
-        //}
-
-        //private bool ValidarCantidadPositiva(int cantidad)
-        //{
-        //    if (cantidad <= 0)
-        //    {
-        //        MessageBox.Show("La cantidad debe ser mayor que 0.", "Validación",
-        //                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //        return false;
-        //    }
-        //    return true;
-        //}
+        public static bool ValidarNombre(string nombre)
+        {
+            return !string.IsNullOrWhiteSpace(nombre) &&
+                   nombre.All(c => Char.IsLetter(c) || c == ' ');
+        }
     }
 }
