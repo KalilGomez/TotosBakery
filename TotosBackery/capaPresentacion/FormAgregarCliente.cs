@@ -104,6 +104,5 @@ namespace capaPresentacion
             // Cerrar el formulario
             this.Close();
         }
-
     }
 }
