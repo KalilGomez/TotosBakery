@@ -164,5 +164,20 @@ namespace capaNegocio
 
             return true;
         }
+        private bool ValidarNombreApellido()
+        {
+            if (!txtNombre.Text.All(c => Char.IsLetter(c) || c == ' '))
+            {
+                MessageBox.Show("El nombre solo puede contener letras y espacios.");
+                return false;
+            }
+
+            if (!txtApellido.Text.All(c => Char.IsLetter(c) || c == ' '))
+            {
+                MessageBox.Show("El apellido solo puede contener letras y espacios.");
+                return false;
+            }
+            return true;
+        }
     }
 }
