@@ -13,6 +13,11 @@ namespace capaPresentacion
 {
     public partial class FormPrincipal : Form
     {
+        /// <summary>
+        /// Constructor de la clase FormPrincipal.
+        /// Inicializa los componentes, configura el formulario sin bordes y aplica el estilo.
+        /// También deshabilita el botón de usuarios al inicio.
+        /// </summary>
         public FormPrincipal()
         {
             InitializeComponent();
@@ -20,14 +25,27 @@ namespace capaPresentacion
             EstablecerEstilo();
             btnUsuarios.Enabled = false;
         }
+
+        /// <summary>
+        /// Punto para almacenar la última posición del cursor, utilizado para mover el formulario.
+        /// </summary>
         private Point lastPoint;
+
+        /// <summary>
+        /// Aplica estilo al formulario, ajustando su tamaño, posición y color de fondo.
+        /// Recorre los controles existentes y aplica estilos específicos a los botones.
+        /// </summary>
         private void EstablecerEstilo()
         {
+            // Configuración base del formulario
             this.Size = new Size(500, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = ColorTranslator.FromHtml("#FFF0F5");
+
+            // Recorrer los controles existentes y aplicar estilos
             foreach (Control control in this.Controls)
             {
+                // Aplicar estilos según el tipo de control
                 switch (control)
                 {
                     case Button btn:
@@ -36,11 +54,17 @@ namespace capaPresentacion
                 }
             }
         }
+
+        /// <summary>
+        /// Aplica estilo a un botón, ajustando su apariencia y eventos de hover.
+        /// Se enfoca en botones con los textos "Clientes", "Productos", "Usuarios", "Pedidos" y "cerrar sesion".
+        /// </summary>
+        /// <param name="button">El botón al que se aplicarán los estilos.</param>
         private void EstilizarBoton(Button button)
         {
-
+            // Verificar si el texto del botón contiene "Clientes", "Productos", "Usuarios" o "Pedidos"
             if (new[] { "Clientes", "Productos", "Usuarios", "Pedidos" }
-            .Any(keyword => button.Text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
+                .Any(keyword => button.Text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
             {
                 button.FlatStyle = FlatStyle.Flat;
                 button.BackColor = ColorTranslator.FromHtml("#FFB6C1");
@@ -48,7 +72,6 @@ namespace capaPresentacion
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
                 button.Cursor = Cursors.Hand;
-
 
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
@@ -61,6 +84,8 @@ namespace capaPresentacion
                 };
                 button.Paint += Button_Paint;
             }
+
+            // Verificar si el texto del botón contiene "cerrar sesion"
             if (button.Text.Contains("cerrar sesion", StringComparison.OrdinalIgnoreCase))
             {
                 button.FlatStyle = FlatStyle.Flat;
@@ -69,7 +94,6 @@ namespace capaPresentacion
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
                 button.Cursor = Cursors.Hand;
-
 
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
@@ -83,6 +107,11 @@ namespace capaPresentacion
                 button.Paint += Button_Paint;
             }
         }
+
+        /// <summary>
+        /// Configura el formulario para que no tenga bordes y agrega botones personalizados para cerrar y minimizar.
+        /// También permite que el formulario se pueda mover arrastrándolo.
+        /// </summary>
         private void ConfigurarFormularioSinBordes()
         {
             // Configuración básica del formulario
@@ -141,10 +170,22 @@ namespace capaPresentacion
             btnMinimizar.MouseEnter += (s, e) => btnMinimizar.ForeColor = Color.Gray;
             btnMinimizar.MouseLeave += (s, e) => btnMinimizar.ForeColor = Color.DimGray;
         }
+
+        /// <summary>
+        /// Habilita el botón de usuarios, permitiendo su uso.
+        /// </summary>
         public void HabilitarBotonUsuarios()
         {
+            // Habilitar el botón de usuarios
             btnUsuarios.Enabled = true;
         }
+
+        /// <summary>
+        /// Manejador de evento para el pintado del botón.
+        /// Dibuja un borde blanco alrededor del botón.
+        /// </summary>
+        /// <param name="sender">El botón que envía el evento.</param>
+        /// <param name="e">Los datos del evento de dibujo.</param>
         private void Button_Paint(object sender, PaintEventArgs e)
         {
             Button btn = sender as Button;
@@ -159,48 +200,96 @@ namespace capaPresentacion
             }
         }
 
-
-
-
+        /// <summary>
+        /// Manejador de evento para el clic del botón de clientes.
+        /// Crea una nueva instancia del formulario de clientes y la muestra.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void btnClientes_Click(object sender, EventArgs e)
         {
+            // Crear una nueva instancia del formulario de clientes
             Form formClientes = new FormClientes();
+            // Mostrar el formulario de clientes
             formClientes.Show();
         }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón de productos.
+        /// Crea una nueva instancia del formulario de productos y la muestra.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void button1_Click(object sender, EventArgs e)
         {
+            // Crear una nueva instancia del formulario de productos
             Form formProductos = new FormProductos();
+            // Mostrar el formulario de productos
             formProductos.Show();
         }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón de pedidos.
+        /// Crea una nueva instancia del formulario de pedidos y la muestra.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void button2_Click(object sender, EventArgs e)
         {
+            // Crear una nueva instancia del formulario de pedidos
             Form formPedidos = new FormPedidos();
+            // Mostrar el formulario de pedidos
             formPedidos.Show();
         }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón de usuarios.
+        /// Crea una nueva instancia del formulario de usuario y la muestra.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
+            // Crear una nueva instancia del formulario de usuario
             FormUsuario formUsuario = new FormUsuario();
+            // Mostrar el formulario de usuario
             formUsuario.Show();
         }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón de cerrar sesión.
+        /// Oculta el formulario actual, muestra el formulario de inicio de sesión y cierra el formulario principal después.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void BtnCerrarSesion_Click(object sender, EventArgs e)
         {
-            // Hide current form
+            // Ocultar el formulario actual
             this.Hide();
 
-            // Create and show login form
+            // Crear y mostrar el formulario de inicio de sesión
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog();
 
-            // After login form is closed, close the main form
+            // Después de cerrar el formulario de inicio de sesión, cerrar el formulario principal
             this.Close();
         }
+
+        /// <summary>
+        /// Manejador de evento para el cierre del formulario principal.
+        /// Cierra la aplicación si no hay otros formularios abiertos.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void FormPrincipal_FormClosed(object sender, FormClosedEventArgs e)
         {
-            // Remove the recursive call to BtnCerrarSesion_Click
+            // Verificar si no está dispuesto y si solo hay un formulario abierto en la aplicación
             if (!IsDisposed && Application.OpenForms.Count == 1)
             {
+                // Cerrar la aplicación
                 Application.Exit();
             }
         }
+
     }
 }
