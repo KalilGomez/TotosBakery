@@ -1,16 +1,19 @@
 ﻿namespace capaPresentacion
 {
+    /// <summary>
+    /// Clase parcial que representa el formulario principal de la aplicación.
+    /// </summary>
     partial class FormPrincipal
     {
         /// <summary>
-        /// Required designer variable.
+        /// Variable del diseñador requerida para la gestión de los componentes.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Libera los recursos que se están utilizando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">Indica si los recursos administrados deben ser descartados (true) o no (false).</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,101 +23,131 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de Windows Forms
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método requerido para soporte del diseñador. No modifiques el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
-            btnClientes = new Button();
-            BtnProductos = new Button();
-            BtnPedidos = new Button();
-            BtnCerrarSesion = new Button();
-            btnUsuarios = new Button();
-            SuspendLayout();
+            this.btnClientes = new Button();
+            this.BtnProductos = new Button();
+            this.BtnPedidos = new Button();
+            this.BtnCerrarSesion = new Button();
+            this.btnUsuarios = new Button();
+            this.SuspendLayout();
             // 
             // btnClientes
             // 
-            btnClientes.Location = new Point(0, 41);
-            btnClientes.Margin = new Padding(4, 3, 4, 3);
-            btnClientes.Name = "btnClientes";
-            btnClientes.Size = new Size(250, 100);
-            btnClientes.TabIndex = 0;
-            btnClientes.Text = "Clientes";
-            btnClientes.UseVisualStyleBackColor = false;
-            btnClientes.Click += btnClientes_Click;
+            /// <summary>
+            /// Configuración del botón que permite acceder a la gestión de clientes.
+            /// </summary>
+            this.btnClientes.Location = new Point(0, 41);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new Size(250, 100);
+            this.btnClientes.TabIndex = 0;
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.UseVisualStyleBackColor = false;
+            this.btnClientes.Click += new EventHandler(this.btnClientes_Click);
             // 
             // BtnProductos
             // 
-            BtnProductos.Location = new Point(250, 41);
-            BtnProductos.Margin = new Padding(4, 3, 4, 3);
-            BtnProductos.Name = "BtnProductos";
-            BtnProductos.Size = new Size(250, 100);
-            BtnProductos.TabIndex = 1;
-            BtnProductos.Text = "Productos";
-            BtnProductos.UseVisualStyleBackColor = false;
-            BtnProductos.Click += button1_Click;
+            /// <summary>
+            /// Configuración del botón que permite acceder a la gestión de productos.
+            /// </summary>
+            this.BtnProductos.Location = new Point(250, 41);
+            this.BtnProductos.Name = "BtnProductos";
+            this.BtnProductos.Size = new Size(250, 100);
+            this.BtnProductos.TabIndex = 1;
+            this.BtnProductos.Text = "Productos";
+            this.BtnProductos.UseVisualStyleBackColor = false;
+            this.BtnProductos.Click += new EventHandler(this.button1_Click);
             // 
             // BtnPedidos
             // 
-            BtnPedidos.Location = new Point(0, 141);
-            BtnPedidos.Margin = new Padding(4, 3, 4, 3);
-            BtnPedidos.Name = "BtnPedidos";
-            BtnPedidos.Size = new Size(250, 100);
-            BtnPedidos.TabIndex = 2;
-            BtnPedidos.Text = "Pedidos";
-            BtnPedidos.UseVisualStyleBackColor = false;
-            BtnPedidos.Click += button2_Click;
+            /// <summary>
+            /// Configuración del botón que permite acceder a la gestión de pedidos.
+            /// </summary>
+            this.BtnPedidos.Location = new Point(0, 141);
+            this.BtnPedidos.Name = "BtnPedidos";
+            this.BtnPedidos.Size = new Size(250, 100);
+            this.BtnPedidos.TabIndex = 2;
+            this.BtnPedidos.Text = "Pedidos";
+            this.BtnPedidos.UseVisualStyleBackColor = false;
+            this.BtnPedidos.Click += new EventHandler(this.button2_Click);
             // 
             // BtnCerrarSesion
             // 
-            BtnCerrarSesion.Location = new Point(192, 261);
-            BtnCerrarSesion.Margin = new Padding(4, 3, 4, 3);
-            BtnCerrarSesion.Name = "BtnCerrarSesion";
-            BtnCerrarSesion.Size = new Size(108, 27);
-            BtnCerrarSesion.TabIndex = 3;
-            BtnCerrarSesion.Text = "Cerrar sesion";
-            BtnCerrarSesion.UseVisualStyleBackColor = false;
-            BtnCerrarSesion.Click += BtnCerrarSesion_Click;
+            /// <summary>
+            /// Configuración del botón para cerrar sesión en la aplicación.
+            /// </summary>
+            this.BtnCerrarSesion.Location = new Point(192, 261);
+            this.BtnCerrarSesion.Name = "BtnCerrarSesion";
+            this.BtnCerrarSesion.Size = new Size(108, 27);
+            this.BtnCerrarSesion.TabIndex = 3;
+            this.BtnCerrarSesion.Text = "Cerrar sesión";
+            this.BtnCerrarSesion.UseVisualStyleBackColor = false;
+            this.BtnCerrarSesion.Click += new EventHandler(this.BtnCerrarSesion_Click);
             // 
             // btnUsuarios
             // 
-            btnUsuarios.Location = new Point(250, 141);
-            btnUsuarios.Margin = new Padding(4, 3, 4, 3);
-            btnUsuarios.Name = "btnUsuarios";
-            btnUsuarios.Size = new Size(250, 100);
-            btnUsuarios.TabIndex = 4;
-            btnUsuarios.Text = "Usuarios";
-            btnUsuarios.UseVisualStyleBackColor = false;
-            btnUsuarios.Click += btnUsuarios_Click;
+            /// <summary>
+            /// Configuración del botón que permite acceder a la gestión de usuarios.
+            /// </summary>
+            this.btnUsuarios.Location = new Point(250, 141);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new Size(250, 100);
+            this.btnUsuarios.TabIndex = 4;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.UseVisualStyleBackColor = false;
+            this.btnUsuarios.Click += new EventHandler(this.btnUsuarios_Click);
             // 
             // FormPrincipal
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(500, 300);
-            Controls.Add(btnUsuarios);
-            Controls.Add(BtnCerrarSesion);
-            Controls.Add(BtnPedidos);
-            Controls.Add(BtnProductos);
-            Controls.Add(btnClientes);
-            FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 3, 4, 3);
-            Name = "FormPrincipal";
-            StartPosition = FormStartPosition.Manual;
-            Text = "Form2";
-            FormClosed += FormPrincipal_FormClosed;
-            ResumeLayout(false);
+            /// <summary>
+            /// Configuración del formulario principal de la aplicación, que incluye la configuración de los controles.
+            /// </summary>
+            this.AutoScaleDimensions = new SizeF(7F, 15F);
+            this.AutoScaleMode = AutoScaleMode.Font;
+            this.ClientSize = new Size(500, 300);
+            this.Controls.Add(this.btnUsuarios);
+            this.Controls.Add(this.BtnCerrarSesion);
+            this.Controls.Add(this.BtnPedidos);
+            this.Controls.Add(this.BtnProductos);
+            this.Controls.Add(this.btnClientes);
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Name = "FormPrincipal";
+            this.StartPosition = FormStartPosition.Manual;
+            this.Text = "Principal";
+            this.FormClosed += new FormClosedEventHandler(this.FormPrincipal_FormClosed);
+            this.ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnClientes;
-        private System.Windows.Forms.Button BtnProductos;
-        private System.Windows.Forms.Button BtnPedidos;
-        private System.Windows.Forms.Button BtnCerrarSesion;
-        private System.Windows.Forms.Button btnUsuarios;
+        /// <summary>
+        /// Botón que permite acceder a la gestión de clientes.
+        /// </summary>
+        private Button btnClientes;
+
+        /// <summary>
+        /// Botón que permite acceder a la gestión de productos.
+        /// </summary>
+        private Button BtnProductos;
+
+        /// <summary>
+        /// Botón que permite acceder a la gestión de pedidos.
+        /// </summary>
+        private Button BtnPedidos;
+
+        /// <summary>
+        /// Botón que permite cerrar sesión en la aplicación.
+        /// </summary>
+        private Button BtnCerrarSesion;
+
+        /// <summary>
+        /// Botón que permite acceder a la gestión de usuarios.
+        /// </summary>
+        private Button btnUsuarios;
     }
 }

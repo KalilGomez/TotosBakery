@@ -1,16 +1,22 @@
 ﻿namespace capaPresentacion
 {
+    /// <summary>
+    /// Clase parcial que representa el formulario de gestión de clientes.
+    /// </summary>
     partial class FormClientes
     {
         /// <summary>
-        /// Required designer variable.
+        /// Requerido para admitir el diseñador.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Limpia los recursos que se estén utilizando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">
+        /// Valor <c>true</c> si los recursos administrados deben ser descartados; 
+        /// <c>false</c> en caso contrario.
+        /// </param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,102 +26,121 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de Windows Forms
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método requerido para soporte del diseñador. 
+        /// No modifiques el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
-            DGVClientes = new DataGridView();
-            BtnAgregar = new Button();
-            BtnEditar = new Button();
-            BtnEliminar = new Button();
-            BtnSalir = new Button();
-            ((System.ComponentModel.ISupportInitialize)DGVClientes).BeginInit();
-            SuspendLayout();
+            this.DGVClientes = new System.Windows.Forms.DataGridView();
+            this.BtnAgregar = new System.Windows.Forms.Button();
+            this.BtnEditar = new System.Windows.Forms.Button();
+            this.BtnEliminar = new System.Windows.Forms.Button();
+            this.BtnSalir = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)this.DGVClientes).BeginInit();
+            this.SuspendLayout();
             // 
             // DGVClientes
             // 
-            DGVClientes.BorderStyle = BorderStyle.Fixed3D;
-            DGVClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DGVClientes.Location = new Point(14, 91);
-            DGVClientes.Margin = new Padding(4, 3, 4, 3);
-            DGVClientes.Name = "DGVClientes";
-            DGVClientes.ScrollBars = ScrollBars.None;
-            DGVClientes.Size = new Size(905, 246);
-            DGVClientes.TabIndex = 0;
+            this.DGVClientes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.DGVClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVClientes.Location = new System.Drawing.Point(14, 91);
+            this.DGVClientes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.DGVClientes.Name = "DGVClientes";
+            this.DGVClientes.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.DGVClientes.Size = new System.Drawing.Size(905, 246);
+            this.DGVClientes.TabIndex = 0;
             // 
             // BtnAgregar
             // 
-            BtnAgregar.Location = new Point(166, 480);
-            BtnAgregar.Margin = new Padding(4, 3, 4, 3);
-            BtnAgregar.Name = "BtnAgregar";
-            BtnAgregar.Size = new Size(88, 27);
-            BtnAgregar.TabIndex = 1;
-            BtnAgregar.Text = "Agregar";
-            BtnAgregar.UseVisualStyleBackColor = true;
-            BtnAgregar.Click += BtnAgregar_Click;
+            this.BtnAgregar.Location = new System.Drawing.Point(166, 480);
+            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtnAgregar.Name = "BtnAgregar";
+            this.BtnAgregar.Size = new System.Drawing.Size(88, 27);
+            this.BtnAgregar.TabIndex = 1;
+            this.BtnAgregar.Text = "Agregar";
+            this.BtnAgregar.UseVisualStyleBackColor = true;
+            this.BtnAgregar.Click += new System.EventHandler(this.BtnAgregar_Click);
             // 
             // BtnEditar
             // 
-            BtnEditar.Location = new Point(338, 480);
-            BtnEditar.Margin = new Padding(4, 3, 4, 3);
-            BtnEditar.Name = "BtnEditar";
-            BtnEditar.Size = new Size(88, 27);
-            BtnEditar.TabIndex = 2;
-            BtnEditar.Text = "Editar";
-            BtnEditar.UseVisualStyleBackColor = true;
-            BtnEditar.Click += BtnEditar_Click;
+            this.BtnEditar.Location = new System.Drawing.Point(338, 480);
+            this.BtnEditar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtnEditar.Name = "BtnEditar";
+            this.BtnEditar.Size = new System.Drawing.Size(88, 27);
+            this.BtnEditar.TabIndex = 2;
+            this.BtnEditar.Text = "Editar";
+            this.BtnEditar.UseVisualStyleBackColor = true;
+            this.BtnEditar.Click += new System.EventHandler(this.BtnEditar_Click);
             // 
             // BtnEliminar
             // 
-            BtnEliminar.Location = new Point(535, 480);
-            BtnEliminar.Margin = new Padding(4, 3, 4, 3);
-            BtnEliminar.Name = "BtnEliminar";
-            BtnEliminar.Size = new Size(88, 27);
-            BtnEliminar.TabIndex = 3;
-            BtnEliminar.Text = "Eliminar";
-            BtnEliminar.UseVisualStyleBackColor = true;
-            BtnEliminar.Click += BtnEliminar_Click;
+            this.BtnEliminar.Location = new System.Drawing.Point(535, 480);
+            this.BtnEliminar.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtnEliminar.Name = "BtnEliminar";
+            this.BtnEliminar.Size = new System.Drawing.Size(88, 27);
+            this.BtnEliminar.TabIndex = 3;
+            this.BtnEliminar.Text = "Eliminar";
+            this.BtnEliminar.UseVisualStyleBackColor = true;
+            this.BtnEliminar.Click += new System.EventHandler(this.BtnEliminar_Click);
             // 
             // BtnSalir
             // 
-            BtnSalir.Location = new Point(701, 480);
-            BtnSalir.Margin = new Padding(4, 3, 4, 3);
-            BtnSalir.Name = "BtnSalir";
-            BtnSalir.Size = new Size(88, 27);
-            BtnSalir.TabIndex = 4;
-            BtnSalir.Text = "Salir";
-            BtnSalir.UseVisualStyleBackColor = true;
-            BtnSalir.Click += button4_Click;
+            this.BtnSalir.Location = new System.Drawing.Point(701, 480);
+            this.BtnSalir.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.BtnSalir.Name = "BtnSalir";
+            this.BtnSalir.Size = new System.Drawing.Size(88, 27);
+            this.BtnSalir.TabIndex = 4;
+            this.BtnSalir.Text = "Salir";
+            this.BtnSalir.UseVisualStyleBackColor = true;
+            this.BtnSalir.Click += new System.EventHandler(this.button4_Click);
             // 
             // FormClientes
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(933, 519);
-            Controls.Add(BtnSalir);
-            Controls.Add(BtnEliminar);
-            Controls.Add(BtnEditar);
-            Controls.Add(BtnAgregar);
-            Controls.Add(DGVClientes);
-            Margin = new Padding(4, 3, 4, 3);
-            Name = "FormClientes";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form3";
-            Load += FormClientes_Load;
-            ((System.ComponentModel.ISupportInitialize)DGVClientes).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(933, 519);
+            this.Controls.Add(this.BtnSalir);
+            this.Controls.Add(this.BtnEliminar);
+            this.Controls.Add(this.BtnEditar);
+            this.Controls.Add(this.BtnAgregar);
+            this.Controls.Add(this.DGVClientes);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.Name = "FormClientes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gestión de Clientes";
+            this.Load += new System.EventHandler(this.FormClientes_Load);
+            ((System.ComponentModel.ISupportInitialize)this.DGVClientes).EndInit();
+            this.ResumeLayout(false);
         }
 
         #endregion
 
+        /// <summary>
+        /// Control DataGridView para mostrar la lista de clientes.
+        /// </summary>
         private System.Windows.Forms.DataGridView DGVClientes;
+
+        /// <summary>
+        /// Botón para agregar un nuevo cliente.
+        /// </summary>
         private System.Windows.Forms.Button BtnAgregar;
+
+        /// <summary>
+        /// Botón para editar un cliente seleccionado.
+        /// </summary>
         private System.Windows.Forms.Button BtnEditar;
+
+        /// <summary>
+        /// Botón para eliminar un cliente seleccionado.
+        /// </summary>
         private System.Windows.Forms.Button BtnEliminar;
+
+        /// <summary>
+        /// Botón para salir del formulario.
+        /// </summary>
         private System.Windows.Forms.Button BtnSalir;
     }
 }
