@@ -62,9 +62,11 @@ namespace capaPresentacion
             Telefono = txtTelefono.Text;
             Mail = txtMail.Text;
             Direccion = txtDireccion.Text;
-            ValidarCamposNoVacios(txtNombre, txtApellido, txtTelefono, txtMail, txtDireccion);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (ValidarCamposNoVacios(txtNombre, txtApellido, txtTelefono, txtMail, txtDireccion))
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         /// <summary>
@@ -89,6 +91,18 @@ namespace capaPresentacion
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón Cancelar.
+        /// Cierra el formulario.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            // Cerrar el formulario
+            this.Close();
         }
 
     }
