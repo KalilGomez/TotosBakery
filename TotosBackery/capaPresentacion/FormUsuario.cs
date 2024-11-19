@@ -9,34 +9,62 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using capaDatos;
 using capaEntidades;
+using capaNegocio;
 
 namespace capaPresentacion
 {
     public partial class FormUsuario : Form
     {
+        /// <summary>
+        /// Constructor de la clase FormUsuario.
+        /// Inicializa los componentes del formulario.
+        /// </summary>
         public FormUsuario()
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Manejador de evento para la carga del formulario de usuarios.
+        /// Llama al método CargarUsuarios para cargar los datos de usuarios.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void FormUsuario_Load(object sender, EventArgs e)
         {
             CargarUsuarios();
         }
+
+        /// <summary>
+        /// Carga los datos de usuarios desde la base de datos y los muestra en un DataGridView.
+        /// </summary>
         private void CargarUsuarios()
         {
             try
             {
-                var clientes = ConexionBdd.ObtenerUsuarios(); // Cargar clientes desde la base de datos
+                // Obtener la lista de usuarios desde la base de datos
+                var clientes = ConexionBdd.ObtenerUsuarios();
+                // Asignar los datos al DataGridView
                 dgvUsuario.DataSource = clientes;
+                // Deshabilitar la edición en el DataGridView
                 dgvUsuario.Enabled = false;
+                // Limpiar la selección en el DataGridView
                 dgvUsuario.ClearSelection();
             }
             catch (Exception ex)
             {
+                // Mostrar mensaje de error en caso de excepción
                 MessageBox.Show($"Error al cargar clientes: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón Agregar.
+        /// Abre el formulario para agregar un nuevo usuario y, si los datos son válidos, inserta el nuevo usuario en la base de datos.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             using (FormAgregarUsuario formAgregar = new FormAgregarUsuario())
@@ -45,19 +73,15 @@ namespace capaPresentacion
                 {
                     try
                     {
-                        // Validación básica
-                        if (string.IsNullOrWhiteSpace(formAgregar.Nombre) ||
-                            string.IsNullOrWhiteSpace(formAgregar.Apellido) ||
-                            string.IsNullOrWhiteSpace(formAgregar.Usuario) ||
-                            string.IsNullOrWhiteSpace(formAgregar.Contraseña))
+                        // Validar que el nombre y apellido solo contengan letras
+                        if (!LogicaNegocio.ValidarSoloLetas(formAgregar.Nombre, formAgregar.Apellido))
                         {
-                            MessageBox.Show("Todos los campos son obligatorios.",
-                                          "Error de validación",
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Warning);
+                            MessageBox.Show("Error en el nombre o apellido. Solo se permiten letras.",
+                                "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
 
+                        // Crear una nueva instancia de Usuario con los datos ingresados
                         Usuario nuevoUsuario = new Usuario(
                             id: 0,  // El ID probablemente se genera en la base de datos
                             nombre: formAgregar.Nombre.Trim(),
@@ -67,37 +91,40 @@ namespace capaPresentacion
                             Convert.ToBoolean(formAgregar.Admin)
                         );
 
-                        // Pasamos el nuevoUsuario como parámetro
+                        // Pasar el nuevoUsuario como parámetro
                         bool insertado = ConexionBdd.InsertarUsuario(nuevoUsuario);
 
                         if (insertado)
                         {
                             MessageBox.Show("Usuario agregado correctamente.",
-                                          "Éxito",
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Information);
-                            CargarUsuarios(); // Refrescar el DataGridView
+                                          "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Refrescar el DataGridView
+                            CargarUsuarios();
                         }
                         else
                         {
                             MessageBox.Show("Error al agregar el usuario.",
-                                          "Error",
-                                          MessageBoxButtons.OK,
-                                          MessageBoxIcon.Error);
+                                          "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Error inesperado: {ex.Message}",
-                                      "Error",
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Error);
+                                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón Editar.
+        /// Permite la edición de los datos del usuario en el DataGridView y guarda los cambios al confirmar la edición.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            // Habilitar edición en el DataGridView si está deshabilitado
             if (!dgvUsuario.Enabled)
             {
                 dgvUsuario.Enabled = true;
@@ -109,6 +136,7 @@ namespace capaPresentacion
                 {
                     if (dgvUsuario.CurrentRow != null)
                     {
+                        // Crear una nueva instancia de Usuario con los datos actualizados
                         Usuario usuarioActualizado = new Usuario
                         {
                             Id = Convert.ToInt32(dgvUsuario.CurrentRow.Cells["Id"].Value),
@@ -119,13 +147,23 @@ namespace capaPresentacion
                             Admin = Convert.ToBoolean(dgvUsuario.CurrentRow.Cells["admin"].Value)
                         };
 
+                        // Validar que el nombre y apellido solo contengan letras
+                        if (!LogicaNegocio.ValidarSoloLetas(usuarioActualizado.Nombre, usuarioActualizado.Apellido))
+                        {
+                            MessageBox.Show("Error en el nombre o apellido. Solo se permiten letras.",
+                                "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // Actualizar los datos del usuario en la base de datos
                         using (var conexion = new ConexionBdd())
                         {
                             if (conexion.ActualizarUsuario(usuarioActualizado))
                             {
                                 MessageBox.Show("Usuario actualizado correctamente", "Éxito",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                CargarUsuarios(); // Refrescar el DataGridView
+                                // Refrescar el DataGridView
+                                CargarUsuarios();
                             }
                             else
                             {
@@ -135,6 +173,7 @@ namespace capaPresentacion
                         }
                     }
 
+                    // Deshabilitar edición en el DataGridView y cambiar el texto del botón
                     dgvUsuario.Enabled = false;
                     btnEditar.Text = "Editar cliente";
                     dgvUsuario.ClearSelection();
@@ -146,9 +185,16 @@ namespace capaPresentacion
                 }
             }
         }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón Eliminar.
+        /// Permite la selección de un usuario en el DataGridView para eliminarlo, 
+        /// y realiza la eliminación si se confirma la acción.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            // Cambiar el estado del DataGridView para permitir la selección
             if (dgvUsuario.Enabled == false)
             {
                 dgvUsuario.Enabled = true;
@@ -159,23 +205,21 @@ namespace capaPresentacion
             }
             else
             {
-                // Verificar si hay una fila seleccionada
                 if (dgvUsuario.SelectedRows.Count > 0)
                 {
-                    // Obtener el ID del cliente seleccionado
                     int idUsuario = Convert.ToInt32(dgvUsuario.SelectedRows[0].Cells["Id"].Value);
 
-                    // Confirmación antes de eliminar
-                    DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este cliente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este cliente?",
+                        "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resultado == DialogResult.Yes)
                     {
-                        // Conexión a la base de datos y eliminación del cliente
                         using (var conexion = new ConexionBdd())
                         {
                             if (conexion.EliminarUsuario(idUsuario))
                             {
                                 MessageBox.Show("Cliente eliminado correctamente.");
-                                CargarUsuarios(); // Refrescar el DataGridView después de la eliminación
+                                // Refrescar el DataGridView después de la eliminación
+                                CargarUsuarios();
                             }
                             else
                             {
@@ -188,15 +232,22 @@ namespace capaPresentacion
                 {
                     MessageBox.Show("Por favor, selecciona un cliente para eliminar.");
                 }
-                // Restablecer el estado del botón y del DataGridView
                 dgvUsuario.Enabled = false;
                 btnEliminar.Text = "Eliminar cliente";
                 dgvUsuario.ClearSelection();
             }
         }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón Salir.
+        /// Cierra el formulario.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
     }
 }

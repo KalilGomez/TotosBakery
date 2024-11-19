@@ -29,8 +29,23 @@ namespace capaPresentacion
             Usuario=txtUsuario.Text;
             Contraseña=txtContraseña.Text;
             Admin=chkAdmin.Checked;
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (ValidarCamposNoVacios(txtNombre, txtApellido, txtUsuario, txtContraseña))
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+        private bool ValidarCamposNoVacios(TextBox a, TextBox b, TextBox c, TextBox d)
+        {
+            if (string.IsNullOrWhiteSpace(a.Text) ||
+                string.IsNullOrWhiteSpace(b.Text) ||
+                string.IsNullOrWhiteSpace(c.Text) ||
+                string.IsNullOrWhiteSpace(d.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return false;
+            }
+            return true;
         }
     }
 }
