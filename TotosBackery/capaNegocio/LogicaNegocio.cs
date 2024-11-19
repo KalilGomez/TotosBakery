@@ -210,5 +210,26 @@ namespace capaNegocio
             }
             return true;
         }
+        private bool ValidarPrecioPositivo(double precio)
+        {
+            if (precio <= 0)
+            {
+                MessageBox.Show("El precio debe ser mayor que 0.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidarCantidadPositiva(int cantidad)
+        {
+            if (cantidad <= 0)
+            {
+                MessageBox.Show("La cantidad debe ser mayor que 0.", "Validación",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
     }
 }
