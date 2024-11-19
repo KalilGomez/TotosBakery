@@ -100,24 +100,15 @@ namespace capaNegocio
             }
             return true;
         }
-        //private bool ValidarSeleccionCliente()
-        //{
-        //    if (cboxCliente.SelectedIndex == -1)
-        //    {
-        //        MessageBox.Show("Por favor, seleccione un cliente.");
-        //        return false;
-        //    }
-        //    return true;
-        //}
-        //private bool ValidarFechaAntigua()
-        //{
-        //    if (dtpFecha.Value.Date < DateTime.Now.Date)
-        //    {
-        //        MessageBox.Show("La fecha no puede ser pasada.");
-        //        return false;
-        //    }
-        //    return true;
-        //}
+        public static bool ValidarFechaAntigua(DateTime dateTime)
+        {
+            if (dateTime.Date < DateTime.Now.Date)
+            {
+                return false;
+            }
+            return true;
+        }
+
         //private bool ValidarPrecio()
         //{
         //    if (!double.TryParse(txtPrecio.Text, out double precio))

@@ -25,21 +25,15 @@ namespace capaPresentacion
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             {
-                // Validar que los campos no estén vacíos
-                if (string.IsNullOrWhiteSpace(cboxCliente.Text) ||
-                    string.IsNullOrWhiteSpace(txtDir.Text) ||
-                    string.IsNullOrWhiteSpace(dtpFecha.Text) ||
-                    string.IsNullOrWhiteSpace(cboxMetPag.Text))
-                {
-                    MessageBox.Show("Por favor, complete todos los campos.");
-                    return;
-                }
                 Cliente = cboxCliente.ToString();
                 Direccion = txtDir.Text;
                 Fecha = dtpFecha.Value;
                 MetPag = cboxMetPag.ToString();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                if (ValidarCamposNoVacios(cboxCliente, txtDir, dtpFecha, cboxMetPag))
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
         }
         private void FormAgregarPedido_Load(object sender, EventArgs e)
@@ -88,6 +82,17 @@ namespace capaPresentacion
         {
             get { return (int)cboxCliente.SelectedValue; } // Obtiene el ID del cliente seleccionado
         }
-
+        private bool ValidarCamposNoVacios(ComboBox a, TextBox b, DateTimePicker c, ComboBox d)
+        {
+            if (string.IsNullOrWhiteSpace(a.Text) ||
+                string.IsNullOrWhiteSpace(b.Text) ||
+                string.IsNullOrWhiteSpace(c.Text) ||
+                string.IsNullOrWhiteSpace(d.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return false;
+            }
+            return true;
+        }
     }
 }
