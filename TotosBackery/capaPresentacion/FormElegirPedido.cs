@@ -29,6 +29,8 @@ namespace capaPresentacion
         }
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampoNoVacio()) { return; }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -40,5 +42,15 @@ namespace capaPresentacion
             this.DialogResult = DialogResult.Cancel;  // Establece el DialogResult
             this.Close();  // Cierra el formulario actual
         }
+        private bool ValidarCampoNoVacio()
+        {
+            if (string.IsNullOrWhiteSpace(txtElegirPedido.Text))
+            {
+                MessageBox.Show("Por favor, ingresa un ID de pedido.");
+                return false;
+            }
+            return true;
+        }
+
     }
 }
