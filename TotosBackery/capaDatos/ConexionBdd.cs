@@ -763,25 +763,43 @@ namespace capaDatos
             {
                 using (MySqlConnection conexion = GetConnection())
                 {
-                    string query = @"UPDATE usuario
-                             SET contraseña = @contraseña
-                             WHERE usuario = @usuario";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conexion))
-                    {
-                        cmd.Parameters.AddWithValue("@contraseña", "1");
-                        cmd.Parameters.AddWithValue("@usuario", usuario);
+                    conexion.Open(); // Asegúrate de abrir la conexión antes de usarla.
 
-                        return cmd.ExecuteNonQuery() > 0;
+                    // Verificar si el usuario existe antes de intentar actualizar la contraseña.
+                    string queryExiste = @"SELECT COUNT(*) FROM usuario WHERE usuario = @usuario";
+                    using (MySqlCommand cmdExiste = new MySqlCommand(queryExiste, conexion))
+                    {
+                        cmdExiste.Parameters.AddWithValue("@usuario", usuario);
+                        int count = Convert.ToInt32(cmdExiste.ExecuteScalar());
+
+                        if (count == 0)
+                        {
+                            // El usuario no existe.
+                            return false;
+                        }
+                    }
+
+                    // Actualizar la contraseña si el usuario existe.
+                    string queryUpdate = @"UPDATE usuario
+                                   SET contraseña = @contraseña
+                                   WHERE usuario = @usuario";
+                    using (MySqlCommand cmdUpdate = new MySqlCommand(queryUpdate, conexion))
+                    {
+                        cmdUpdate.Parameters.AddWithValue("@contraseña", "1"); // Contraseña reseteada por defecto.
+                        cmdUpdate.Parameters.AddWithValue("@usuario", usuario);
+
+                        return cmdUpdate.ExecuteNonQuery() > 0; // Retorna true si se actualizó alguna fila.
                     }
                 }
             }
             catch (Exception ex)
             {
-                // Aquí podrías registrar el error o manejarlo según necesites
-                Console.WriteLine(ex.Message);
+                // Manejo de errores: registra o maneja la excepción.
+                Console.WriteLine($"Error al resetear contraseña: {ex.Message}");
                 return false;
             }
         }
+
 
     }
 }

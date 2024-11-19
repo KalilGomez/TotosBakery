@@ -1,4 +1,5 @@
-﻿using System;
+﻿using capaEntidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,16 +25,7 @@ namespace capaPresentacion
         private void BtnAceptar_Click(object sender, EventArgs e)
         {
             // Validar que los campos no estén vacíos
-            if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                string.IsNullOrWhiteSpace(txtTelefono.Text) ||
-                string.IsNullOrWhiteSpace(txtMail.Text) ||
-                string.IsNullOrWhiteSpace(txtDireccion.Text))
-
-            {
-                MessageBox.Show("Por favor, complete todos los campos.");
-                return;
-            }
+            
             Nombre = txtNombre.Text;
             Apellido = txtApellido.Text;
             Telefono = txtTelefono.Text;
@@ -41,6 +33,20 @@ namespace capaPresentacion
             Direccion = txtDireccion.Text;
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+        private bool ValidarCamposNoVacios(TextBox a, TextBox b, TextBox c, TextBox d, TextBox e)
+        {
+            if (string.IsNullOrWhiteSpace(a.Text) ||
+                string.IsNullOrWhiteSpace(b.Text) ||
+                string.IsNullOrWhiteSpace(c.Text) ||
+                string.IsNullOrWhiteSpace(d.Text) ||
+                string.IsNullOrWhiteSpace(e.Text))
+
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return false;
+            }
+            return true;
         }
     }
 }

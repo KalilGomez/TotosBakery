@@ -215,16 +215,12 @@ namespace capaPresentacion
             checkBox.ForeColor = Color.FromArgb(64, 64, 64);
             checkBox.Font = new Font("Segoe UI", 9);
         }
-
-
-
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
             if (!ValidarCamposVacios())
             {
                 return;
             }
-
             try
             {
                 Usuario usuarioEncontrado = LogicaNegocio.ValidarUsuarioContraseña(txtUsuario.Text, txtContraseña.Text);
@@ -261,35 +257,66 @@ namespace capaPresentacion
         {
             this.Hide();
             string usuario = "";
+
             using (FormResetPwd formReset = new FormResetPwd())
             {
                 if (formReset.ShowDialog() == DialogResult.OK)
                 {
                     usuario = formReset.Usuario;
+
+                    // Validar que el campo no esté vacío
                     if (!ValidarCamposVacios2(usuario))
                     {
                         this.Show();
                         return;
-                        
                     }
+
                     try
                     {
+                        // Validar si el usuario existe utilizando LogicaNegocio.ValidarUsuario
+                        Usuario usuarioEncontrado = LogicaNegocio.ValidarUsuario(usuario);
+
+                        if (usuarioEncontrado == null)
+                        {
+                            MessageBox.Show("El usuario no existe. Por favor, verifique el nombre de usuario.",
+                                            "Usuario no encontrado",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Warning);
+                            this.Show();
+                            return;
+                        }
+
+                        // Si el usuario existe, intentar resetear la contraseña
                         bool reset = ConexionBdd.ResetearContraseña(usuario);
-                        MessageBox.Show($"Contraseña reseteada correctamente",
-                               "Aceptar",
-                               MessageBoxButtons.OK);
+
+                        if (reset)
+                        {
+                            MessageBox.Show("Contraseña reseteada correctamente.",
+                                            "Éxito",
+                                            MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo resetear la contraseña. Intente nuevamente.",
+                                            "Error",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Warning);
+                        }
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show($"Error al intentar resetear la contraseña: {ex.Message}",
-                               "Error",
-                               MessageBoxButtons.OK,
-                               MessageBoxIcon.Error);
+                                        "Error",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
                     }
                 }
             }
+
             this.Show();
         }
+
+
         private void FormLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
