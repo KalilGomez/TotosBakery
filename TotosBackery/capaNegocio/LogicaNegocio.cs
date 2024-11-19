@@ -132,5 +132,37 @@ namespace capaNegocio
             }
             return true;
         }
+        private bool ValidarPrecio()
+        {
+            if (!double.TryParse(txtPrecio.Text, out double precio))
+            {
+                MessageBox.Show("El precio ingresado no es válido. Debe ser un número.");
+                return false;
+            }
+
+            if (precio <= 0)
+            {
+                MessageBox.Show("El precio debe ser un número mayor que cero.");
+                return false;
+            }
+
+            return true;
+        }
+        private bool ValidarCantidad()
+        {
+            if (!int.TryParse(txtCantidad.Text, out int cantidad))
+            {
+                MessageBox.Show("La cantidad ingresada no es válida. Debe ser un número entero.");
+                return false;
+            }
+
+            if (cantidad <= 0)
+            {
+                MessageBox.Show("La cantidad debe ser un número mayor que cero.");
+                return false;
+            }
+
+            return true;
+        }
     }
 }
