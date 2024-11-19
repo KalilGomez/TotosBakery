@@ -179,5 +179,15 @@ namespace capaNegocio
             }
             return true;
         }
+        // Método para verificar si el correo contiene el símbolo "@"
+        private bool ValidarCorreoConArroba(string mail)
+        {
+            if (!mail.Contains("@"))
+            {
+                MessageBox.Show("El correo electrónico debe contener el símbolo '@'.");
+                return false;  // Si no contiene "@", devuelve false
+            }
+            return true; // Si contiene "@", devuelve true
+        }
     }
 }
