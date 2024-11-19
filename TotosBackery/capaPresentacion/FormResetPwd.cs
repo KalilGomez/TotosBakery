@@ -14,21 +14,38 @@ namespace capaPresentacion
 {
     public partial class FormResetPwd : Form
     {
+        /// <summary>
+        /// Obtiene o establece el nombre de usuario.
+        /// </summary>
         public string Usuario { get; private set; }
+
+        /// <summary>
+        /// Constructor de la clase FormResetPwd.
+        /// Inicializa los componentes, establece el estilo y configura el formulario sin bordes.
+        /// </summary>
         public FormResetPwd()
         {
             InitializeComponent();
             EstablecerEstilo();
             ConfigurarFormularioSinBordes();
-
         }
+
+        /// <summary>
+        /// Punto para almacenar la última posición del cursor, utilizado para mover el formulario.
+        /// </summary>
         private Point lastPoint;
+
+        /// <summary>
+        /// Aplica estilo al formulario, ajustando su tamaño, posición y color de fondo.
+        /// Recorre los controles existentes y aplica estilos específicos según su tipo.
+        /// </summary>
         private void EstablecerEstilo()
         {
             // Configuración base del formulario
             this.Size = new Size(500, 300);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = ColorTranslator.FromHtml("#FFF0F5");
+
             // Recorrer los controles existentes y aplicar estilos
             foreach (Control control in this.Controls)
             {
@@ -47,10 +64,19 @@ namespace capaPresentacion
                 }
             }
         }
+
+        /// <summary>
+        /// Aplica estilo a un TextBox, eliminando el borde, ajustando el color de fondo y la fuente.
+        /// También agrega una línea debajo del TextBox para un estilo visual mejorado.
+        /// </summary>
+        /// <param name="textBox">El TextBox al que se aplicarán los estilos.</param>
         private void EstilizarTextBox(TextBox textBox)
         {
+            // Eliminar el borde del TextBox
             textBox.BorderStyle = BorderStyle.None;
+            // Establecer el color de fondo del TextBox
             textBox.BackColor = ColorTranslator.FromHtml("#FFF0F5");
+            // Establecer la fuente del TextBox
             textBox.Font = new Font("Segoe UI", 10);
 
             // Crear o encontrar la línea debajo del TextBox
@@ -58,6 +84,7 @@ namespace capaPresentacion
             Panel linea = this.Controls.OfType<Panel>()
                              .FirstOrDefault(p => p.Name == lineaName);
 
+            // Si no se encuentra una línea existente, crear una nueva
             if (linea == null)
             {
                 linea = new Panel
@@ -69,10 +96,18 @@ namespace capaPresentacion
                 };
                 this.Controls.Add(linea);
             }
+            // Traer la línea al frente
             linea.BringToFront();
         }
+
+        /// <summary>
+        /// Aplica estilo a un Button, ajustando su apariencia y eventos de hover.
+        /// Se enfoca en botones con los textos "Aceptar" o "volver".
+        /// </summary>
+        /// <param name="button">El Button al que se aplicarán los estilos.</param>
         private void EstilizarBoton(Button button)
         {
+            // Verificar si el texto del botón contiene "Aceptar", sin importar mayúsculas/minúsculas
             if (button.Text.IndexOf("Aceptar", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 button.FlatStyle = FlatStyle.Flat;
@@ -81,7 +116,6 @@ namespace capaPresentacion
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
                 button.Cursor = Cursors.Hand;
-
 
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
@@ -94,6 +128,7 @@ namespace capaPresentacion
                 };
                 button.Paint += Button_Paint;
             }
+            // Verificar si el texto del botón contiene "volver", sin importar mayúsculas/minúsculas
             else if (button.Text.IndexOf("volver", StringComparison.OrdinalIgnoreCase) >= 0)
             {
                 button.FlatStyle = FlatStyle.Flat;
@@ -102,7 +137,6 @@ namespace capaPresentacion
                 button.Font = new Font("Segoe UI", 10, FontStyle.Bold);
                 button.FlatAppearance.BorderSize = 0;
                 button.Cursor = Cursors.Hand;
-
 
                 // Eventos hover
                 button.MouseEnter += (s, e) =>
@@ -124,31 +158,36 @@ namespace capaPresentacion
                 button.FlatAppearance.BorderSize = 1;
                 button.Cursor = Cursors.Hand;
             }
-            //if (new[] { "volver", "aceptar" }
-            //.Any(keyword => button.Text.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0))
-            //{
-            //    // Configuración para botones "volver" y "aceptar"
-            //}
-            //if (button.Text.IndexOf("volver", StringComparison.OrdinalIgnoreCase) >= 0 ||
-            //button.Text.IndexOf("aceptar", StringComparison.OrdinalIgnoreCase) >= 0)
-            //{
-            //    // Configuración para botones "volver" y "aceptar"
-            //}
-
         }
+
+        /// <summary>
+        /// Aplica estilo a un Label, ajustando la fuente y el color del texto.
+        /// Se enfoca en etiquetas que contienen el texto "Resetear".
+        /// </summary>
+        /// <param name="label">El Label al que se aplicarán los estilos.</param>
         private void EstilizarLabel(Label label)
         {
+            // Verificar si el texto de la etiqueta contiene "Resetear", sin importar mayúsculas/minúsculas
             if (label.Text.Contains("Resetear", StringComparison.OrdinalIgnoreCase))
             {
+                // Configurar la fuente y el estilo de la etiqueta
                 label.Font = new Font("Segoe UI", 20, FontStyle.Bold);
+                // Establecer el color del texto de la etiqueta
                 label.ForeColor = Color.FromArgb(64, 64, 64);
             }
             else
             {
+                // Configurar la fuente de la etiqueta
                 label.Font = new Font("Segoe UI", 10);
+                // Establecer el color del texto de la etiqueta
                 label.ForeColor = Color.FromArgb(64, 64, 64);
             }
         }
+
+        /// <summary>
+        /// Configura el formulario para que no tenga bordes y agrega botones personalizados para cerrar y minimizar.
+        /// También permite que el formulario se pueda mover arrastrándolo.
+        /// </summary>
         private void ConfigurarFormularioSinBordes()
         {
             // Configuración básica del formulario
@@ -207,6 +246,13 @@ namespace capaPresentacion
             btnMinimizar.MouseEnter += (s, e) => btnMinimizar.ForeColor = Color.Gray;
             btnMinimizar.MouseLeave += (s, e) => btnMinimizar.ForeColor = Color.DimGray;
         }
+
+        /// <summary>
+        /// Manejador de evento para el pintado del botón.
+        /// Dibuja un borde blanco alrededor del botón.
+        /// </summary>
+        /// <param name="sender">El botón que envía el evento.</param>
+        /// <param name="e">Los datos del evento de dibujo.</param>
         private void Button_Paint(object sender, PaintEventArgs e)
         {
             Button btn = sender as Button;
@@ -221,16 +267,33 @@ namespace capaPresentacion
             }
         }
 
-
+        /// <summary>
+        /// Manejador de evento para el clic del botón de enviar reseteo.
+        /// Guarda el nombre de usuario y cierra el formulario con un resultado de diálogo OK.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void btnEnviarReset_Click(object sender, EventArgs e)
         {
+            // Guardar el nombre de usuario
             Usuario = txtUsuario.Text;
+            // Establecer el resultado del diálogo como OK
             this.DialogResult = DialogResult.OK;
+            // Cerrar el formulario
             this.Close();
         }
+
+        /// <summary>
+        /// Manejador de evento para el clic del botón de cerrar.
+        /// Cierra el formulario.
+        /// </summary>
+        /// <param name="sender">El objeto que envía el evento.</param>
+        /// <param name="e">Los datos del evento.</param>
         private void button1_Click(object sender, EventArgs e)
         {
+            // Cerrar el formulario
             this.Close();
         }
+
     }
 }
