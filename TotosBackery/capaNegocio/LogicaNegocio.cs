@@ -189,5 +189,26 @@ namespace capaNegocio
             }
             return true; // Si contiene "@", devuelve true
         }
+        private bool ValidarCamposNoVacios(Pedido pedido)
+        {
+            if (string.IsNullOrWhiteSpace(pedido.Estado) ||
+                string.IsNullOrWhiteSpace(pedido.Met_pago) ||
+                string.IsNullOrWhiteSpace(pedido.Direccion))
+            {
+                MessageBox.Show("Por favor, complete todos los campos.");
+                return false;
+            }
+            return true;
+        }
+        // Método para validar el formato de la fecha (no puede ser futura)
+        private bool ValidarFechaValida(DateTime fecha)
+        {
+            if (fecha < DateTime.Now)
+            {
+                MessageBox.Show("La fecha no puede ser en antigua a la actual.");
+                return false;
+            }
+            return true;
+        }
     }
 }
