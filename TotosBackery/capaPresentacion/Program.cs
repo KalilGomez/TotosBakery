@@ -3,14 +3,20 @@ namespace capaPresentacion
     internal static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// Punto de entrada principal para la aplicación.
         /// </summary>
+        
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+            // Inicializa la configuración de la aplicación. 
+            // Esto puede incluir ajustes de DPI alto, fuentes predeterminadas, etc.
+           
             ApplicationConfiguration.Initialize();
+
+            // Inicia y muestra el formulario principal de la aplicación.
+            // En este caso, se trata del formulario de inicio de sesión.
+
             Application.Run(new FormLogin());
         }
     }
