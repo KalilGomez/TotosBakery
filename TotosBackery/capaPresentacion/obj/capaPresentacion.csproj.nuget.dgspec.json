@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj": {}
+    "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj": {
+    "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj",
+        "projectUniqueName": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj",
         "projectName": "capaDatos",
-        "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj",
-        "packagesPath": "C:\\Users\\Kalil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\obj\\",
+        "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj",
+        "packagesPath": "C:\\Users\\Sebas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaDatos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kalil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,14 +22,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
+              "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+                "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
               }
             }
           }
@@ -74,17 +75,17 @@
         }
       }
     },
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+    "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
+        "projectUniqueName": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
         "projectName": "capaEntidades",
-        "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
-        "packagesPath": "C:\\Users\\Kalil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\obj\\",
+        "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
+        "packagesPath": "C:\\Users\\Sebas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kalil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,6 +93,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -134,17 +136,17 @@
         }
       }
     },
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj": {
+    "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj",
+        "projectUniqueName": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj",
         "projectName": "capaNegocio",
-        "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj",
-        "packagesPath": "C:\\Users\\Kalil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\obj\\",
+        "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj",
+        "packagesPath": "C:\\Users\\Sebas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaNegocio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kalil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -152,17 +154,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj"
+              "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj": {
+                "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaDatos\\capaDatos.csproj"
               },
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
+              "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+                "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
               }
             }
           }
@@ -201,17 +204,17 @@
         }
       }
     },
-    "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj": {
+    "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj",
+        "projectUniqueName": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj",
         "projectName": "capaPresentacion",
-        "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj",
-        "packagesPath": "C:\\Users\\Kalil\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaPresentacion\\obj\\",
+        "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaPresentacion\\capaPresentacion.csproj",
+        "packagesPath": "C:\\Users\\Sebas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaPresentacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Kalil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -219,17 +222,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
+              "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj": {
+                "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj"
               },
-              "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj": {
-                "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj"
+              "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj": {
+                "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaNegocio\\capaNegocio.csproj"
               }
             }
           }

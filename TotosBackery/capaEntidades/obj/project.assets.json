@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Kalil\\.nuget\\packages\\": {}
+    "C:\\Users\\Sebas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
+      "projectUniqueName": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
       "projectName": "capaEntidades",
-      "projectPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
-      "packagesPath": "C:\\Users\\Kalil\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Kalil\\source\\repos\\TotosBakery\\TotosBackery\\capaEntidades\\obj\\",
+      "projectPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\capaEntidades.csproj",
+      "packagesPath": "C:\\Users\\Sebas\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Sebas\\Source\\Repos\\TotosBakery\\TotosBackery\\capaEntidades\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Kalil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,6 +28,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

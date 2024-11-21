@@ -1,16 +1,22 @@
 ﻿namespace capaPresentacion
 {
+    /// <summary>
+    /// Clase parcial que representa el formulario para elegir un pedido.
+    /// </summary>
     partial class FormElegirPedido
     {
         /// <summary>
-        /// Required designer variable.
+        /// Requerido para admitir el diseñador.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Limpia los recursos que se estén utilizando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">
+        /// Valor <c>true</c> si los recursos administrados deben ser descartados; 
+        /// <c>false</c> en caso contrario.
+        /// </param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,89 +26,108 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de Windows Forms
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método requerido para soporte del diseñador. 
+        /// No modifiques el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
-            lblElegirPedido = new Label();
-            txtElegirPedido = new TextBox();
-            btnAceptar = new Button();
-            btnCancelar = new Button();
-            btnBuscarTodos = new Button();
-            SuspendLayout();
+            this.lblElegirPedido = new System.Windows.Forms.Label();
+            this.txtElegirPedido = new System.Windows.Forms.TextBox();
+            this.btnAceptar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnBuscarTodos = new System.Windows.Forms.Button();
+            this.SuspendLayout();
             // 
             // lblElegirPedido
             // 
-            lblElegirPedido.AutoSize = true;
-            lblElegirPedido.Location = new Point(68, 93);
-            lblElegirPedido.Name = "lblElegirPedido";
-            lblElegirPedido.Size = new Size(158, 15);
-            lblElegirPedido.TabIndex = 0;
-            lblElegirPedido.Text = "Ingrese el numero de pedido";
+            this.lblElegirPedido.AutoSize = true;
+            this.lblElegirPedido.Location = new System.Drawing.Point(68, 93);
+            this.lblElegirPedido.Name = "lblElegirPedido";
+            this.lblElegirPedido.Size = new System.Drawing.Size(158, 15);
+            this.lblElegirPedido.TabIndex = 0;
+            this.lblElegirPedido.Text = "Ingrese el numero de pedido";
             // 
             // txtElegirPedido
             // 
-            txtElegirPedido.Location = new Point(276, 90);
-            txtElegirPedido.Name = "txtElegirPedido";
-            txtElegirPedido.Size = new Size(100, 23);
-            txtElegirPedido.TabIndex = 1;
+            this.txtElegirPedido.Location = new System.Drawing.Point(276, 90);
+            this.txtElegirPedido.Name = "txtElegirPedido";
+            this.txtElegirPedido.Size = new System.Drawing.Size(100, 23);
+            this.txtElegirPedido.TabIndex = 1;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(276, 265);
-            btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(75, 23);
-            btnAceptar.TabIndex = 2;
-            btnAceptar.Text = "Aceptar";
-            btnAceptar.UseVisualStyleBackColor = true;
-            btnAceptar.Click += btnAceptar_Click;
+            this.btnAceptar.Location = new System.Drawing.Point(276, 265);
+            this.btnAceptar.Name = "btnAceptar";
+            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.TabIndex = 2;
+            this.btnAceptar.Text = "Aceptar";
+            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(400, 265);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
-            btnCancelar.TabIndex = 3;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Location = new System.Drawing.Point(400, 265);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnBuscarTodos
             // 
-            btnBuscarTodos.Location = new Point(443, 90);
-            btnBuscarTodos.Name = "btnBuscarTodos";
-            btnBuscarTodos.Size = new Size(90, 23);
-            btnBuscarTodos.TabIndex = 4;
-            btnBuscarTodos.Text = "Buscar todos";
-            btnBuscarTodos.UseVisualStyleBackColor = true;
-            btnBuscarTodos.Click += btnBuscarTodos_Click;
+            this.btnBuscarTodos.Location = new System.Drawing.Point(443, 90);
+            this.btnBuscarTodos.Name = "btnBuscarTodos";
+            this.btnBuscarTodos.Size = new System.Drawing.Size(90, 23);
+            this.btnBuscarTodos.TabIndex = 4;
+            this.btnBuscarTodos.Text = "Buscar todos";
+            this.btnBuscarTodos.UseVisualStyleBackColor = true;
+            this.btnBuscarTodos.Click += new System.EventHandler(this.btnBuscarTodos_Click);
             // 
             // FormElegirPedido
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(btnBuscarTodos);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnAceptar);
-            Controls.Add(txtElegirPedido);
-            Controls.Add(lblElegirPedido);
-            Name = "FormElegirPedido";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormElegirPedido";
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnBuscarTodos);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.txtElegirPedido);
+            this.Controls.Add(this.lblElegirPedido);
+            this.Name = "FormElegirPedido";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "FormElegirPedido";
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion
 
-        private Label lblElegirPedido;
-        private TextBox txtElegirPedido;
-        private Button btnAceptar;
-        private Button btnCancelar;
-        private Button btnBuscarTodos;
+        /// <summary>
+        /// Etiqueta que indica al usuario ingresar el número de pedido.
+        /// </summary>
+        private System.Windows.Forms.Label lblElegirPedido;
+
+        /// <summary>
+        /// Campo de texto donde el usuario ingresa el número de pedido.
+        /// </summary>
+        private System.Windows.Forms.TextBox txtElegirPedido;
+
+        /// <summary>
+        /// Botón para aceptar la selección del pedido.
+        /// </summary>
+        private System.Windows.Forms.Button btnAceptar;
+
+        /// <summary>
+        /// Botón para cancelar la operación y cerrar el formulario.
+        /// </summary>
+        private System.Windows.Forms.Button btnCancelar;
+
+        /// <summary>
+        /// Botón para buscar todos los pedidos disponibles.
+        /// </summary>
+        private System.Windows.Forms.Button btnBuscarTodos;
     }
 }

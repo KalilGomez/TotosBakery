@@ -78,12 +78,14 @@ namespace capaPresentacion
         /// <param name="e">Los datos del evento.</param>
         private void BtnAgregar_Click(object sender, EventArgs e)
         {
+            // Abrir el formulario para agregar un nuevo cliente
             using (FormAgregarCliente formAgregar = new FormAgregarCliente())
             {
                 if (formAgregar.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
+                        // Validar que el nombre y apellido solo contengan letras
                         if (!LogicaNegocio.ValidarSoloLetas(formAgregar.Nombre, formAgregar.Apellido))
                         {
                             MessageBox.Show("Error en el nombre o apellido. Solo se permiten letras.",
@@ -91,6 +93,7 @@ namespace capaPresentacion
                             return;
                         }
 
+                        // Validar que el teléfono contenga solo dígitos numéricos
                         if (!LogicaNegocio.ValidarTelefonoEsEntero(formAgregar.Telefono))
                         {
                             MessageBox.Show("Error en el teléfono. Debe contener dígitos numéricos.",
@@ -98,6 +101,7 @@ namespace capaPresentacion
                             return;
                         }
 
+                        // Validar que el correo electrónico tenga un formato válido
                         if (!LogicaNegocio.ValidarCorreo(formAgregar.Mail))
                         {
                             MessageBox.Show("Error en el correo electrónico. Formato inválido.",
@@ -105,6 +109,7 @@ namespace capaPresentacion
                             return;
                         }
 
+                        // Crear una nueva instancia de Cliente con los datos ingresados
                         Cliente nuevoCliente = new Cliente(
                             id: 0,
                             nombre: formAgregar.Nombre,
@@ -114,10 +119,12 @@ namespace capaPresentacion
                             direccion: formAgregar.Direccion
                         );
 
+                        // Insertar el nuevo cliente en la base de datos
                         bool insertado = ConexionBdd.InsertarCliente(nuevoCliente);
                         if (insertado)
                         {
                             MessageBox.Show("Cliente agregado correctamente.");
+                            // Recargar los datos de clientes
                             CargarClientes();
                         }
                         else
@@ -156,6 +163,7 @@ namespace capaPresentacion
                     {
                         try
                         {
+                            // Crear una nueva instancia de Cliente con los datos actualizados
                             Cliente clienteActualizado = new Cliente
                             {
                                 Id = Convert.ToInt32(DGVClientes.CurrentRow.Cells["Id"].Value),
@@ -166,6 +174,7 @@ namespace capaPresentacion
                                 Direccion = DGVClientes.CurrentRow.Cells["Direccion"].Value.ToString()
                             };
 
+                            // Validar que el nombre y apellido solo contengan letras
                             if (!LogicaNegocio.ValidarSoloLetas(clienteActualizado.Nombre, clienteActualizado.Apellido))
                             {
                                 MessageBox.Show("Error en el nombre o apellido. Solo se permiten letras.",
@@ -173,6 +182,7 @@ namespace capaPresentacion
                                 return;
                             }
 
+                            // Validar que el teléfono contenga solo dígitos numéricos
                             if (!LogicaNegocio.ValidarTelefonoEsEntero(clienteActualizado.Telefono))
                             {
                                 MessageBox.Show("Error en el teléfono. Debe contener dígitos numéricos.",
@@ -180,6 +190,7 @@ namespace capaPresentacion
                                 return;
                             }
 
+                            // Validar que el correo electrónico tenga un formato válido
                             if (!LogicaNegocio.ValidarCorreo(clienteActualizado.Mail))
                             {
                                 MessageBox.Show("Error en el correo electrónico. Formato inválido.",
@@ -187,6 +198,7 @@ namespace capaPresentacion
                                 return;
                             }
 
+                            // Actualizar los datos del cliente en la base de datos
                             using (var conexion = new ConexionBdd())
                             {
                                 if (conexion.ActualizarCliente(clienteActualizado))
@@ -210,6 +222,7 @@ namespace capaPresentacion
                         }
                     }
 
+                    // Deshabilitar edición en el DataGridView y cambiar el texto del botón
                     DGVClientes.Enabled = false;
                     BtnEditar.Text = "Editar cliente";
                     DGVClientes.ClearSelection();
@@ -231,6 +244,7 @@ namespace capaPresentacion
         /// <param name="e">Los datos del evento.</param>
         private void BtnEliminar_Click(object sender, EventArgs e)
         {
+            // Cambiar el estado del DataGridView para permitir la selección
             if (DGVClientes.Enabled == false)
             {
                 DGVClientes.Enabled = true;
@@ -245,16 +259,18 @@ namespace capaPresentacion
                 {
                     int idCliente = Convert.ToInt32(DGVClientes.SelectedRows[0].Cells["Id"].Value);
 
+                    // Confirmar la eliminación del cliente
                     DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar este cliente?",
                         "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (resultado == DialogResult.Yes)
                     {
+                        // Eliminar el cliente seleccionado
                         using (var conexion = new ConexionBdd())
                         {
                             if (conexion.EliminarCliente(idCliente))
                             {
                                 MessageBox.Show("Cliente eliminado correctamente.");
-                                CargarClientes();
+                                CargarClientes(); // Refrescar el DataGridView
                             }
                             else
                             {
@@ -267,6 +283,7 @@ namespace capaPresentacion
                 {
                     MessageBox.Show("Por favor, selecciona un cliente para eliminar.");
                 }
+                // Cambiar el estado del DataGridView para deshabilitar la selección
                 DGVClientes.Enabled = false;
                 BtnEliminar.Text = "Eliminar cliente";
                 DGVClientes.ClearSelection();
