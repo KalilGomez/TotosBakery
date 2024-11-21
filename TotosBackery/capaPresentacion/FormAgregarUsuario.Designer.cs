@@ -1,16 +1,22 @@
 ﻿namespace capaPresentacion
 {
+    /// <summary>
+    /// Clase parcial que representa el formulario para agregar un usuario.
+    /// </summary>
     partial class FormAgregarUsuario
     {
         /// <summary>
-        /// Required designer variable.
+        /// Requerido para admitir el diseñador.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Limpia los recursos que se estén utilizando.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">
+        /// Valor <c>true</c> si los recursos administrados deben ser descartados; 
+        /// <c>false</c> en caso contrario.
+        /// </param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +26,11 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Código generado por el Diseñador de Windows Forms
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método requerido para soporte del diseñador. 
+        /// No modifiques el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
@@ -154,21 +160,63 @@
             this.Text = "FormAgregarUsuario";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
 
+        /// <summary>
+        /// Botón para aceptar la creación del usuario.
+        /// </summary>
         private System.Windows.Forms.Button btnAceptar;
+
+        /// <summary>
+        /// Botón para cancelar la operación.
+        /// </summary>
         private System.Windows.Forms.Button btnCancelar;
+
+        /// <summary>
+        /// Campo de texto para ingresar el nombre del usuario.
+        /// </summary>
         private System.Windows.Forms.TextBox txtNombre;
+
+        /// <summary>
+        /// Campo de texto para ingresar el apellido del usuario.
+        /// </summary>
         private System.Windows.Forms.TextBox txtApellido;
+
+        /// <summary>
+        /// Campo de texto para ingresar la contraseña del usuario.
+        /// </summary>
         private System.Windows.Forms.TextBox txtContraseña;
+
+        /// <summary>
+        /// Campo de texto para ingresar el nombre de usuario.
+        /// </summary>
         private System.Windows.Forms.TextBox txtUsuario;
+
+        /// <summary>
+        /// Etiqueta que indica el campo para el nombre.
+        /// </summary>
         private System.Windows.Forms.Label lblNombre;
+
+        /// <summary>
+        /// Etiqueta que indica el campo para el apellido.
+        /// </summary>
         private System.Windows.Forms.Label lblApellido;
+
+        /// <summary>
+        /// Etiqueta que indica el campo para el nombre de usuario.
+        /// </summary>
         private System.Windows.Forms.Label lblUsuario;
+
+        /// <summary>
+        /// Etiqueta que indica el campo para la contraseña.
+        /// </summary>
         private System.Windows.Forms.Label lblContra;
+
+        /// <summary>
+        /// Checkbox para definir si el usuario será administrador.
+        /// </summary>
         private System.Windows.Forms.CheckBox chkAdmin;
     }
 }
