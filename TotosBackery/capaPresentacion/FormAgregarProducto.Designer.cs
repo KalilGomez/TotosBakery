@@ -1,16 +1,22 @@
 ﻿namespace capaPresentacion
 {
+    /// <summary>
+    /// Representa un formulario para agregar productos.
+    /// </summary>
     partial class FormAgregarProducto
     {
         /// <summary>
-        /// Required designer variable.
+        /// Contenedor necesario para el diseñador.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        /// Limpia los recursos que está utilizando el formulario.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">
+        /// <see langword="true"/> si los recursos administrados deben ser liberados; 
+        /// de lo contrario, <see langword="false"/>.
+        /// </param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -23,8 +29,8 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        /// Método necesario para la compatibilidad con el diseñador. 
+        /// No modificar el contenido de este método con el editor de código.
         /// </summary>
         private void InitializeComponent()
         {
@@ -142,20 +148,58 @@
             this.Text = "FormAgregarProducto";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
 
+        /// <summary>
+        /// Campo para ingresar el nombre del producto.
+        /// </summary>
         private System.Windows.Forms.TextBox txtNombre;
+
+        /// <summary>
+        /// Campo para ingresar la descripción del producto.
+        /// </summary>
         private System.Windows.Forms.TextBox txtDescripcion;
+
+        /// <summary>
+        /// Campo para ingresar el precio del producto.
+        /// </summary>
         private System.Windows.Forms.TextBox txtPrecio;
+
+        /// <summary>
+        /// Campo para ingresar la cantidad del producto.
+        /// </summary>
         private System.Windows.Forms.TextBox txtCantidad;
+
+        /// <summary>
+        /// Etiqueta para mostrar "Nombre".
+        /// </summary>
         private System.Windows.Forms.Label lblNombre;
+
+        /// <summary>
+        /// Etiqueta para mostrar "Descripción".
+        /// </summary>
         private System.Windows.Forms.Label lblDesc;
+
+        /// <summary>
+        /// Etiqueta para mostrar "Precio".
+        /// </summary>
         private System.Windows.Forms.Label lblPrecio;
+
+        /// <summary>
+        /// Etiqueta para mostrar "Cantidad".
+        /// </summary>
         private System.Windows.Forms.Label lblCant;
+
+        /// <summary>
+        /// Botón para aceptar la acción y agregar el producto.
+        /// </summary>
         private System.Windows.Forms.Button btnAceptar;
+
+        /// <summary>
+        /// Botón para cancelar la acción.
+        /// </summary>
         private System.Windows.Forms.Button btnCancelar;
     }
 }
